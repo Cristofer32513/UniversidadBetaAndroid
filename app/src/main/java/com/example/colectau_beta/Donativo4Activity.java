@@ -1,8 +1,10 @@
 package com.example.colectau_beta;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -17,6 +19,8 @@ public class Donativo4Activity extends AppCompatActivity {
 
     private TextView textViewCantidadPlazos;
     private Spinner spinnerPlazos;
+    private RadioButton radioButtonSiPlazos, radioButtonNoPlazos, radioButtonNoComprobante, radioButtonSiComprobante;
+    private CheckBox checkBoxTerminos;
     private Bundle extras;
     private Intent intent;
 
@@ -27,15 +31,15 @@ public class Donativo4Activity extends AppCompatActivity {
 
         extras = getIntent().getExtras();
 
-        RadioButton radioButtonNoPlazos = findViewById(R.id.radioButton_NoPlazos);
-        RadioButton radioButtonSiPlazos = findViewById(R.id.radioButton_SiPlazos);
-        RadioButton radioButtonNoComprobante = findViewById(R.id.radioButton_NoComprobante);
-        RadioButton radioButtonSiComprobante = findViewById(R.id.radioButton_SiComprobante);
+        radioButtonNoPlazos = findViewById(R.id.radioButton_NoPlazos);
+        radioButtonSiPlazos = findViewById(R.id.radioButton_SiPlazos);
+        radioButtonNoComprobante = findViewById(R.id.radioButton_NoComprobante);
+        radioButtonSiComprobante = findViewById(R.id.radioButton_SiComprobante);
         textViewCantidadPlazos = findViewById(R.id.textView_CantidadPlazos);
         spinnerPlazos = findViewById(R.id.spinner_Plazos);
         ArrayAdapter<CharSequence> adapterPlazos = ArrayAdapter.createFromResource(this, R.array.spiner_mensualidades, R.layout.spinner_items_style);
         spinnerPlazos.setAdapter(adapterPlazos);
-        CheckBox checkBoxTerminos = findViewById(R.id.checkBox_Terminos);
+        checkBoxTerminos = findViewById(R.id.checkBox_Terminos);
         textViewCantidadPlazos.setVisibility(View.GONE);
         spinnerPlazos.setVisibility(View.GONE);
     }
@@ -70,6 +74,43 @@ public class Donativo4Activity extends AppCompatActivity {
         }
     }
 
+
+    private boolean validarCampos() {
+        spinnerPlazos.setBackgroundResource(R.drawable.borde_cajas_login);
+        checkBoxTerminos.setBackgroundResource(R.drawable.sin_borde);
+        boolean respuesta = true;
+        StringBuilder cadenaRespuesta = new StringBuilder();
+
+        if(radioButtonSiPlazos.isChecked()) {
+            if(spinnerPlazos.getSelectedItemPosition() == 0) {
+                cadenaRespuesta.append("- Seleccione una cantidad de plazos. \n\n");
+                spinnerPlazos.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
+                respuesta = false;
+            }
+        }
+
+        if(!checkBoxTerminos.isChecked()) {
+            cadenaRespuesta.append("- Acepte los terminos y condiciones. \n\n");
+            checkBoxTerminos.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
+            respuesta = false;
+        }
+
+        if(!respuesta) {
+            new AlertDialog.Builder(this)
+                    .setIcon(android.R.drawable.ic_dialog_alert).setTitle("Errores detectados")
+                    .setMessage(cadenaRespuesta)
+                    .setPositiveButton("Entendido", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            dialogInterface.cancel();
+                        }
+                    })
+                    .show()
+            ;
+        }
+
+        return respuesta;
+    }
 
 
 
@@ -115,11 +156,13 @@ public class Donativo4Activity extends AppCompatActivity {
 
     //Para el boton cancelar
     public void enviar(View view) {
-        intent = new Intent(Donativo4Activity.this, ProcesandoDonativoActivity.class);
-        cargarDatosIntent(intent);
-        intent.putExtra("ventana_resultado", 1);
-        startActivity(intent);
-        finish();
+        if(validarCampos()) {
+            intent = new Intent(Donativo4Activity.this, ProcesandoDonativoActivity.class);
+            cargarDatosIntent(intent);
+            intent.putExtra("ventana_resultado", 1);
+            startActivity(intent);
+            finish();
+        }
     }
 
     //Para el boton cancelar

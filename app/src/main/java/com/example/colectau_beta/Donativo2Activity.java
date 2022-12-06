@@ -1,7 +1,9 @@
 package com.example.colectau_beta;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -58,7 +60,10 @@ public class Donativo2Activity extends AppCompatActivity {
         spinnerPais.setAdapter(adapterPais);
         spinnerPais.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {seleccionarSpinnerEstado();}
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                seleccionarSpinnerEstado();
+                posicionEstado = 0;
+            }
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {}
@@ -160,17 +165,140 @@ public class Donativo2Activity extends AppCompatActivity {
         }
     }
 
+    private boolean validarCampos() {
+        cajaCalle.setBackgroundResource(R.drawable.borde_cajas_login);
+        cajaColonia.setBackgroundResource(R.drawable.borde_cajas_login);
+        cajaMunicipio.setBackgroundResource(R.drawable.borde_cajas_login);
+        cajaCP.setBackgroundResource(R.drawable.borde_cajas_login);
+        spinnerPais.setBackgroundResource(R.drawable.borde_cajas_login);
+        spinnerEstadoVacio.setBackgroundResource(R.drawable.borde_cajas_login);
+        spinnerEstadoArgentina.setBackgroundResource(R.drawable.borde_cajas_login);
+        spinnerEstadoBolivia.setBackgroundResource(R.drawable.borde_cajas_login);
+        spinnerEstadoColombia.setBackgroundResource(R.drawable.borde_cajas_login);
+        spinnerEstadoEcuador.setBackgroundResource(R.drawable.borde_cajas_login);
+        spinnerEstadoMexico.setBackgroundResource(R.drawable.borde_cajas_login);
+        spinnerEstadoVenezuela.setBackgroundResource(R.drawable.borde_cajas_login);
+        boolean respuesta = true;
+        StringBuilder cadenaRespuesta = new StringBuilder();
 
+        String regexSoloLetras = "^[a-zA-ZäÄëËïÏöÖüÜáéíóúáéíóúÁÉÍÓÚÂÊÎÔÛâêîôûàèìòùÀÈÌÒÙ.]+(\\ [a-zA-ZäÄëËïÏöÖüÜáéíóúáéíóúÁÉÍÓÚÂÊÎÔÛâêîôûàèìòùÀÈÌÒÙ]+)*$";
+        String regexSoloNumeros = "^[0-9]+$";
 
+        if(cajaCalle.getText().toString().trim().isEmpty()) {
+            cadenaRespuesta.append("- Ingresa una calle. \n\n");
+            cajaCalle.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
+            respuesta = false;
+        } else {
+            if(!cajaCalle.getText().toString().trim().matches(regexSoloLetras)) {
+                cadenaRespuesta.append("- Calle solo debe contener letras. \n\n");
+                cajaCalle.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
+                respuesta = false;
+            }
+        }
 
+        if(cajaColonia.getText().toString().trim().isEmpty()) {
+            cadenaRespuesta.append("- Ingresa un colonia. \n\n");
+            cajaColonia.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
+            respuesta = false;
+        } else {
+            if(!cajaColonia.getText().toString().trim().matches(regexSoloLetras)) {
+                cadenaRespuesta.append("- Colonia solo debe contener letras. \n\n");
+                cajaColonia.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
+                respuesta = false;
+            }
+        }
 
+        if(cajaMunicipio.getText().toString().trim().isEmpty()) {
+            cadenaRespuesta.append("- Ingresa un municipio. \n\n");
+            cajaMunicipio.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
+            respuesta = false;
+        } else {
+            if(!cajaMunicipio.getText().toString().trim().matches(regexSoloLetras)) {
+                cadenaRespuesta.append("- Municipio solo debe contener letras. \n\n");
+                cajaMunicipio.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
+                respuesta = false;
+            }
+        }
 
+        if(cajaCP.getText().toString().trim().isEmpty()) {
+            cadenaRespuesta.append("- Ingresa un codigo postal. \n\n");
+            cajaCP.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
+            respuesta = false;
+        } else {
+            if(!cajaCP.getText().toString().trim().matches(regexSoloNumeros)) {
+                cadenaRespuesta.append("- Telefono requiere solo digitos. \n\n");
+                cajaCP.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
+                respuesta = false;
+            } else if(cajaCP.getText().toString().trim().length() != 5) {
+                cadenaRespuesta.append("- Telefono requiere 5 digitos. \n\n");
+                cajaCP.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
+                respuesta = false;
+            }
+        }
 
+        if(spinnerPais.getSelectedItemPosition() == 0) {
+            cadenaRespuesta.append("- Seleccione un pais. \n\n");
+            spinnerPais.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
+            respuesta = false;
+            if(spinnerEstadoVacio.getSelectedItemPosition() == 0) {
+                cadenaRespuesta.append("- Seleccione un estado. \n\n");
+                spinnerEstadoVacio.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
+                respuesta = false;
+            }
+        } else if(spinnerPais.getSelectedItemPosition() == 1) {
+            if(spinnerEstadoArgentina.getSelectedItemPosition() == 0) {
+                cadenaRespuesta.append("- Seleccione un estado. \n\n");
+                spinnerEstadoArgentina.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
+                respuesta = false;
+            }
+        } else if(spinnerPais.getSelectedItemPosition() == 2) {
+            if(spinnerEstadoBolivia.getSelectedItemPosition() == 0) {
+                cadenaRespuesta.append("- Seleccione un estado. \n\n");
+                spinnerEstadoBolivia.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
+                respuesta = false;
+            }
+        } else if(spinnerPais.getSelectedItemPosition() == 3) {
+            if(spinnerEstadoColombia.getSelectedItemPosition() == 0) {
+                cadenaRespuesta.append("- Seleccione un estado. \n\n");
+                spinnerEstadoColombia.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
+                respuesta = false;
+            }
+        } else if(spinnerPais.getSelectedItemPosition() == 4) {
+            if(spinnerEstadoEcuador.getSelectedItemPosition() == 0) {
+                cadenaRespuesta.append("- Seleccione un estado. \n\n");
+                spinnerEstadoEcuador.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
+                respuesta = false;
+            }
+        } else if(spinnerPais.getSelectedItemPosition() == 5) {
+            if(spinnerEstadoMexico.getSelectedItemPosition() == 0) {
+                cadenaRespuesta.append("- Seleccione un estado. \n\n");
+                spinnerEstadoMexico.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
+                respuesta = false;
+            }
+        } else if(spinnerPais.getSelectedItemPosition() == 6) {
+            if(spinnerEstadoVenezuela.getSelectedItemPosition() == 0) {
+                cadenaRespuesta.append("- Seleccione un estado. \n\n");
+                spinnerEstadoVenezuela.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
+                respuesta = false;
+            }
+        }
 
+        if(!respuesta) {
+            new AlertDialog.Builder(this)
+                .setIcon(android.R.drawable.ic_dialog_alert).setTitle("Errores detectados")
+                .setMessage(cadenaRespuesta)
+                .setPositiveButton("Entendido", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.cancel();
+                    }
+                })
+                .show()
+            ;
+        }
 
-
-
-
+        return respuesta;
+    }
 
     private void cargarDatosIntent(Intent intent) {
         intent.putExtra("nombre", extras.getString("nombre"));
@@ -204,16 +332,18 @@ public class Donativo2Activity extends AppCompatActivity {
 
     //Para el boton cancelar
     public void siguiente(View view) {
-        intent = new Intent(Donativo2Activity.this, Donativo3Activity.class);
-        cargarDatosIntent(intent);
-        intent.putExtra("pos_cantidad_spinner", 0);
-        intent.putExtra("cantidad", "");
-        intent.putExtra("banco", 0);
-        intent.putExtra("metodo_pago", 0);
-        intent.putExtra("numero_tarjeta", "");
-        intent.putExtra("vencimiento", "");
-        startActivity(intent);
-        finish();
+        if(validarCampos()) {
+            intent = new Intent(Donativo2Activity.this, Donativo3Activity.class);
+            cargarDatosIntent(intent);
+            intent.putExtra("pos_cantidad_spinner", 0);
+            intent.putExtra("cantidad", "");
+            intent.putExtra("banco", 0);
+            intent.putExtra("metodo_pago", 0);
+            intent.putExtra("numero_tarjeta", "");
+            intent.putExtra("vencimiento", "");
+            startActivity(intent);
+            finish();
+        }
     }
 
     //Para el boton cancelar

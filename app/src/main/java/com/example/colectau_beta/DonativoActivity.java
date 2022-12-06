@@ -1,7 +1,9 @@
 package com.example.colectau_beta;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import android.app.DatePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -49,7 +51,7 @@ public class DonativoActivity extends AppCompatActivity {
         });
         initSelectorDate();
         btnFecha = findViewById(R.id.button_SelectorFecha);
-        btnFecha.setText(obtenerFechaActual());
+        btnFecha.setText("-- Seleccione fecha de graduacion --");
 
         recibirYMostrarDatosEntreIntents();
     }
@@ -73,29 +75,10 @@ public class DonativoActivity extends AppCompatActivity {
         if(extras.getInt("categoria") == 0) spinnerCategoria.setSelection(0);
         else spinnerCategoria.setSelection(extras.getInt("categoria"));
 
-        if(extras.getString("fecha_graduacion").equals("")) btnFecha.setText(obtenerFechaActual());
+        if(extras.getString("fecha_graduacion").equals("")) btnFecha.setText("-- Seleccione fecha de graduacion --");
         else btnFecha.setText(extras.getString("fecha_graduacion"));
     }
 
-
-
-
-
-
-
-
-
-
-
-    //Para la seleccion de la fecha
-    private String obtenerFechaActual() {
-        Calendar calendar = Calendar.getInstance();
-        int dia = calendar.get(Calendar.DAY_OF_MONTH);
-        int mes = calendar.get(Calendar.MONTH);
-        int year = calendar.get(Calendar.YEAR);
-
-        return convertirCadenaADate(dia, mes+1, year);
-    }
     //Para la seleccion de la fecha
     private void initSelectorDate() {
         DatePickerDialog.OnDateSetListener dateSetListener = (datePicker, year, mes, dia) -> btnFecha.setText(convertirCadenaADate(dia, mes+1, year));
@@ -132,23 +115,113 @@ public class DonativoActivity extends AppCompatActivity {
         selectorFecha.show();
     }
 
+    private boolean validarCampos() {
+        cajaNombre.setBackgroundResource(R.drawable.borde_cajas_login);
+        cajaPrimerAp.setBackgroundResource(R.drawable.borde_cajas_login);
+        cajaSegundoAp.setBackgroundResource(R.drawable.borde_cajas_login);
+        cajaTelefono.setBackgroundResource(R.drawable.borde_cajas_login);
+        cajaCorreo.setBackgroundResource(R.drawable.borde_cajas_login);
+        spinnerCategoria.setBackgroundResource(R.drawable.borde_cajas_login);
+        btnFecha.setBackgroundResource(R.drawable.borde_cajas_login);
+        boolean respuesta = true;
+        StringBuilder cadenaRespuesta = new StringBuilder();
 
-    private boolean verificarCampos() {
-        boolean completo = true;
+        String regexSoloLetras = "^[a-zA-ZäÄëËïÏöÖüÜáéíóúáéíóúÁÉÍÓÚÂÊÎÔÛâêîôûàèìòùÀÈÌÒÙ.]+(\\ [a-zA-ZäÄëËïÏöÖüÜáéíóúáéíóúÁÉÍÓÚÂÊÎÔÛâêîôûàèìòùÀÈÌÒÙ]+)*$";
+        String regexSoloNumeros = "^[0-9]+$";
+        String regexCorreo = "^(([^<>()\\[\\]\\\\.,;:\\s@”]+(\\.[^<>()\\[\\]\\\\.,;:\\s@”]+)*)|(“.+”))@((\\[[0–9]{1,3}\\.[0–9]{1,3}\\.[0–9]{1,3}\\.[0–9]{1,3}])|(([a-zA-Z\\-0–9]+\\.)+[a-zA-Z]{2,}))$";
 
-        if(cajaNombre.getText().toString().replaceAll(" ", "").isEmpty()){
-            Toast.makeText(getApplicationContext(), "esta vacio", Toast.LENGTH_LONG).show();
-            completo = false;
+        if(cajaNombre.getText().toString().trim().isEmpty()) {
+            cadenaRespuesta.append("- Ingresa un nombre. \n\n");
             cajaNombre.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
+            respuesta = false;
+        } else {
+            if(!cajaNombre.getText().toString().trim().matches(regexSoloLetras)) {
+                cadenaRespuesta.append("- Nombre solo debe contener letras. \n\n");
+                cajaNombre.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
+                respuesta = false;
+            }
         }
 
-        return completo;
+        if(cajaPrimerAp.getText().toString().trim().isEmpty()) {
+            cadenaRespuesta.append("- Ingresa un primer apellido. \n\n");
+            cajaPrimerAp.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
+            respuesta = false;
+        } else {
+            if(!cajaPrimerAp.getText().toString().trim().matches(regexSoloLetras)) {
+                cadenaRespuesta.append("- Primer apellido solo debe contener letras. \n\n");
+                cajaPrimerAp.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
+                respuesta = false;
+            }
+        }
+
+        if(cajaSegundoAp.getText().toString().trim().isEmpty()) {
+            cadenaRespuesta.append("- Ingresa un segundo apellido. \n\n");
+            cajaSegundoAp.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
+            respuesta = false;
+        } else {
+            if(!cajaSegundoAp.getText().toString().trim().matches(regexSoloLetras)) {
+                cadenaRespuesta.append("- Segundo apellido solo debe contener letras. \n\n");
+                cajaSegundoAp.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
+                respuesta = false;
+            }
+        }
+
+        if(cajaTelefono.getText().toString().trim().isEmpty()) {
+            cadenaRespuesta.append("- Ingresa un numero de telefono. \n\n");
+            cajaTelefono.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
+            respuesta = false;
+        } else {
+            if(!cajaTelefono.getText().toString().trim().matches(regexSoloNumeros)) {
+                cadenaRespuesta.append("- Telefono requiere solo digitos. \n\n");
+                cajaTelefono.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
+                respuesta = false;
+            } else if(cajaTelefono.getText().toString().trim().length() != 10) {
+                cadenaRespuesta.append("- Telefono requiere 10 digitos. \n\n");
+                cajaTelefono.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
+                respuesta = false;
+            }
+        }
+
+        if(cajaCorreo.getText().toString().trim().isEmpty()) {
+            cadenaRespuesta.append("- Ingresa un email. \n\n");
+            cajaCorreo.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
+            respuesta = false;
+        } else {
+            if(!cajaCorreo.getText().toString().trim().matches(regexCorreo)) {
+                cadenaRespuesta.append("- Email no valido. \n\n");
+                cajaCorreo.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
+                respuesta = false;
+            }
+        }
+
+        if(spinnerCategoria.getSelectedItemPosition() == 0) {
+            cadenaRespuesta.append("- Seleccione una categoria. \n\n");
+            spinnerCategoria.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
+            respuesta = false;
+        } else if(spinnerCategoria.getSelectedItemPosition() == 2) {
+            if(btnFecha.getText().toString().equals("-- Seleccione fecha de graduacion --")) {
+                cadenaRespuesta.append("- Seleccione una fecha de graduacion. \n\n");
+                btnFecha.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
+                respuesta = false;
+            }
+        }
+
+        if(!respuesta) {
+            new AlertDialog.Builder(this)
+                .setIcon(android.R.drawable.ic_dialog_alert).setTitle("Errores detectados")
+                .setMessage(cadenaRespuesta)
+                .setPositiveButton("Entendido", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.cancel();
+                    }
+                })
+                .show()
+            ;
+        }
+
+        return respuesta;
     }
-
-
-
-
-
 
     private void cargarDatosIntent(Intent intent) {
         intent.putExtra("nombre", cajaNombre.getText().toString());
@@ -171,7 +244,7 @@ public class DonativoActivity extends AppCompatActivity {
 
     //Para el boton siguiente
     public void siguiente(View view) {
-        if(verificarCampos()) {
+        if(validarCampos()) {
             Intent intent = new Intent(DonativoActivity.this, Donativo2Activity.class);
             cargarDatosIntent(intent);
             intent.putExtra("calle", "");
@@ -184,6 +257,4 @@ public class DonativoActivity extends AppCompatActivity {
             finish();
         }
     }
-
-
 }
