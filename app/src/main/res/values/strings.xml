@@ -1,0 +1,292 @@
+<resources>
+    <string name="app_name">ColectaU-Beta</string>
+    <string name="logo">logo</string>
+    <string name="colecta">Colecta</string>
+    <string name="universidad_beta">Universidad BETA</string>
+    <string name="desea_realizar_donacion">Desea realizar una donacion?</string>
+    <string name="donar_ahora">Donar Ahora</string>
+    <string name="eres_administrador">Eres usuario Administrador?</string>
+    <string name="inicia_sesion">Inicia Sesion</string>
+    <string name="nombre_usuario">Nombre de usuario</string>
+    <string name="contraseña">Contraseña</string>
+    <string name="iniciar_sesion">Iniciar Sesion</string>
+    <string name="olvidaste_contraseña"><a href="https://www.geeksforgeeks.org/">Olvidaste tu contraseña?</a></string>
+    <string name="o_inicia_con">O inicia sesion con</string>
+    <string name="btn_twiiter">boton red twiiter</string>
+    <string name="btn_facebook">boton red facebook</string>
+    <string name="btn_google">boton red google</string>
+
+    <string-array name="spiner_categoria">
+        <item>-- Selecciona una opcion --</item>
+        <item>Estudiante</item>
+        <item>Graduado</item>
+        <item>Maestro</item>
+    </string-array>
+
+
+    <string name="tus_datos">Tus Datos</string>
+    <string name="nombre">Nombre</string>
+    <string name="primer_ap">Primer Apellido</string>
+    <string name="segundo_ap">Segundo Apellido</string>
+    <string name="telefono">Telefono</string>
+    <string name="email">Email</string>
+    <string name="categoria">Categoria:</string>
+    <string name="selector_fecha">Selecto fecha</string>
+    <string name="atras">Atras</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="siguiente">Siguiente</string>
+
+
+    <string name="direccion">Direccion</string>
+    <string name="calle">Calle</string>
+    <string name="colonia">Colonia</string>
+    <string name="municipio">Municipio</string>
+    <string name="cp">Codigo Postal</string>
+    <string name="estado">Estado:</string>
+    <string name="spinner_estado">Spinner para estado:</string>
+
+    <string-array name="spiner_vacio">
+        <item>-- Selecciona una opcion --</item>
+    </string-array>
+
+    <string-array name="spiner_argentina">
+        <item>-- Selecciona una opcion --</item>
+        <item>Buenos Aires</item>
+        <item>Catamarca</item>
+        <item>Córdoba</item>
+        <item>Corrientes</item>
+        <item>Entre Ríos</item>
+        <item>Formosa</item>
+        <item>Jujuy</item>
+        <item>La Pampa</item>
+        <item>Mendoza</item>
+        <item>Misiones</item>
+        <item>Neuquén</item>
+        <item>Río Negro</item>
+        <item>Salta</item>
+        <item>San Juan</item>
+        <item>San Luis</item>
+        <item>Santa Cruz</item>
+        <item>Santa Fe</item>
+        <item>Tierra del Fuego, Antártida e Islas del Atlántico Sur</item>
+        <item>Tucumán</item>
+    </string-array>
+
+    <string-array name="spiner_bolivia">
+        <item>-- Selecciona una opcion --</item>
+        <item>Chuquisaca</item>
+        <item>Cochabamba</item>
+        <item>Beni</item>
+        <item>La Paz</item>
+        <item>Oruro</item>
+        <item>Pando</item>
+        <item>Potosí</item>
+        <item>Santa Cruz</item>
+        <item>Tarija</item>
+    </string-array>
+
+    <string-array name="spiner_colombia">
+        <item>-- Selecciona una opcion --</item>
+        <item>Amazonas</item>
+        <item>Bolívar</item>
+        <item>Caldas</item>
+        <item>Casanare</item>
+        <item>Cauca</item>
+        <item>Cesar</item>
+        <item>Córdoba</item>
+        <item>Guainia</item>
+        <item>Huila</item>
+        <item>La Guajira</item>
+        <item>Magdalena</item>
+        <item>Meta</item>
+        <item>Putumayo</item>
+        <item>Quindio</item>
+        <item>Santander</item>
+        <item>Sucre</item>
+        <item>Tolima</item>
+        <item>Vaupes</item>
+        <item>Vichada</item>
+    </string-array>
+
+    <string-array name="spiner_ecuador">
+        <item>-- Selecciona una opcion --</item>
+        <item>Azuay</item>
+        <item>Bolívar</item>
+        <item>Cañar</item>
+        <item>Carchi</item>
+        <item>Chimborazo</item>
+        <item>Cotopaxi</item>
+        <item>Esmeraldas</item>
+        <item>Galápagos</item>
+        <item>Guayas</item>
+        <item>Imbabura</item>
+        <item>Loja</item>
+        <item>Manabí</item>
+        <item>Napo</item>
+        <item>Orellana</item>
+        <item>Pastaza</item>
+        <item>Pichincha</item>
+        <item>Santa Elena</item>
+        <item>Sucumbíos</item>
+        <item>Tungurahua</item>
+    </string-array>
+
+    <string-array name="spiner_mexico">
+        <item>-- Selecciona una opcion --</item>
+        <item>Aguascalientes</item>
+        <item>Baja California</item>
+        <item>Baja California Sur</item>
+        <item>Campeche</item>
+        <item>Chiapas</item>
+        <item>Chihuahua</item>
+        <item>Coahuila de Zaragoza</item>
+        <item>Colima</item>
+        <item>Distrito Federal</item>
+        <item>Durango</item>
+        <item>Guanajuato</item>
+        <item>Guerrero</item>
+        <item>Hidalgo</item>
+        <item>Jalisco</item>
+        <item>México</item>
+        <item>Michoacán de Ocampo</item>
+        <item>Morelos</item>
+        <item>Nayarit</item>
+        <item>Nuevo León</item>
+        <item>Oaxaca</item>
+        <item>Puebla</item>
+        <item>Querétaro de Arteaga</item>
+        <item>Quintana Roo</item>
+        <item>San Luis Potosí</item>
+        <item>Sinaloa</item>
+        <item>Sonora</item>
+        <item>Tabasco</item>
+        <item>Tamaulipas</item>
+        <item>Tlaxcala</item>
+        <item>Veracruz</item>
+        <item>Yucatán</item>
+        <item>Zacatecas</item>
+    </string-array>
+
+    <string-array name="spiner_venezuela">
+        <item>-- Selecciona una opcion --</item>
+        <item>Amazonas</item>
+        <item>Anzoátegui</item>
+        <item>Apure</item>
+        <item>Aragua</item>
+        <item>Barinas</item>
+        <item>Bolívar</item>
+        <item>Carabobo</item>
+        <item>Cojedes</item>
+        <item>Delta Amacuro</item>
+        <item>Dependencias Federales</item>
+        <item>Distrito Federal</item>
+        <item>Falcón</item>
+        <item>Guárico</item>
+        <item>Lara</item>
+        <item>Mérida</item>
+        <item>Miranda</item>
+        <item>Monagas</item>
+        <item>Nueva Esparta</item>
+        <item>Portuguesa</item>
+        <item>Sucre</item>
+        <item>Táchira</item>
+        <item>Trujillo</item>
+        <item>Vargas</item>
+        <item>Yaracuy</item>
+        <item>Zulia</item>
+    </string-array>
+
+    <string name="pais">Pais:</string>
+
+    <string-array name="spiner_pais">
+        <item>-- Selecciona una opcion --</item>
+        <item>Argentina</item>
+        <item>Bolivia</item>
+        <item>Colombia</item>
+        <item>Ecuador</item>
+        <item>México</item>
+        <item>Venezuela</item>
+    </string-array>
+
+
+    <string name="datos_del_pago">Datos del Pago</string>
+    <string name="cantidad">Cantidad:</string>
+
+    <string-array name="spiner_cantidad">
+        <item>-- Selecciona una opcion --</item>
+        <item>$ 100</item>
+        <item>$ 200</item>
+        <item>$ 500</item>
+        <item>$ 1000</item>
+        <item>$ 1500</item>
+        <item>$ 2000</item>
+        <item>$ 3000</item>
+        <item>$ 5000</item>
+        <item>Otra Cantidad</item>
+    </string-array>
+
+    <string name="cantidad_a_donar">Cantidad a Donar</string>
+    <string name="banco">Banco:</string>
+
+    <string-array name="spiner_banco">
+        <item>-- Selecciona una opcion --</item>
+        <item>American Express</item>
+        <item>Banamex</item>
+        <item>Banco Afirme</item>
+        <item>Banco Azteca</item>
+        <item>Banco Invex</item>
+        <item>Bancomext</item>
+        <item>BanCoppel</item>
+        <item>Banjercito</item>
+        <item>Bank of America</item>
+        <item>Banorte</item>
+        <item>Banregio</item>
+        <item>BBVA Bancomer</item>
+        <item>CIBanco</item>
+        <item>Del Bajio</item>
+        <item>HSBC</item>
+        <item>Inbursa</item>
+        <item>Nacional Financiera</item>
+        <item>Santander</item>
+        <item>Scotiabank</item>
+    </string-array>
+
+    <string name="metodo_de_pago">Metodo de Pago:</string>
+
+    <string-array name="spiner_metodo_pago">
+        <item>-- Selecciona una opcion --</item>
+        <item>Tarjeta credito American Express</item>
+        <item>Tarjeta credito Visa</item>
+        <item>Tarjeta credito Mastercard</item>
+        <item>Tarjeta debito American Express</item>
+        <item>Tarjeta debito Visa</item>
+        <item>Tarjeta debito Mastercard</item>
+    </string-array>
+
+    <string name="numero_tarjeta">Numero de Tarjeta</string>
+    <string name="Vencimiento">Vencimineto MM/AA:</string>
+
+
+    <string name="plazos">¿Deseas realizar la donacion en plazos?</string>
+    <string name="no">No</string>
+    <string name="si">Si</string>
+    <string name="enviar">Enviar</string>
+    <string name="comprobante">¿Deseas recibir comprobante fiscal?</string>
+    <string name="terminos">He leído, entiendo y acepto el <a href="https://www.geeksforgeeks.org/">Aviso de privacidad</a>, <a href="https://www.geeksforgeeks.org/">Términos</a> y <a href="https://www.geeksforgeeks.org/">Condiciones</a>
+    </string>
+    <string name="cantidad_plazos">Cantidad de Plazos:</string>
+
+    <string-array name="spiner_mensualidades">
+        <item>-- Selecciona una opcion --</item>
+        <item>3 mensualidades</item>
+        <item>6 mensualidades</item>
+        <item>9 mensualidades</item>
+        <item>12 mensualidades</item>
+    </string-array>
+
+    <string name="procesando_donativo">Procesando donativo</string>
+    <string name="donativo_exitoso">Donativo Exitoso</string>
+    <string name="donativo_error">Error al Procesar el Donativo</string>
+
+
+</resources>

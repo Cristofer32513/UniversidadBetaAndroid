@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondo_donativo3"
+    tools:context=".Donativo4Activity">
+
+    <Button
+        android:id="@+id/button_CancelarDatosDelPago2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="41dp"
+        android:background="@drawable/borde_boton_login"
+        android:backgroundTint="#9600FF"
+        android:onClick="cancelar"
+        android:text="@string/cancelar"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/button_AtrasDatosDelPago2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/borde_boton_login"
+        android:backgroundTint="#6400BE"
+        android:onClick="atras"
+        android:text="@string/atras"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/button_CancelarDatosDelPago2"
+        app:layout_constraintEnd_toStartOf="@+id/button_SiguienteDatosDelPago2"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/button_SiguienteDatosDelPago2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/borde_boton_login"
+        android:backgroundTint="#FF6200ED"
+        android:onClick="enviar"
+        android:text="@string/enviar"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/button_CancelarDatosDelPago2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/button_AtrasDatosDelPago2" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup_Comprobante"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="20dp"
+        android:checkedButton="@id/radioButton_NoComprobante"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_Comprobante">
+
+        <RadioButton
+            android:id="@+id/radioButton_NoComprobante"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_marginStart="35dp"
+            android:layout_marginEnd="120dp"
+            android:buttonTint="@color/white"
+            android:onClick="onRadioButtonClicked"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:text="@string/no"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            tools:ignore="DuplicateSpeakableTextCheck" />
+
+        <RadioButton
+            android:id="@+id/radioButton_SiComprobante"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:buttonTint="@color/white"
+            android:onClick="onRadioButtonClicked"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:text="@string/si"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            tools:ignore="DuplicateSpeakableTextCheck,TextContrastCheck" />
+    </RadioGroup>
+
+    <Spinner
+        android:id="@+id/spinner_Plazos"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/borde_cajas_donativo"
+        android:entries="@array/spiner_mensualidades"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:popupBackground="@drawable/fondo_donativo2"
+        android:spinnerMode="dropdown"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_CantidadPlazos"
+        tools:ignore="DuplicateSpeakableTextCheck" />
+
+    <TextView
+        android:id="@+id/textView_Plazos"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="20dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:text="@string/plazos"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_DatosDelPago2" />
+
+    <TextView
+        android:id="@+id/textView_Comprobante"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="20dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:text="@string/comprobante"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinner_Plazos" />
+
+    <TextView
+        android:id="@+id/textView_CantidadPlazos"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="20dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:text="@string/cantidad_plazos"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup_Plazos" />
+
+    <TextView
+        android:id="@+id/textView_DatosDelPago2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="@string/datos_del_pago"
+        android:textColor="@color/white"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup_Plazos"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="20dp"
+        android:checkedButton="@id/radioButton_NoPlazos"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_Plazos">
+
+        <RadioButton
+            android:id="@+id/radioButton_NoPlazos"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_marginStart="35dp"
+            android:layout_marginEnd="120dp"
+            android:buttonTint="@color/white"
+            android:onClick="onRadioButtonClicked"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:text="@string/no"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+        <RadioButton
+            android:id="@+id/radioButton_SiPlazos"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:buttonTint="@color/white"
+            android:onClick="onRadioButtonClicked"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:text="@string/si"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+    </RadioGroup>
+
+    <CheckBox
+        android:id="@+id/checkBox_Terminos"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="88dp"
+        android:buttonTint="@color/white"
+        android:text="@string/terminos"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/button_CancelarDatosDelPago2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="TextContrastCheck" />
+</androidx.constraintlayout.widget.ConstraintLayout>
