@@ -29,6 +29,10 @@ public class DonativoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_donativo);
 
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
+
         extras = getIntent().getExtras();
 
         cajaNombre = findViewById(R.id.editText_Nombre);

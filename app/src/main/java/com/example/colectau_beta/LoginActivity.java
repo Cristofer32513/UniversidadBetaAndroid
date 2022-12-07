@@ -18,6 +18,10 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
+
         cajaUsuario = findViewById(R.id.editText_NombreUsuario);
         cajaContraseña = findViewById(R.id.editText_Contraseña);
     }
@@ -37,8 +41,10 @@ public class LoginActivity extends AppCompatActivity {
 
     public void iniciarSesion(View view) {
         if(validarCampos()) {
-            Toast.makeText(getApplicationContext(), cajaUsuario.getText().toString(), Toast.LENGTH_LONG).show();
-            Toast.makeText(getApplicationContext(), cajaContraseña.getText().toString(), Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
+            intent.putExtra("nombre_usuario", cajaUsuario.getText().toString());
+            startActivity(intent);
+            finish();
         }
     }
 

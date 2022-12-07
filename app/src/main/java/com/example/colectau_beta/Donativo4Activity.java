@@ -29,6 +29,10 @@ public class Donativo4Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_donativo4);
 
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
+
         extras = getIntent().getExtras();
 
         radioButtonNoPlazos = findViewById(R.id.radioButton_NoPlazos);

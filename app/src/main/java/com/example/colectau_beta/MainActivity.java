@@ -21,6 +21,10 @@ public class MainActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
 
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
+
         //Conexion de variables con la interfaz
         ProgressBar barraProgreso = findViewById(R.id.progressBar_ProcesandoDonativo);
         TextView textViewColecta = findViewById(R.id.textView_colecta);

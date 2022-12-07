@@ -27,6 +27,10 @@ public class Donativo2Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_donativo2);
 
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
+
         extras = getIntent().getExtras();
         posicionEstado = extras.getInt("estado");
 

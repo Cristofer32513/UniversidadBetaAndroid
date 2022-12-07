@@ -26,6 +26,10 @@ public class Donativo3Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_donativo3);
 
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
+
         extras = getIntent().getExtras();
 
         spinnerCantidad = findViewById(R.id.spinner_Cantidad);
