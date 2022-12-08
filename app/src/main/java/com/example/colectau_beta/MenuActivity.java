@@ -18,6 +18,7 @@ import com.google.android.material.navigation.NavigationView;
 import java.util.Random;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import usuario.FragmentUsuarios;
 
 public class MenuActivity  extends AppCompatActivity {
 
@@ -111,8 +112,8 @@ public class MenuActivity  extends AppCompatActivity {
                             return true;
                         case R.id.nav_usuarios:
                             Toast.makeText(getApplicationContext(), "Usuarios", Toast.LENGTH_LONG).show();
-                            args.putString(PlaceholderFragment.ARG_SECTION_TITLE, title);
-                            fragment = PlaceholderFragment.newInstance(title);
+                            args.putString(FragmentUsuarios.ARG_SECTION_TITLE, title);
+                            fragment = FragmentUsuarios.newInstance(title);
                             selectItem(title, fragment, args);
                             return true;
                         case R.id.nav_salir:

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/caja_busqueda_usuario"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="5dp"
+            android:autofillHints="Nombre de usuario"
+            android:background="@drawable/borde_cajas_donativo"
+            android:ems="10"
+            android:hint="@string/nombre_usuario"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:imeOptions="actionNext"
+            android:inputType="text"
+            android:minHeight="48dp" />
+
+        <ImageButton
+            android:id="@+id/btn_buscar_usuario"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/borde_boton_login"
+            android:backgroundTint="@color/morado_launch"
+            android:contentDescription="Boton de busqueda"
+            android:minHeight="48dp"
+            android:src="@drawable/ic_search"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview_usuarios"
+        android:layout_width="match_parent"
+        android:layout_height="580dp" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="end|center"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:orientation="vertical">
+
+        <ImageButton
+            android:id="@+id/button_AgregarUsuario"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:background="@drawable/borde_add"
+            android:contentDescription="boton de agregar"
+            android:src="@drawable/ic_add" />
+
+    </LinearLayout>
+
+</LinearLayout>
