@@ -1,14 +1,17 @@
 package usuario;
 
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.colectau_beta.R;
-
 import java.util.ArrayList;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 import modelos.Usuario;
 
 public class ListaUsuariosAdapter extends RecyclerView.Adapter<ListaUsuariosAdapter.UsuariosViewHolder> implements View.OnClickListener {
@@ -20,9 +23,10 @@ public class ListaUsuariosAdapter extends RecyclerView.Adapter<ListaUsuariosAdap
         this.listaUsuarios = listaUsuarios;
     }
 
+    @NonNull
     @Override
     public UsuariosViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_usuarios,null,false);
+        @SuppressLint("InflateParams") View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_usuarios,null,false);
         view.setOnClickListener(this);
         return new UsuariosViewHolder(view);
     }
@@ -30,6 +34,7 @@ public class ListaUsuariosAdapter extends RecyclerView.Adapter<ListaUsuariosAdap
     @Override
     public void onBindViewHolder(UsuariosViewHolder holder, int position) {
         holder.idUsuario.setText(String.valueOf((listaUsuarios.get(position).getIdUsuario())));
+        holder.image.setImageResource(listaUsuarios.get(position).getIdImage());
         holder.nombreUsuario.setText((listaUsuarios.get(position).getNombreUsuario()));
         holder.correo.setText((listaUsuarios.get(position).getCorreo()));
     }
@@ -44,19 +49,17 @@ public class ListaUsuariosAdapter extends RecyclerView.Adapter<ListaUsuariosAdap
     }
 
     @Override
-    public void onClick(View v) {
-        if(listener != null){
-            listener.onClick(v);
-        }
-    }
+    public void onClick(View v) {if(listener != null) listener.onClick(v); }
 
-    public class UsuariosViewHolder extends RecyclerView.ViewHolder {
+    public static class UsuariosViewHolder extends RecyclerView.ViewHolder {
 
-        TextView idUsuario, nombreUsuario, correo, contraseña;
+        TextView idUsuario, nombreUsuario, correo;
+        CircleImageView image;
 
         public UsuariosViewHolder(View itemView) {
             super(itemView);
             idUsuario = (TextView) itemView.findViewById(R.id.rec_id_usuario);
+            image = (CircleImageView) itemView.findViewById(R.id.rec_imagen_usuario);
             nombreUsuario = (TextView) itemView.findViewById(R.id.rec_nombre_usuario);
             correo = (TextView) itemView.findViewById(R.id.rec_correo);
         }

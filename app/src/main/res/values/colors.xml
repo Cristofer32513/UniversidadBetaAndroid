@@ -8,6 +8,10 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
+
 <!--    <color name="morado_launch">#36396F</color>-->
     <color name="morado_launch">#37286F</color>
+    <color name="campos_recycler">#C515D8</color>
+    <color name="valores_recycler">#00248F</color>
+    <color name="borde_imagen_separador">#BDBDBD</color>
 </resources>
