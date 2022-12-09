@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -13,16 +14,18 @@
         android:layout_marginTop="100dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
+        android:autofillHints=""
         android:background="@drawable/borde_cajas_donativo"
         android:drawableStart="@drawable/ic_id"
         android:drawablePadding="20dp"
         android:ems="10"
-        android:hint="Id-usuario"
+        android:hint="@string/id_usuario"
         android:inputType="textPersonName"
         android:paddingStart="20dp"
         android:paddingEnd="20dp"
         android:textColor="@color/white"
-        android:textColorHint="@color/white" />
+        android:textColorHint="@color/white"
+        tools:ignore="TextContrastCheck" />
 
     <EditText
         android:id="@+id/editText_Nombre_EditarUsuario"
@@ -31,6 +34,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
+        android:autofillHints=""
         android:background="@drawable/borde_cajas_donativo"
         android:drawableStart="@drawable/person_icon"
         android:drawablePadding="20dp"
@@ -40,7 +44,8 @@
         android:paddingStart="20dp"
         android:paddingEnd="20dp"
         android:textColor="@color/white"
-        android:textColorHint="@color/white" />
+        android:textColorHint="@color/white"
+        tools:ignore="TextContrastCheck" />
 
     <EditText
         android:id="@+id/editText_Correo_EditarUsuario"
@@ -49,6 +54,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
+        android:autofillHints=""
         android:background="@drawable/borde_cajas_donativo"
         android:drawableStart="@drawable/ic_mail"
         android:drawablePadding="20dp"
@@ -58,7 +64,8 @@
         android:paddingStart="20dp"
         android:paddingEnd="20dp"
         android:textColor="@color/white"
-        android:textColorHint="@color/white" />
+        android:textColorHint="@color/white"
+        tools:ignore="TextContrastCheck" />
 
     <EditText
         android:id="@+id/editText_Contraseña1_EditarUsuario"
@@ -67,6 +74,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
+        android:autofillHints=""
         android:background="@drawable/borde_cajas_donativo"
         android:drawableStart="@drawable/lock_icon"
         android:drawablePadding="20dp"
@@ -76,7 +84,8 @@
         android:paddingStart="20dp"
         android:paddingEnd="20dp"
         android:textColor="@color/white"
-        android:textColorHint="@color/white" />
+        android:textColorHint="@color/white"
+        tools:ignore="TextContrastCheck" />
 
     <EditText
         android:id="@+id/editText_Contraseña2_EditarUsuario"
@@ -85,16 +94,18 @@
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
+        android:autofillHints=""
         android:background="@drawable/borde_cajas_donativo"
         android:drawableStart="@drawable/lock_icon"
         android:drawablePadding="20dp"
         android:ems="10"
-        android:hint="Verificar Contraseña"
+        android:hint="@string/verificar_contraseña"
         android:inputType="textPassword"
         android:paddingStart="20dp"
         android:paddingEnd="20dp"
         android:textColor="@color/white"
-        android:textColorHint="@color/white" />
+        android:textColorHint="@color/white"
+        tools:ignore="TextContrastCheck" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -111,9 +122,10 @@
             android:layout_weight="1"
             android:background="@drawable/borde_boton_login"
             android:backgroundTint="#9600FF"
-            android:text="Cancelar"
+            android:text="@string/cancelar"
             android:textColor="@color/white"
-            android:textSize="20dp" />
+            android:textSize="20sp"
+            style="?android:attr/buttonBarButtonStyle" />
 
         <Button
             android:id="@+id/button_Guardar_EditarUsuario"
@@ -124,9 +136,10 @@
             android:layout_weight="1"
             android:background="@drawable/borde_boton_login"
             android:backgroundTint="#FF6200ED"
-            android:text="Guardar"
+            android:text="@string/guardar"
             android:textColor="@color/white"
-            android:textSize="20dp" />
+            android:textSize="20sp"
+            style="?android:attr/buttonBarButtonStyle" />
 
     </LinearLayout>
 
@@ -139,16 +152,16 @@
 
         <Button
             android:id="@+id/button_Eliminar_EditarUsuario"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_marginStart="100dp"
             android:layout_marginEnd="100dp"
             android:background="@drawable/borde_boton_login"
             android:backgroundTint="#6400BE"
-            android:text="Eliminar"
+            android:text="@string/eliminar"
             android:textColor="@color/white"
-            android:textSize="20dp" />
+            android:textSize="20sp" />
 
     </LinearLayout>
 

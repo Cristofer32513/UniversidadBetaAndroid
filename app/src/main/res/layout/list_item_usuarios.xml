@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -9,7 +10,8 @@
         android:id="@+id/linear_layout_usuarios"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:ignore="UselessParent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -49,7 +51,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="20dp"
-                        android:text="id-usuario:"
+                        android:text="@string/id_usuario2"
                         android:textColor="@color/campos_recycler"
                         android:textSize="20sp"
                         android:textStyle="bold" />
@@ -75,7 +77,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="20dp"
-                        android:text="Nombre:"
+                        android:text="@string/nombre2"
                         android:textColor="@color/campos_recycler"
                         android:textSize="20sp"
                         android:textStyle="bold" />
@@ -101,7 +103,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="20dp"
-                        android:text="Correo:"
+                        android:text="@string/correo"
                         android:textColor="@color/campos_recycler"
                         android:textSize="20sp"
                         android:textStyle="bold" />
@@ -124,7 +126,6 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_below="@+id/idImagen"
             android:layout_marginTop="10dp"
             android:background="@color/borde_imagen_separador" />
 

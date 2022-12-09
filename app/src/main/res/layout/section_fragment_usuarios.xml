@@ -2,6 +2,7 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -27,7 +28,10 @@
             android:inputType="text"
             android:minHeight="48dp"
             android:paddingStart="15dp"
-            android:paddingEnd="15dp" />
+            android:paddingEnd="15dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            tools:ignore="TextContrastCheck" />
 
         <ImageButton
             android:id="@+id/btn_buscar_usuario"
@@ -37,7 +41,7 @@
             android:layout_marginEnd="20dp"
             android:background="@drawable/borde_boton_login"
             android:backgroundTint="@color/morado_launch"
-            android:contentDescription="Boton de busqueda"
+            android:contentDescription="@string/boton_de_busqueda"
             android:minHeight="48dp"
             android:src="@drawable/ic_search"
             android:textSize="18sp" />
@@ -58,7 +62,7 @@
         android:layout_gravity="bottom|end"
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="50dp"
-        android:contentDescription="boton de agregar"
+        android:contentDescription="@string/boton_de_agregar"
         android:src="@drawable/ic_add"
         app:backgroundTint="@color/morado_launch" />
 

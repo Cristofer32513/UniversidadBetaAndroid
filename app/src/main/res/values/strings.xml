@@ -287,5 +287,22 @@
     <string name="procesando_donativo">Procesando donativo</string>
     <string name="donativo_exitoso">Donativo Exitoso</string>
     <string name="donativo_error">Error al Procesar el Donativo</string>
+    <string name="menu_item_inicio">Inicio</string>
+    <string name="menu_item_donativos">Donativos</string>
+    <string name="menu_item_usuarios">Usuarios</string>
+    <string name="menu_item_configuracion">Configuracion</string>
+    <string name="menu_item_salir">Salir</string>
+    <string name="boton_de_busqueda">Boton de busqueda</string>
+    <string name="boton_de_agregar">boton de agregar</string>
+    <string name="id_usuario">Id-usuario</string>
+    <string name="verificar_contraseña">Verificar Contraseña</string>
+    <string name="guardar">Guardar</string>
+    <string name="eliminar">Eliminar</string>
+    <string name="agregar">Agregar</string>
+    <string name="id_usuario2">id-usuario:</string>
+    <string name="nombre2">Nombre:</string>
+    <string name="correo">Correo:</string>
+    <string name="cristofer_casas_murillo">Cristofer Casas Murillo</string>
+    <string name="cristofer32513_gmail_com">cristofer32513@gmail.com</string>
 
 </resources>

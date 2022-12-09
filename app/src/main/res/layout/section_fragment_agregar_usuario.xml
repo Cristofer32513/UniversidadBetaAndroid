@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -13,6 +14,7 @@
         android:layout_marginTop="100dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
+        android:autofillHints=""
         android:background="@drawable/borde_cajas_donativo"
         android:drawableStart="@drawable/person_icon"
         android:drawablePadding="20dp"
@@ -22,7 +24,8 @@
         android:paddingStart="20dp"
         android:paddingEnd="20dp"
         android:textColor="@color/white"
-        android:textColorHint="@color/white" />
+        android:textColorHint="@color/white"
+        tools:ignore="TextContrastCheck" />
 
     <EditText
         android:id="@+id/editText_Correo_AgregarUsuario"
@@ -31,6 +34,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
+        android:autofillHints=""
         android:background="@drawable/borde_cajas_donativo"
         android:drawableStart="@drawable/ic_mail"
         android:drawablePadding="20dp"
@@ -40,7 +44,8 @@
         android:paddingStart="20dp"
         android:paddingEnd="20dp"
         android:textColor="@color/white"
-        android:textColorHint="@color/white" />
+        android:textColorHint="@color/white"
+        tools:ignore="TextContrastCheck" />
 
     <EditText
         android:id="@+id/editText_Contraseña1_AgregarUsuario"
@@ -49,6 +54,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
+        android:autofillHints=""
         android:background="@drawable/borde_cajas_donativo"
         android:drawableStart="@drawable/lock_icon"
         android:drawablePadding="20dp"
@@ -58,7 +64,8 @@
         android:paddingStart="20dp"
         android:paddingEnd="20dp"
         android:textColor="@color/white"
-        android:textColorHint="@color/white" />
+        android:textColorHint="@color/white"
+        tools:ignore="TextContrastCheck" />
 
     <EditText
         android:id="@+id/editText_Contraseña2_AgregarUsuario"
@@ -67,16 +74,18 @@
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
+        android:autofillHints=""
         android:background="@drawable/borde_cajas_donativo"
         android:drawableStart="@drawable/lock_icon"
         android:drawablePadding="20dp"
         android:ems="10"
-        android:hint="Verificar Contraseña"
+        android:hint="@string/verificar_contraseña"
         android:inputType="textPassword"
         android:paddingStart="20dp"
         android:paddingEnd="20dp"
         android:textColor="@color/white"
-        android:textColorHint="@color/white" />
+        android:textColorHint="@color/white"
+        tools:ignore="TextContrastCheck" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -93,9 +102,10 @@
             android:layout_weight="1"
             android:background="@drawable/borde_boton_login"
             android:backgroundTint="#9600FF"
-            android:text="Cancelar"
+            android:text="@string/cancelar"
             android:textColor="@color/white"
-            android:textSize="20dp" />
+            android:textSize="20sp"
+            style="?android:attr/buttonBarButtonStyle" />
 
         <Button
             android:id="@+id/button_Agregar_AgregarUsuario"
@@ -106,9 +116,10 @@
             android:layout_weight="1"
             android:background="@drawable/borde_boton_login"
             android:backgroundTint="#FF6200ED"
-            android:text="Agregar"
+            android:text="@string/agregar"
             android:textColor="@color/white"
-            android:textSize="20dp" />
+            android:textSize="20sp"
+            style="?android:attr/buttonBarButtonStyle" />
 
     </LinearLayout>
 
