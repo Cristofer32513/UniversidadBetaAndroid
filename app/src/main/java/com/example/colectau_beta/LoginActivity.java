@@ -1,18 +1,15 @@
 package com.example.colectau_beta;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private EditText cajaUsuario, cajaContraseña;
+    private EditText cajaUsuario, cajaPassword;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,7 +20,7 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         cajaUsuario = findViewById(R.id.editText_NombreUsuario);
-        cajaContraseña = findViewById(R.id.editText_Contraseña);
+        cajaPassword = findViewById(R.id.editText_Contraseña);
     }
 
     public void donar(View view) {
@@ -50,7 +47,7 @@ public class LoginActivity extends AppCompatActivity {
 
     public boolean validarCampos() {
         cajaUsuario.setBackgroundResource(R.drawable.borde_cajas_login);
-        cajaContraseña.setBackgroundResource(R.drawable.borde_cajas_login);
+        cajaPassword.setBackgroundResource(R.drawable.borde_cajas_login);
         boolean respuesta = true;
         StringBuilder cadenaRespuesta = new StringBuilder();
 
@@ -59,9 +56,9 @@ public class LoginActivity extends AppCompatActivity {
             cajaUsuario.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
             respuesta = false;
         }
-        if(cajaContraseña.getText().toString().trim().isEmpty()) {
+        if(cajaPassword.getText().toString().trim().isEmpty()) {
             cadenaRespuesta.append("- Ingresa una contraseña. \n\n");
-            cajaContraseña.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
+            cajaPassword.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
             respuesta = false;
         }
 
@@ -69,12 +66,7 @@ public class LoginActivity extends AppCompatActivity {
             new AlertDialog.Builder(this)
                 .setIcon(android.R.drawable.ic_dialog_alert).setTitle("Errores detectados")
                 .setMessage(cadenaRespuesta)
-                .setPositiveButton("Entendido", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.cancel();
-                    }
-                }).show()
+                .setPositiveButton("Entendido", (dialogInterface, i) -> dialogInterface.cancel()).show()
             ;
         }
 

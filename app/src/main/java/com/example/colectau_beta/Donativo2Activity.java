@@ -1,9 +1,5 @@
 package com.example.colectau_beta;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +7,9 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class Donativo2Activity extends AppCompatActivity {
 
@@ -185,7 +184,7 @@ public class Donativo2Activity extends AppCompatActivity {
         boolean respuesta = true;
         StringBuilder cadenaRespuesta = new StringBuilder();
 
-        String regexSoloLetras = "^[a-zA-ZäÄëËïÏöÖüÜáéíóúáéíóúÁÉÍÓÚÂÊÎÔÛâêîôûàèìòùÀÈÌÒÙ.]+(\\ [a-zA-ZäÄëËïÏöÖüÜáéíóúáéíóúÁÉÍÓÚÂÊÎÔÛâêîôûàèìòùÀÈÌÒÙ]+)*$";
+        String regexSoloLetras = getString(R.string.regex_solo_letras);
         String regexSoloNumeros = "^[0-9]+$";
 
         if(cajaCalle.getText().toString().trim().isEmpty()) {
@@ -244,11 +243,6 @@ public class Donativo2Activity extends AppCompatActivity {
             cadenaRespuesta.append("- Seleccione un pais. \n\n");
             spinnerPais.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
             respuesta = false;
-            if(spinnerEstadoVacio.getSelectedItemPosition() == 0) {
-                cadenaRespuesta.append("- Seleccione un estado. \n\n");
-                spinnerEstadoVacio.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
-                respuesta = false;
-            }
         } else if(spinnerPais.getSelectedItemPosition() == 1) {
             if(spinnerEstadoArgentina.getSelectedItemPosition() == 0) {
                 cadenaRespuesta.append("- Seleccione un estado. \n\n");
@@ -291,12 +285,7 @@ public class Donativo2Activity extends AppCompatActivity {
             new AlertDialog.Builder(this)
                 .setIcon(android.R.drawable.ic_dialog_alert).setTitle("Errores detectados")
                 .setMessage(cadenaRespuesta)
-                .setPositiveButton("Entendido", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.cancel();
-                    }
-                })
+                .setPositiveButton("Entendido", (dialogInterface, i) -> dialogInterface.cancel())
                 .show()
             ;
         }

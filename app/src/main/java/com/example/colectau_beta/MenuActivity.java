@@ -1,5 +1,6 @@
 package com.example.colectau_beta;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -23,30 +24,29 @@ import usuario.FragmentUsuarios;
 public class MenuActivity  extends AppCompatActivity {
 
     private DrawerLayout drawerLayout;
-    private NavigationView navigationView;
-    private TextView mensajeBienvenida, mensajeCorreo;
     private CircleImageView imagen;
-    private Bundle extras;
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
-        extras= getIntent().getExtras();
+        Bundle extras = getIntent().getExtras();
 
         setToolBar();
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        navigationView = (NavigationView) findViewById(R.id.nav_view);
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         if (navigationView != null) setupDrawerContent(navigationView);
         if (savedInstanceState == null) {
             // Enviar título como arguemento del fragmento
             Fragment fragment = new PlaceholderFragmentHome();
             selectItem("Colecta Universidad Beta", fragment);
         }
+        assert navigationView != null;
         View headerLayout = navigationView.getHeaderView(0);
-        mensajeBienvenida = headerLayout.findViewById(R.id.msj_bienvenida);
-        mensajeCorreo = headerLayout.findViewById(R.id.msj_email);
+        TextView mensajeBienvenida = headerLayout.findViewById(R.id.msj_bienvenida);
+        TextView mensajeCorreo = headerLayout.findViewById(R.id.msj_email);
         imagen = headerLayout.findViewById(R.id.imagen_circular);
         mensajeBienvenida.setText("Bienvenido " + extras.getString("nombre_usuario"));
         mensajeCorreo.setText("un_correo_recibido@gmail.com");
@@ -85,39 +85,37 @@ public class MenuActivity  extends AppCompatActivity {
 
     }
 
+    @SuppressLint("NonConstantResourceId")
     private void setupDrawerContent(NavigationView navigationView) {
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-                @Override
-                public boolean onNavigationItemSelected(MenuItem menuItem) {
-                    menuItem.setChecked(true);
-                    String title = menuItem.getTitle().toString();
-                    // Enviar título como arguemento del fragmento
-                    Fragment fragment;
+        navigationView.setNavigationItemSelectedListener(menuItem -> {
+            menuItem.setChecked(true);
+            String title = menuItem.getTitle().toString();
+            // Enviar título como arguemento del fragmento
+            Fragment fragment;
 
-                    switch (menuItem.getItemId()) {
-                        case R.id.nav_home:
-                            fragment = new PlaceholderFragmentHome();
-                            selectItem("Colecta Universidad Beta", fragment);
-                            return true;
-                        case R.id.nav_donativos:
-                            Toast.makeText(getApplicationContext(), "Donativos", Toast.LENGTH_LONG).show();
-                            fragment = new PlaceholderFragment();
-                            selectItem(title, fragment);
-                            return true;
-                        case R.id.nav_usuarios:
-                            fragment = new FragmentUsuarios();
-                            selectItem(title, fragment);
-                            return true;
-                        case R.id.nav_salir:
-                            Intent intent = new Intent(MenuActivity.this, LoginActivity.class);
-                            startActivity(intent);
-                            finish();
-                            return true;
-                        default:
-                            return false;
-                    }
-                }
+            switch (menuItem.getItemId()) {
+                case R.id.nav_home:
+                    fragment = new PlaceholderFragmentHome();
+                    selectItem("Colecta Universidad Beta", fragment);
+                    return true;
+                case R.id.nav_donativos:
+                    Toast.makeText(getApplicationContext(), "Donativos", Toast.LENGTH_LONG).show();
+                    fragment = new PlaceholderFragment();
+                    selectItem(title, fragment);
+                    return true;
+                case R.id.nav_usuarios:
+                    fragment = new FragmentUsuarios();
+                    selectItem(title, fragment);
+                    return true;
+                case R.id.nav_salir:
+                    Intent intent = new Intent(MenuActivity.this, LoginActivity.class);
+                    startActivity(intent);
+                    finish();
+                    return true;
+                default:
+                    return false;
             }
+        }
         );
     }
 
@@ -134,12 +132,10 @@ public class MenuActivity  extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                drawerLayout.openDrawer(GravityCompat.START);
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
+        if (item.getItemId() == android.R.id.home) {
+            drawerLayout.openDrawer(GravityCompat.START);
+            return true;
         }
+        return super.onOptionsItemSelected(item);
     }
 }

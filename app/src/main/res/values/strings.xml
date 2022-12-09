@@ -46,7 +46,7 @@
     <string name="spinner_estado">Spinner para estado:</string>
 
     <string-array name="spiner_vacio">
-        <item>-- Selecciona una opcion --</item>
+        <item>-- Selecciona un Estado --</item>
     </string-array>
 
     <string-array name="spiner_argentina">
@@ -304,5 +304,6 @@
     <string name="correo">Correo:</string>
     <string name="cristofer_casas_murillo">Cristofer Casas Murillo</string>
     <string name="cristofer32513_gmail_com">cristofer32513@gmail.com</string>
+    <string name="regex_solo_letras">^[a-zA-ZäÄëËïÏöÖüÜáéíóúáéíóúÁÉÍÓÚÂÊÎÔÛâêîôûàèìòùÀÈÌÒÙ.]+(\\ [a-zA-ZäÄëËïÏöÖüÜáéíóúáéíóúÁÉÍÓÚÂÊÎÔÛâêîôûàèìòùÀÈÌÒÙ]+)*$</string>
 
 </resources>

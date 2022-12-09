@@ -1,9 +1,7 @@
 package com.example.colectau_beta;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -12,7 +10,9 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Calendar;
 
@@ -24,6 +24,7 @@ public class DonativoActivity extends AppCompatActivity {
     private DatePickerDialog selectorFecha;
     private Bundle extras;
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,6 +61,7 @@ public class DonativoActivity extends AppCompatActivity {
         recibirYMostrarDatosEntreIntents();
     }
 
+    @SuppressLint("SetTextI18n")
     private void recibirYMostrarDatosEntreIntents() {
         if(extras.getString("nombre").equals("")) cajaNombre.setText("");
         else cajaNombre.setText(extras.getString("nombre"));
@@ -130,7 +132,7 @@ public class DonativoActivity extends AppCompatActivity {
         boolean respuesta = true;
         StringBuilder cadenaRespuesta = new StringBuilder();
 
-        String regexSoloLetras = "^[a-zA-ZäÄëËïÏöÖüÜáéíóúáéíóúÁÉÍÓÚÂÊÎÔÛâêîôûàèìòùÀÈÌÒÙ.]+(\\ [a-zA-ZäÄëËïÏöÖüÜáéíóúáéíóúÁÉÍÓÚÂÊÎÔÛâêîôûàèìòùÀÈÌÒÙ]+)*$";
+        String regexSoloLetras = getString(R.string.regex_solo_letras);
         String regexSoloNumeros = "^[0-9]+$";
         String regexCorreo = "^(([^<>()\\[\\]\\\\.,;:\\s@”]+(\\.[^<>()\\[\\]\\\\.,;:\\s@”]+)*)|(“.+”))@((\\[[0–9]{1,3}\\.[0–9]{1,3}\\.[0–9]{1,3}\\.[0–9]{1,3}])|(([a-zA-Z\\-0–9]+\\.)+[a-zA-Z]{2,}))$";
 
@@ -214,12 +216,7 @@ public class DonativoActivity extends AppCompatActivity {
             new AlertDialog.Builder(this)
                 .setIcon(android.R.drawable.ic_dialog_alert).setTitle("Errores detectados")
                 .setMessage(cadenaRespuesta)
-                .setPositiveButton("Entendido", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.cancel();
-                    }
-                })
+                .setPositiveButton("Entendido", (dialogInterface, i) -> dialogInterface.cancel())
                 .show()
             ;
         }

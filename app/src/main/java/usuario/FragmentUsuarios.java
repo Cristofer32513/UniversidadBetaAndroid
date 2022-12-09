@@ -1,15 +1,12 @@
 package usuario;
 
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -19,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.colectau_beta.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Random;
 import modelos.Usuario;
 
@@ -53,34 +51,31 @@ public class FragmentUsuarios extends Fragment {
         LlenarLista();
 
         ListaUsuariosAdapter adapter=new ListaUsuariosAdapter(listaUsuarios);
-        adapter.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Bundle args = new Bundle();
-                //Falta hacer consulta para obtener datos
-                //Usuario us = bd.obtenerUsuario(listaUsuarios.get(recyclerViewUsuarios.getChildAdapterPosition(v)).getIdEmpleado());
-                args.putString("id", listaUsuarios.get(recyclerViewUsuarios.getChildAdapterPosition(v)).getIdUsuario()+"");
-                args.putString("nombre", listaUsuarios.get(recyclerViewUsuarios.getChildAdapterPosition(v)).getNombreUsuario());
-                args.putString("correo", listaUsuarios.get(recyclerViewUsuarios.getChildAdapterPosition(v)).getCorreo());
-                args.putString("contraseña", listaUsuarios.get(recyclerViewUsuarios.getChildAdapterPosition(v)).getPassword());
+        adapter.setOnClickListener(v -> {
+            Bundle args = new Bundle();
+            //Falta hacer consulta para obtener datos
+            //Usuario us = bd.obtenerUsuario(listaUsuarios.get(recyclerViewUsuarios.getChildAdapterPosition(v)).getIdEmpleado());
+            args.putString("id", listaUsuarios.get(recyclerViewUsuarios.getChildAdapterPosition(v)).getIdUsuario()+"");
+            args.putString("nombre", listaUsuarios.get(recyclerViewUsuarios.getChildAdapterPosition(v)).getNombreUsuario());
+            args.putString("correo", listaUsuarios.get(recyclerViewUsuarios.getChildAdapterPosition(v)).getCorreo());
+            args.putString("contraseña", listaUsuarios.get(recyclerViewUsuarios.getChildAdapterPosition(v)).getPassword());
 
-                Fragment nuevoFragmento = new FragmentEditarUsuario();
-                nuevoFragmento.setArguments(args);
-                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.content_frame, nuevoFragmento);
-                transaction.commit();
-                ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Editar Usuario");
-            }
+            Fragment nuevoFragmento = new FragmentEditarUsuario();
+            nuevoFragmento.setArguments(args);
+            FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
+            transaction.replace(R.id.content_frame, nuevoFragmento);
+            transaction.commit();
+            Objects.requireNonNull(((AppCompatActivity) requireActivity()).getSupportActionBar()).setTitle("Editar Usuario");
         });
         recyclerViewUsuarios.setAdapter(adapter);
 
         buttonAdd = view.findViewById(R.id.button_Add);
         buttonAdd.setOnClickListener(view1 -> {
             Fragment nuevoFragmento = new FragmentAgregarUsuario();
-            FragmentTransaction transaction = getFragmentManager().beginTransaction();
+            FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
             transaction.replace(R.id.content_frame, nuevoFragmento);
             transaction.commit();
-            ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Agregar Usuario");
+            Objects.requireNonNull(((AppCompatActivity) requireActivity()).getSupportActionBar()).setTitle("Agregar Usuario");
         });
 
         return view;
@@ -117,15 +112,10 @@ public class FragmentUsuarios extends Fragment {
         }
 
         if(!respuesta) {
-            new AlertDialog.Builder(getContext())
+            new AlertDialog.Builder(requireContext())
                     .setIcon(android.R.drawable.ic_dialog_alert).setTitle("Errores detectados")
                     .setMessage(cadenaRespuesta)
-                    .setPositiveButton("Entendido", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            dialogInterface.cancel();
-                        }
-                    })
+                    .setPositiveButton("Entendido", (dialogInterface, i) -> dialogInterface.cancel())
                     .show()
             ;
         }

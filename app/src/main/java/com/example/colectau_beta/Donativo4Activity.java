@@ -1,25 +1,23 @@
 package com.example.colectau_beta;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
-import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 
+@SuppressWarnings("unused")
 public class Donativo4Activity extends AppCompatActivity {
 
     private TextView textViewCantidadPlazos;
     private Spinner spinnerPlazos;
-    private RadioButton radioButtonSiPlazos, radioButtonNoPlazos, radioButtonNoComprobante, radioButtonSiComprobante;
+    private RadioButton radioButtonSiPlazos;
     private CheckBox checkBoxTerminos;
     private Bundle extras;
     private Intent intent;
@@ -35,10 +33,10 @@ public class Donativo4Activity extends AppCompatActivity {
 
         extras = getIntent().getExtras();
 
-        radioButtonNoPlazos = findViewById(R.id.radioButton_NoPlazos);
+        RadioButton radioButtonNoPlazos = findViewById(R.id.radioButton_NoPlazos);
         radioButtonSiPlazos = findViewById(R.id.radioButton_SiPlazos);
-        radioButtonNoComprobante = findViewById(R.id.radioButton_NoComprobante);
-        radioButtonSiComprobante = findViewById(R.id.radioButton_SiComprobante);
+        RadioButton radioButtonNoComprobante = findViewById(R.id.radioButton_NoComprobante);
+        RadioButton radioButtonSiComprobante = findViewById(R.id.radioButton_SiComprobante);
         textViewCantidadPlazos = findViewById(R.id.textView_CantidadPlazos);
         spinnerPlazos = findViewById(R.id.spinner_Plazos);
         ArrayAdapter<CharSequence> adapterPlazos = ArrayAdapter.createFromResource(this, R.array.spiner_mensualidades, R.layout.spinner_items_style);
@@ -103,12 +101,7 @@ public class Donativo4Activity extends AppCompatActivity {
             new AlertDialog.Builder(this)
                     .setIcon(android.R.drawable.ic_dialog_alert).setTitle("Errores detectados")
                     .setMessage(cadenaRespuesta)
-                    .setPositiveButton("Entendido", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            dialogInterface.cancel();
-                        }
-                    })
+                    .setPositiveButton("Entendido", (dialogInterface, i) -> dialogInterface.cancel())
                     .show()
             ;
         }

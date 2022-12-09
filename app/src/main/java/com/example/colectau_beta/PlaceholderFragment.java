@@ -1,5 +1,6 @@
 package com.example.colectau_beta;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ public class PlaceholderFragment extends Fragment {
     public PlaceholderFragment() {
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.section_fragment, container, false);

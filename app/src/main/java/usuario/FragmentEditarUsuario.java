@@ -1,6 +1,5 @@
 package usuario;
 
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,9 +13,11 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import com.example.colectau_beta.R;
 
+import java.util.Objects;
+
 public class FragmentEditarUsuario extends Fragment {
 
-    EditText cajaId, cajaNombre, cajaCorreo, cajaContraseña1, cajaContraseña2;
+    EditText cajaId, cajaNombre, cajaCorreo, cajaPassword1, cajaPassword2;
     Button btnGuardar, btnCancelar, btnEliminar;
 
     public FragmentEditarUsuario() {
@@ -29,14 +30,15 @@ public class FragmentEditarUsuario extends Fragment {
         cajaId = view.findViewById(R.id.editText_Id_EditarUsuario);
         cajaNombre = view.findViewById(R.id.editText_Nombre_EditarUsuario);
         cajaCorreo = view.findViewById(R.id.editText_Correo_EditarUsuario);
-        cajaContraseña1 = view.findViewById(R.id.editText_Contraseña1_EditarUsuario);
-        cajaContraseña2 = view.findViewById(R.id.editText_Contraseña2_EditarUsuario);
+        cajaPassword1 = view.findViewById(R.id.editText_Contraseña1_EditarUsuario);
+        cajaPassword2 = view.findViewById(R.id.editText_Contraseña2_EditarUsuario);
 
+        assert getArguments() != null;
         cajaId.setText(getArguments().getString("id", "NA"));
         cajaNombre.setText(getArguments().getString("nombre", "NA"));
         cajaCorreo.setText(getArguments().getString("correo", "NA"));
-        cajaContraseña1.setText(getArguments().getString("contraseña", "NA"));
-        cajaContraseña2.setText(getArguments().getString("contraseña", "NA"));
+        cajaPassword1.setText(getArguments().getString("contraseña", "NA"));
+        cajaPassword2.setText(getArguments().getString("contraseña", "NA"));
 
         btnGuardar = view.findViewById(R.id.button_Guardar_EditarUsuario);
         btnCancelar = view.findViewById(R.id.button_Cancelar_EditarUsuario);
@@ -45,54 +47,37 @@ public class FragmentEditarUsuario extends Fragment {
             if(validarCampos()) {
                 Toast.makeText(getContext(), "Guardado", Toast.LENGTH_LONG).show();
                 Fragment nuevoFragmento = new FragmentUsuarios();
-                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
                 transaction.replace(R.id.content_frame, nuevoFragmento);
                 transaction.commit();
-                ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Usuarios");
+                Objects.requireNonNull(((AppCompatActivity) requireActivity()).getSupportActionBar()).setTitle("Usuarios");
             }
         });
-        btnCancelar.setOnClickListener(view1 -> {
-            new AlertDialog.Builder(getContext())
-                    .setIcon(android.R.drawable.ic_dialog_alert).setTitle("Precaucion")
-                    .setMessage("¿Esta seguro de cancelar el registro del usuario?")
-                    .setPositiveButton("Si", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            Fragment nuevoFragmento = new FragmentUsuarios();
-                            FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                            transaction.replace(R.id.content_frame, nuevoFragmento);
-                            transaction.commit();
-                            ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Usuarios");
-                        }
-                    })
-                    .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            dialogInterface.cancel();
-                        }
-                    })
-                    .show()
-            ;
-        });
-        btnEliminar.setOnClickListener(view1 -> {
-            new AlertDialog.Builder(getContext())
-                    .setIcon(android.R.drawable.ic_dialog_alert).setTitle("Precaucion")
-                    .setMessage("¿Esta seguro de eliminar el usuario?")
-                    .setPositiveButton("Si", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            Toast.makeText(getContext(), "Eliminado", Toast.LENGTH_LONG).show();
-                        }
-                    })
-                    .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            dialogInterface.cancel();
-                        }
-                    })
-                    .show()
-            ;
-        });
+        btnCancelar.setOnClickListener(view1 -> new AlertDialog.Builder(requireContext())
+                .setIcon(android.R.drawable.ic_dialog_alert).setTitle("Precaucion")
+                .setMessage("¿Esta seguro de cancelar el registro del usuario?")
+                .setPositiveButton("Si", (dialogInterface, i) -> {
+                    Fragment nuevoFragmento = new FragmentUsuarios();
+                    FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
+                    transaction.replace(R.id.content_frame, nuevoFragmento);
+                    transaction.commit();
+                    Objects.requireNonNull(((AppCompatActivity) requireActivity()).getSupportActionBar()).setTitle("Usuarios");
+                })
+                .setNegativeButton("No", (dialogInterface, i) -> dialogInterface.cancel())
+                .show());
+        btnEliminar.setOnClickListener(view1 -> new AlertDialog.Builder(requireContext())
+                .setIcon(android.R.drawable.ic_dialog_alert).setTitle("Precaucion")
+                .setMessage("¿Esta seguro de eliminar el usuario?")
+                .setPositiveButton("Si", (dialogInterface, i) -> {
+                    Toast.makeText(getContext(), "Eliminado", Toast.LENGTH_LONG).show();
+                    Fragment nuevoFragmento = new FragmentUsuarios();
+                    FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
+                    transaction.replace(R.id.content_frame, nuevoFragmento);
+                    transaction.commit();
+                    Objects.requireNonNull(((AppCompatActivity) requireActivity()).getSupportActionBar()).setTitle("Usuarios");
+                })
+                .setNegativeButton("No", (dialogInterface, i) -> dialogInterface.cancel())
+                .show());
 
         return view;
     }
@@ -100,8 +85,8 @@ public class FragmentEditarUsuario extends Fragment {
     private boolean validarCampos() {
         cajaNombre.setBackgroundResource(R.drawable.borde_cajas_login);
         cajaCorreo.setBackgroundResource(R.drawable.borde_cajas_login);
-        cajaContraseña1.setBackgroundResource(R.drawable.borde_cajas_login);
-        cajaContraseña2.setBackgroundResource(R.drawable.borde_cajas_login);
+        cajaPassword1.setBackgroundResource(R.drawable.borde_cajas_login);
+        cajaPassword2.setBackgroundResource(R.drawable.borde_cajas_login);
         boolean respuesta = true;
         StringBuilder cadenaRespuesta = new StringBuilder();
 
@@ -125,35 +110,30 @@ public class FragmentEditarUsuario extends Fragment {
             }
         }
 
-        if(cajaContraseña1.getText().toString().trim().isEmpty()) {
+        if(cajaPassword1.getText().toString().trim().isEmpty()) {
             cadenaRespuesta.append("- Ingresa una contraseña. \n\n");
-            cajaContraseña1.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
+            cajaPassword1.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
             respuesta = false;
         }
 
-        if(cajaContraseña2.getText().toString().trim().isEmpty()) {
+        if(cajaPassword2.getText().toString().trim().isEmpty()) {
             cadenaRespuesta.append("- Confirma tu contraseña. \n\n");
-            cajaContraseña2.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
+            cajaPassword2.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
             respuesta = false;
         } else {
-            if(!cajaContraseña2.getText().toString().trim().equals(cajaContraseña1.getText().toString().trim())) {
+            if(!cajaPassword2.getText().toString().trim().equals(cajaPassword1.getText().toString().trim())) {
                 cadenaRespuesta.append("- Error en confirmacion de contraseña. \n\n");
-                cajaContraseña1.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
-                cajaContraseña2.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
+                cajaPassword1.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
+                cajaPassword2.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
                 respuesta = false;
             }
         }
 
         if(!respuesta) {
-            new AlertDialog.Builder(getContext())
+            new AlertDialog.Builder(requireContext())
                     .setIcon(android.R.drawable.ic_dialog_alert).setTitle("Errores detectados")
                     .setMessage(cadenaRespuesta)
-                    .setPositiveButton("Entendido", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            dialogInterface.cancel();
-                        }
-                    })
+                    .setPositiveButton("Entendido", (dialogInterface, i) -> dialogInterface.cancel())
                     .show()
             ;
         }
