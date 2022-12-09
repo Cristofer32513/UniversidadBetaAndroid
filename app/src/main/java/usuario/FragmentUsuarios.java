@@ -8,10 +8,16 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.colectau_beta.PlaceholderFragmentHome;
 import com.example.colectau_beta.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -59,28 +65,39 @@ public class FragmentUsuarios extends Fragment {
         LlenarLista();
 
         ListaUsuariosAdapter adapter=new ListaUsuariosAdapter(listaUsuarios);
-        /*adapter.setOnClickListener(new View.OnClickListener() {
+        adapter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                BaseDeDatos bd = new BaseDeDatos(ActivityConsultaUsuarios.this);
-                Usuario us = bd.obtenerUsuario(listaUsuarios.get(recyclerViewUsuarios.getChildAdapterPosition(v)).getIdEmpleado());
+                Bundle args2 = new Bundle();
+                args2.putString(FragmentEditarUsuario.ARG_SECTION_TITLE, "Editar Usuario");
 
-                Intent i = new Intent(ActivityConsultaUsuarios.this, ActivityEditarUsuario.class);
-                i.putExtra("enable", false);
-                i.putExtra("id", us.getIdEmpleado());
-                i.putExtra("usuario", us.getUsuario());
-                i.putExtra("contraseña", us.getContraseña());
-                startActivity(i);
-                finish();
+                //Falta hacer consulta para obtener datos
+                //Usuario us = bd.obtenerUsuario(listaUsuarios.get(recyclerViewUsuarios.getChildAdapterPosition(v)).getIdEmpleado());
+                args2.putString("id", listaUsuarios.get(recyclerViewUsuarios.getChildAdapterPosition(v)).getIdUsuario()+"");
+                args2.putString("nombre", listaUsuarios.get(recyclerViewUsuarios.getChildAdapterPosition(v)).getNombreUsuario());
+                args2.putString("correo", listaUsuarios.get(recyclerViewUsuarios.getChildAdapterPosition(v)).getCorreo());
+                args2.putString("contraseña", listaUsuarios.get(recyclerViewUsuarios.getChildAdapterPosition(v)).getPassword());
+
+                Fragment nuevoFragmento = FragmentEditarUsuario.newInstance("Editar Usuario");
+                nuevoFragmento.setArguments(args2);
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.content_frame, nuevoFragmento);
+                transaction.commit();
+                ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Editar Usuario");
             }
         });
-         */
         recyclerViewUsuarios.setAdapter(adapter);
 
         buttonAdd = view.findViewById(R.id.button_Add);
         buttonAdd.setOnClickListener(view1 -> {
-            Toast.makeText(getContext(), "Add", Toast.LENGTH_LONG).show();
-
+            Bundle args2 = new Bundle();
+            args2.putString(FragmentAgregarUsuario.ARG_SECTION_TITLE, "Agregar Usuario");
+            Fragment nuevoFragmento = FragmentAgregarUsuario.newInstance("Agregar Usuario");
+            nuevoFragmento.setArguments(args2);
+            FragmentTransaction transaction = getFragmentManager().beginTransaction();
+            transaction.replace(R.id.content_frame, nuevoFragmento);
+            transaction.commit();
+            ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Agregar Usuario");
         });
 
 

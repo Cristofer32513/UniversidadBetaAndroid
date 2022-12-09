@@ -111,7 +111,6 @@ public class MenuActivity  extends AppCompatActivity {
                             selectItem(title, fragment, args);
                             return true;
                         case R.id.nav_usuarios:
-                            Toast.makeText(getApplicationContext(), "Usuarios", Toast.LENGTH_LONG).show();
                             args.putString(FragmentUsuarios.ARG_SECTION_TITLE, title);
                             fragment = FragmentUsuarios.newInstance(title);
                             selectItem(title, fragment, args);
