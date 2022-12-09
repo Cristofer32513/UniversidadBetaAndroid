@@ -306,4 +306,12 @@
     <string name="cristofer32513_gmail_com">cristofer32513@gmail.com</string>
     <string name="regex_solo_letras">^[a-zA-ZäÄëËïÏöÖüÜáéíóúáéíóúÁÉÍÓÚÂÊÎÔÛâêîôûàèìòùÀÈÌÒÙ.]+(\\ [a-zA-ZäÄëËïÏöÖüÜáéíóúáéíóúÁÉÍÓÚÂÊÎÔÛâêîôûàèìòùÀÈÌÒÙ]+)*$</string>
 
+    <string-array name="spiner_buscar_donativo">
+        <item>-- Selecciona una opcion --</item>
+        <item>Nombre</item>
+        <item>Primer apellido</item>
+        <item>Segundo spellido</item>
+        <item>Categoria</item>
+        <item>Forma de pago</item>
+    </string-array>
 </resources>

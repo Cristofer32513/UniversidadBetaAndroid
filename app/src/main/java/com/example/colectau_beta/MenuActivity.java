@@ -19,6 +19,7 @@ import com.google.android.material.navigation.NavigationView;
 import java.util.Random;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import donacion.FragmentDonaciones;
 import usuario.FragmentUsuarios;
 
 public class MenuActivity  extends AppCompatActivity {
@@ -99,8 +100,7 @@ public class MenuActivity  extends AppCompatActivity {
                     selectItem("Colecta Universidad Beta", fragment);
                     return true;
                 case R.id.nav_donativos:
-                    Toast.makeText(getApplicationContext(), "Donativos", Toast.LENGTH_LONG).show();
-                    fragment = new PlaceholderFragment();
+                    fragment = new FragmentDonaciones();
                     selectItem(title, fragment);
                     return true;
                 case R.id.nav_usuarios:
