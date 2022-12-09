@@ -41,10 +41,8 @@ public class MenuActivity  extends AppCompatActivity {
         if (navigationView != null) setupDrawerContent(navigationView);
         if (savedInstanceState == null) {
             // Enviar título como arguemento del fragmento
-            Bundle args = new Bundle();
-            args.putString(PlaceholderFragmentHome.ARG_SECTION_TITLE, "Colecta Universidad Beta");
-            Fragment fragment = PlaceholderFragmentHome.newInstance("Colecta Universidad Beta");
-            selectItem("Colecta Universidad Beta", fragment, args);
+            Fragment fragment = new PlaceholderFragmentHome();
+            selectItem("Colecta Universidad Beta", fragment);
         }
         View headerLayout = navigationView.getHeaderView(0);
         mensajeBienvenida = headerLayout.findViewById(R.id.msj_bienvenida);
@@ -94,26 +92,21 @@ public class MenuActivity  extends AppCompatActivity {
                     menuItem.setChecked(true);
                     String title = menuItem.getTitle().toString();
                     // Enviar título como arguemento del fragmento
-                    Bundle args = new Bundle();
                     Fragment fragment;
 
                     switch (menuItem.getItemId()) {
                         case R.id.nav_home:
-                            Toast.makeText(getApplicationContext(), "Home", Toast.LENGTH_LONG).show();
-                            args.putString(PlaceholderFragmentHome.ARG_SECTION_TITLE, title);
-                            fragment = PlaceholderFragmentHome.newInstance(title);
-                            selectItem("Colecta Universidad Beta", fragment, args);
+                            fragment = new PlaceholderFragmentHome();
+                            selectItem("Colecta Universidad Beta", fragment);
                             return true;
                         case R.id.nav_donativos:
                             Toast.makeText(getApplicationContext(), "Donativos", Toast.LENGTH_LONG).show();
-                            args.putString(PlaceholderFragment.ARG_SECTION_TITLE, title);
-                            fragment = PlaceholderFragment.newInstance(title);
-                            selectItem(title, fragment, args);
+                            fragment = new PlaceholderFragment();
+                            selectItem(title, fragment);
                             return true;
                         case R.id.nav_usuarios:
-                            args.putString(FragmentUsuarios.ARG_SECTION_TITLE, title);
-                            fragment = FragmentUsuarios.newInstance(title);
-                            selectItem(title, fragment, args);
+                            fragment = new FragmentUsuarios();
+                            selectItem(title, fragment);
                             return true;
                         case R.id.nav_salir:
                             Intent intent = new Intent(MenuActivity.this, LoginActivity.class);
@@ -128,8 +121,7 @@ public class MenuActivity  extends AppCompatActivity {
         );
     }
 
-    private void selectItem(String title, Fragment fragment, Bundle args) {
-        fragment.setArguments(args);
+    private void selectItem(String title, Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager
                 .beginTransaction()
@@ -137,7 +129,6 @@ public class MenuActivity  extends AppCompatActivity {
                 .commit();
 
         drawerLayout.closeDrawers(); // Cerrar drawer
-
         setTitle(title); // Setear título actual
     }
 

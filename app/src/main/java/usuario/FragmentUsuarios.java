@@ -1,52 +1,34 @@
 package usuario;
 
-import android.content.Intent;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
-import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.example.colectau_beta.PlaceholderFragmentHome;
 import com.example.colectau_beta.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
 import java.util.ArrayList;
 import java.util.Random;
-
 import modelos.Usuario;
 
 public class FragmentUsuarios extends Fragment {
 
-    public static final String ARG_SECTION_TITLE = "section_number";
     EditText cajaBuscar;
+    ImageButton btnBuscar;
     ArrayList<Usuario> listaUsuarios;
     RecyclerView recyclerViewUsuarios;
     FloatingActionButton buttonAdd;
-
-    /**
-     * Crea una instancia prefabricada de {@link FragmentUsuarios}
-     *
-     * @param sectionTitle Título usado en el contenido
-     * @return Instancia dle fragmento
-     */
-    public static FragmentUsuarios newInstance(String sectionTitle) {
-        FragmentUsuarios fragment = new FragmentUsuarios();
-        Bundle args = new Bundle();
-        args.putString(ARG_SECTION_TITLE, sectionTitle);
-        fragment.setArguments(args);
-        return fragment;
-    }
 
     public FragmentUsuarios() {
     }
@@ -56,6 +38,12 @@ public class FragmentUsuarios extends Fragment {
         View view = inflater.inflate(R.layout.section_fragment_usuarios, container, false);
 
         cajaBuscar = view.findViewById(R.id.caja_busqueda_usuario);
+        btnBuscar = view.findViewById(R.id.btn_buscar_usuario);
+        btnBuscar.setOnClickListener(view1 -> {
+            if(validarCampos()) {
+                Toast.makeText(getContext(), "Buscando...", Toast.LENGTH_LONG).show();
+            }
+        });
 
         listaUsuarios = new ArrayList<>();
 
@@ -68,18 +56,16 @@ public class FragmentUsuarios extends Fragment {
         adapter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Bundle args2 = new Bundle();
-                args2.putString(FragmentEditarUsuario.ARG_SECTION_TITLE, "Editar Usuario");
-
+                Bundle args = new Bundle();
                 //Falta hacer consulta para obtener datos
                 //Usuario us = bd.obtenerUsuario(listaUsuarios.get(recyclerViewUsuarios.getChildAdapterPosition(v)).getIdEmpleado());
-                args2.putString("id", listaUsuarios.get(recyclerViewUsuarios.getChildAdapterPosition(v)).getIdUsuario()+"");
-                args2.putString("nombre", listaUsuarios.get(recyclerViewUsuarios.getChildAdapterPosition(v)).getNombreUsuario());
-                args2.putString("correo", listaUsuarios.get(recyclerViewUsuarios.getChildAdapterPosition(v)).getCorreo());
-                args2.putString("contraseña", listaUsuarios.get(recyclerViewUsuarios.getChildAdapterPosition(v)).getPassword());
+                args.putString("id", listaUsuarios.get(recyclerViewUsuarios.getChildAdapterPosition(v)).getIdUsuario()+"");
+                args.putString("nombre", listaUsuarios.get(recyclerViewUsuarios.getChildAdapterPosition(v)).getNombreUsuario());
+                args.putString("correo", listaUsuarios.get(recyclerViewUsuarios.getChildAdapterPosition(v)).getCorreo());
+                args.putString("contraseña", listaUsuarios.get(recyclerViewUsuarios.getChildAdapterPosition(v)).getPassword());
 
-                Fragment nuevoFragmento = FragmentEditarUsuario.newInstance("Editar Usuario");
-                nuevoFragmento.setArguments(args2);
+                Fragment nuevoFragmento = new FragmentEditarUsuario();
+                nuevoFragmento.setArguments(args);
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 transaction.replace(R.id.content_frame, nuevoFragmento);
                 transaction.commit();
@@ -90,16 +76,12 @@ public class FragmentUsuarios extends Fragment {
 
         buttonAdd = view.findViewById(R.id.button_Add);
         buttonAdd.setOnClickListener(view1 -> {
-            Bundle args2 = new Bundle();
-            args2.putString(FragmentAgregarUsuario.ARG_SECTION_TITLE, "Agregar Usuario");
-            Fragment nuevoFragmento = FragmentAgregarUsuario.newInstance("Agregar Usuario");
-            nuevoFragmento.setArguments(args2);
+            Fragment nuevoFragmento = new FragmentAgregarUsuario();
             FragmentTransaction transaction = getFragmentManager().beginTransaction();
             transaction.replace(R.id.content_frame, nuevoFragmento);
             transaction.commit();
             ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Agregar Usuario");
         });
-
 
         return view;
     }
@@ -121,6 +103,34 @@ public class FragmentUsuarios extends Fragment {
             case 3: return R.drawable.perfil4;
             default: return R.drawable.perfil5;
         }
+    }
+
+    private boolean validarCampos() {
+        cajaBuscar.setBackgroundResource(R.drawable.borde_cajas_login);
+        boolean respuesta = true;
+        StringBuilder cadenaRespuesta = new StringBuilder();
+
+        if(cajaBuscar.getText().toString().trim().isEmpty()) {
+            cadenaRespuesta.append("- Ingresa un nombre de usuario. \n\n");
+            cajaBuscar.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
+            respuesta = false;
+        }
+
+        if(!respuesta) {
+            new AlertDialog.Builder(getContext())
+                    .setIcon(android.R.drawable.ic_dialog_alert).setTitle("Errores detectados")
+                    .setMessage(cadenaRespuesta)
+                    .setPositiveButton("Entendido", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            dialogInterface.cancel();
+                        }
+                    })
+                    .show()
+            ;
+        }
+
+        return respuesta;
     }
 
 }
