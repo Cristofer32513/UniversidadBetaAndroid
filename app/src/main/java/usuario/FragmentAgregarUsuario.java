@@ -15,7 +15,9 @@ import com.example.colectau_beta.R;
 
 import java.util.Objects;
 
-public class FragmentAgregarUsuario extends Fragment {
+import controlador.BaseVolleyFragment;
+
+public class FragmentAgregarUsuario extends BaseVolleyFragment {
 
     EditText cajaNombre, cajaCorreo, cajaPassword1, cajaPassword2;
     Button btnAgregar, btnCancelar;

@@ -305,6 +305,8 @@
     <string name="cristofer_casas_murillo">Cristofer Casas Murillo</string>
     <string name="cristofer32513_gmail_com">cristofer32513@gmail.com</string>
     <string name="regex_solo_letras">^[a-zA-ZäÄëËïÏöÖüÜáéíóúáéíóúÁÉÍÓÚÂÊÎÔÛâêîôûàèìòùÀÈÌÒÙ.]+(\\ [a-zA-ZäÄëËïÏöÖüÜáéíóúáéíóúÁÉÍÓÚÂÊÎÔÛâêîôûàèìòùÀÈÌÒÙ]+)*$</string>
+    <string name="buscar_por">Buscar por:</string>
+    <string name="spinner_busqueda_donativo">spinner busqueda donativo</string>
 
     <string-array name="spiner_buscar_donativo">
         <item>-- Selecciona una opcion --</item>

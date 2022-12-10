@@ -9,27 +9,15 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.colectau_beta.R;
-
 import java.util.ArrayList;
-import java.util.Objects;
-import java.util.Random;
-
+import controlador.BaseVolleyFragment;
 import modelos.Donacion;
-import modelos.Usuario;
-import usuario.FragmentAgregarUsuario;
-import usuario.FragmentEditarUsuario;
-import usuario.ListaUsuariosAdapter;
 
-public class FragmentDonaciones extends Fragment {
+public class FragmentDonaciones extends BaseVolleyFragment {
 
     Spinner spinnerBuscar;
     EditText cajaBuscar;

@@ -18,9 +18,10 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Random;
+import controlador.BaseVolleyFragment;
 import modelos.Usuario;
 
-public class FragmentUsuarios extends Fragment {
+public class FragmentUsuarios extends BaseVolleyFragment {
 
     EditText cajaBuscar;
     ImageButton btnBuscar;
@@ -53,8 +54,6 @@ public class FragmentUsuarios extends Fragment {
         ListaUsuariosAdapter adapter=new ListaUsuariosAdapter(listaUsuarios);
         adapter.setOnClickListener(v -> {
             Bundle args = new Bundle();
-            //Falta hacer consulta para obtener datos
-            //Usuario us = bd.obtenerUsuario(listaUsuarios.get(recyclerViewUsuarios.getChildAdapterPosition(v)).getIdEmpleado());
             args.putString("id", listaUsuarios.get(recyclerViewUsuarios.getChildAdapterPosition(v)).getIdUsuario()+"");
             args.putString("nombre", listaUsuarios.get(recyclerViewUsuarios.getChildAdapterPosition(v)).getNombreUsuario());
             args.putString("correo", listaUsuarios.get(recyclerViewUsuarios.getChildAdapterPosition(v)).getCorreo());
@@ -82,6 +81,7 @@ public class FragmentUsuarios extends Fragment {
     }
 
     private void LlenarLista() {
+
         listaUsuarios.add(new Usuario(1, seleccionarImagenAleatoria(),"user1", "correo1", "contraseña1"));
         listaUsuarios.add(new Usuario(2, seleccionarImagenAleatoria(),"user2", "correo2", "contraseña2"));
         listaUsuarios.add(new Usuario(3, seleccionarImagenAleatoria(),"user3", "correo3", "contraseña1"));
