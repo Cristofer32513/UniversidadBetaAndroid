@@ -11,11 +11,23 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.example.colectau_beta.R;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 import controlador.BaseVolleyFragment;
+import modelos.Usuario;
 
 public class FragmentAgregarUsuario extends BaseVolleyFragment {
 
@@ -37,8 +49,38 @@ public class FragmentAgregarUsuario extends BaseVolleyFragment {
         btnAgregar = view.findViewById(R.id.button_Agregar_AgregarUsuario);
         btnCancelar = view.findViewById(R.id.button_Cancelar_AgregarUsuario);
         btnAgregar.setOnClickListener(view1 -> {
+
             if(validarCampos()) {
-                Toast.makeText(getContext(), "Agregado", Toast.LENGTH_LONG).show();
+                System.out.println("---    jkjdjsdkjsdk");
+                String url = "https://colectabeta.000webhostapp.com/api_altas_usuarios.php";
+                StringRequest recuest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        System.out.println("---    "+response);
+                        Toast.makeText(getContext(), response,Toast.LENGTH_SHORT).show();
+
+
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getContext(), "Error Api",Toast.LENGTH_SHORT).show();
+                    }
+                }) {
+                    @Override
+                    protected Map<String, String> getParams() {
+                        Map<String, String> parametros = new HashMap<String, String>();
+                        parametros.put("id", "0");
+                        parametros.put("username", cajaNombre.getText().toString());
+                        parametros.put("passaword", cajaPassword1.getText().toString());
+                        parametros.put("email", cajaCorreo.getText().toString());
+
+                        return parametros;
+                    }
+                };
+                addToQueue(recuest);
+
+                //Toast.makeText(getContext(), "Agregado", Toast.LENGTH_LONG).show();
                 Fragment nuevoFragmento = new FragmentUsuarios();
                 FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
                 transaction.replace(R.id.content_frame, nuevoFragmento);

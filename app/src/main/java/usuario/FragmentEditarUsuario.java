@@ -11,8 +11,15 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.example.colectau_beta.R;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 import controlador.BaseVolleyFragment;
@@ -47,6 +54,33 @@ public class FragmentEditarUsuario extends BaseVolleyFragment {
         btnEliminar = view.findViewById(R.id.button_Eliminar_EditarUsuario);
         btnGuardar.setOnClickListener(view1 -> {
             if(validarCampos()) {
+                String url = "https://colectabeta.000webhostapp.com/api_cambios_usuarios.php";
+                StringRequest recuest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        //Aqui se da retroalimentacion.
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getContext(), "Error Api",Toast.LENGTH_SHORT).show();
+                    }
+                }) {
+                    @Override
+                    protected Map<String, String> getParams() {
+                        Map<String, String> parametros = new HashMap<String, String>();
+                        parametros.put("id", cajaId.getText().toString());
+                        parametros.put("username", cajaNombre.getText().toString());
+                        parametros.put("passaword", cajaPassword1.getText().toString());
+                        parametros.put("email", cajaCorreo.getText().toString());
+
+                        return parametros;
+                    }
+                };
+                addToQueue(recuest);
+
+
+
                 Toast.makeText(getContext(), "Guardado", Toast.LENGTH_LONG).show();
                 Fragment nuevoFragmento = new FragmentUsuarios();
                 FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
