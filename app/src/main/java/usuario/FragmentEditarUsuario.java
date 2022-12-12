@@ -93,12 +93,31 @@ public class FragmentEditarUsuario extends BaseVolleyFragment {
                 .setIcon(android.R.drawable.ic_dialog_alert).setTitle(getString(R.string.precaucion))
                 .setMessage(R.string.confirmacion_eliminar)
                 .setPositiveButton(getString(R.string.si), (dialogInterface, i) -> {
-                    Toast.makeText(getContext(), "Eliminado", Toast.LENGTH_LONG).show();
-                    Fragment nuevoFragmento = new FragmentUsuarios();
-                    FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
-                    transaction.replace(R.id.content_frame, nuevoFragmento);
-                    transaction.commit();
-                    Objects.requireNonNull(((AppCompatActivity) requireActivity()).getSupportActionBar()).setTitle("Usuarios");
+                    if(validarCampos()) {
+                        String url = "http://colectaubeta.atwebpages.com/api_bajas_usuarios.php";
+                        StringRequest recuest = new StringRequest(Request.Method.POST, url, response -> {
+                            System.out.println("---    -"+response);
+                            if(response.equals("{\"exito\":true,\"mensaje\":\"Registro eliminado\"}")) {
+                                Toast.makeText(getContext(), "Usuario Eliminado", Toast.LENGTH_LONG).show();
+                                Fragment nuevoFragmento = new FragmentUsuarios();
+                                FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
+                                transaction.replace(R.id.content_frame, nuevoFragmento);
+                                transaction.commit();
+                                Objects.requireNonNull(((AppCompatActivity) requireActivity()).getSupportActionBar()).setTitle("Usuarios");
+                            } else {
+                                mostrarError(getString(R.string.error_eliminar_usuario));
+                            }
+                        }, error -> mostrarError(getString(R.string.falla_api))) {
+                            @Override
+                            protected Map<String, String> getParams() {
+                                Map<String, String> parametros = new HashMap<>();
+                                parametros.put("iduser", cajaId.getText().toString());
+
+                                return parametros;
+                            }
+                        };
+                        addToQueue(recuest);
+                    }
                 })
                 .setNegativeButton(getString(R.string.no), (dialogInterface, i) -> dialogInterface.cancel())
                 .show());

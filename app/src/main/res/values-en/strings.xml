@@ -321,4 +321,5 @@
     <string name="confirmacion_cancelar">Are you sure to cancel the user registration?</string>
     <string name="confirmacion_eliminar">Are you sure to delete the user?</string>
     <string name="confirmacion_cancelar_donativo">Are you sure to cancel the donation?</string>
+    <string name="error_eliminar_usuario">Error deleting user</string>
 </resources>
