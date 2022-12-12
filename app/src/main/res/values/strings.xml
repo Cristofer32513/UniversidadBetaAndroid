@@ -306,7 +306,7 @@
     <string name="cristofer32513_gmail_com" translatable="false">cristofer32513@gmail.com</string>
     <string name="regex_solo_letras" translatable="false">^[a-zA-ZäÄëËïÏöÖüÜáéíóúáéíóúÁÉÍÓÚÂÊÎÔÛâêîôûàèìòùÀÈÌÒÙ.]+(\\ [a-zA-ZäÄëËïÏöÖüÜáéíóúáéíóúÁÉÍÓÚÂÊÎÔÛâêîôûàèìòùÀÈÌÒÙ]+)*$</string>
     <string name="regex_solo_numeros" translatable="false">^[0-9]+$</string>
-    <string name="regex_vencimiento" translatable="false">\d{2}\/\d{2}$</string>
+    <string name="regex_vencimiento" translatable="false">\\d{2}\\/\\d{2}$</string>
     <string name="buscar_por">Buscar por:</string>
     <string name="spinner_busqueda_donativo" translatable="false">spinner busqueda donativo</string>
 
