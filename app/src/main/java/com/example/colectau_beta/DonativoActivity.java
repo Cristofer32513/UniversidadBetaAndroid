@@ -47,7 +47,8 @@ public class DonativoActivity extends AppCompatActivity {
         spinnerCategoria.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                if (spinnerCategoria.getSelectedItem().toString().equals("Graduado")) btnFecha.setVisibility(View.VISIBLE);
+                if (spinnerCategoria.getSelectedItem().toString().equals("Graduado") ||
+                        spinnerCategoria.getSelectedItem().toString().equals("Graduate")) btnFecha.setVisibility(View.VISIBLE);
                 else btnFecha.setVisibility(View.INVISIBLE);
             }
 
@@ -56,7 +57,7 @@ public class DonativoActivity extends AppCompatActivity {
         });
         initSelectorDate();
         btnFecha = findViewById(R.id.button_SelectorFecha);
-        btnFecha.setText("-- Seleccione fecha de graduacion --");
+        btnFecha.setText(getString(R.string.seleccione_fecha_graduacion));
 
         recibirYMostrarDatosEntreIntents();
     }
@@ -81,7 +82,7 @@ public class DonativoActivity extends AppCompatActivity {
         if(extras.getInt("categoria") == 0) spinnerCategoria.setSelection(0);
         else spinnerCategoria.setSelection(extras.getInt("categoria"));
 
-        if(extras.getString("fecha_graduacion").equals("")) btnFecha.setText("-- Seleccione fecha de graduacion --");
+        if(extras.getString("fecha_graduacion").equals("")) btnFecha.setText(getString(R.string.seleccione_fecha_graduacion));
         else btnFecha.setText(extras.getString("fecha_graduacion"));
     }
 
@@ -132,81 +133,81 @@ public class DonativoActivity extends AppCompatActivity {
         boolean respuesta = true;
         StringBuilder cadenaRespuesta = new StringBuilder();
 
-        String regexSoloLetras = getString(R.string.regex_solo_letras);
         String regexSoloNumeros = "^[0-9]+$";
         String regexCorreo = "^(([^<>()\\[\\]\\\\.,;:\\s@”]+(\\.[^<>()\\[\\]\\\\.,;:\\s@”]+)*)|(“.+”))@((\\[[0–9]{1,3}\\.[0–9]{1,3}\\.[0–9]{1,3}\\.[0–9]{1,3}])|(([a-zA-Z\\-0–9]+\\.)+[a-zA-Z]{2,}))$";
 
         if(cajaNombre.getText().toString().trim().isEmpty()) {
-            cadenaRespuesta.append("- Ingresa un nombre. \n\n");
+            cadenaRespuesta.append(getString(R.string.ingresa_un_nombre)).append("\n\n");
             cajaNombre.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
             respuesta = false;
         } else {
-            if(!cajaNombre.getText().toString().trim().matches(regexSoloLetras)) {
-                cadenaRespuesta.append("- Nombre solo debe contener letras. \n\n");
+            if(!cajaNombre.getText().toString().trim().matches(getString(R.string.regex_solo_letras))) {
+                cadenaRespuesta.append(getString(R.string.nombre_solo_letras)).append("\n\n");
                 cajaNombre.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
                 respuesta = false;
             }
         }
 
         if(cajaPrimerAp.getText().toString().trim().isEmpty()) {
-            cadenaRespuesta.append("- Ingresa un primer apellido. \n\n");
+            cadenaRespuesta.append(getString(R.string.ingresa_primer_apellido)).append("\n\n");
             cajaPrimerAp.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
             respuesta = false;
         } else {
-            if(!cajaPrimerAp.getText().toString().trim().matches(regexSoloLetras)) {
-                cadenaRespuesta.append("- Primer apellido solo debe contener letras. \n\n");
+            if(!cajaPrimerAp.getText().toString().trim().matches(getString(R.string.regex_solo_letras))) {
+                cadenaRespuesta.append(getString(R.string.primer_ap_solo_letras)).append("\n\n");
                 cajaPrimerAp.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
                 respuesta = false;
             }
         }
 
         if(cajaSegundoAp.getText().toString().trim().isEmpty()) {
-            cadenaRespuesta.append("- Ingresa un segundo apellido. \n\n");
+            cadenaRespuesta.append(getString(R.string.ingresa_segundo_ap)).append("\n\n");
             cajaSegundoAp.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
             respuesta = false;
         } else {
-            if(!cajaSegundoAp.getText().toString().trim().matches(regexSoloLetras)) {
-                cadenaRespuesta.append("- Segundo apellido solo debe contener letras. \n\n");
+            if(!cajaSegundoAp.getText().toString().trim().matches(getString(R.string.regex_solo_letras))) {
+                cadenaRespuesta.append(getString(R.string.segundo_ap_solo_letras)).append("\n\n");
                 cajaSegundoAp.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
                 respuesta = false;
             }
         }
 
         if(cajaTelefono.getText().toString().trim().isEmpty()) {
-            cadenaRespuesta.append("- Ingresa un numero de telefono. \n\n");
+            cadenaRespuesta.append(getString(R.string.ingresa_numero_telefono)).append("\n\n");
             cajaTelefono.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
             respuesta = false;
         } else {
             if(!cajaTelefono.getText().toString().trim().matches(regexSoloNumeros)) {
-                cadenaRespuesta.append("- Telefono requiere solo digitos. \n\n");
+                cadenaRespuesta.append(getString(R.string.telefono_solo_numero)).append("\n\n");
                 cajaTelefono.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
                 respuesta = false;
             } else if(cajaTelefono.getText().toString().trim().length() != 10) {
-                cadenaRespuesta.append("- Telefono requiere 10 digitos. \n\n");
+                cadenaRespuesta.append(getString(R.string.telefono_10_digitos)).append("\n\n");
                 cajaTelefono.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
                 respuesta = false;
             }
         }
 
         if(cajaCorreo.getText().toString().trim().isEmpty()) {
-            cadenaRespuesta.append("- Ingresa un email. \n\n");
+            cadenaRespuesta.append(getString(R.string.ingresa_email)).append("\n\n");
             cajaCorreo.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
             respuesta = false;
         } else {
             if(!cajaCorreo.getText().toString().trim().matches(regexCorreo)) {
-                cadenaRespuesta.append("- Email no valido. \n\n");
+                cadenaRespuesta.append(getString(R.string.email_no_valido)).append("\n\n");
                 cajaCorreo.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
                 respuesta = false;
             }
         }
 
         if(spinnerCategoria.getSelectedItemPosition() == 0) {
-            cadenaRespuesta.append("- Seleccione una categoria. \n\n");
+            cadenaRespuesta.append(getString(R.string.seleccione_categoria)).append("\n\n");
             spinnerCategoria.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
             respuesta = false;
         } else if(spinnerCategoria.getSelectedItemPosition() == 2) {
-            if(btnFecha.getText().toString().equals("-- Seleccione fecha de graduacion --")) {
-                cadenaRespuesta.append("- Seleccione una fecha de graduacion. \n\n");
+            if(btnFecha.getText().toString().equals(getString(R.string.seleccione_fecha_graduacion))) {
+                cadenaRespuesta.append(getString(R.string.seleccione_fecha_graduacion)
+                        .substring(1, getString(R.string.seleccione_fecha_graduacion).length() - 1)).append("\n\n");
                 btnFecha.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
                 respuesta = false;
             }
@@ -214,9 +215,9 @@ public class DonativoActivity extends AppCompatActivity {
 
         if(!respuesta) {
             new AlertDialog.Builder(this)
-                .setIcon(android.R.drawable.ic_dialog_alert).setTitle("Errores detectados")
+                .setIcon(android.R.drawable.ic_dialog_alert).setTitle(getString(R.string.errores_detectados))
                 .setMessage(cadenaRespuesta)
-                .setPositiveButton("Entendido", (dialogInterface, i) -> dialogInterface.cancel())
+                .setPositiveButton(getString(R.string.entendido), (dialogInterface, i) -> dialogInterface.cancel())
                 .show()
             ;
         }

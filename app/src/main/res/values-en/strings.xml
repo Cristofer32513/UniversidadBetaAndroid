@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ColectaU-Beta</string>
+    <string name="colecta">Collection</string>
+    <string name="universidad_beta">University BETA</string>
+    <string name="donar_ahora">Donate Now</string>
+    <string name="desea_realizar_donacion">Do you want to make a donation?</string>
+    <string name="eres_administrador">Are you an Administrator user?</string>
+    <string name="inicia_sesion">Log in</string>
+    <string name="nombre_usuario">Username</string>
+    <string name="contraseña">Password</string>
+    <string name="olvidaste_contraseña"><a href="https://www.geeksforgeeks.org/"> Did you forget your password?</a></string>
+    <string name="iniciar_sesion">Log in</string>
+    <string name="o_inicia_con">Or log in with</string>
+    <string name="tus_datos">Your Data</string>
+    <string name="nombre">Name</string>
+    <string name="primer_ap">Last Name</string>
+    <string name="segundo_ap">Mother\'s Last Name</string>
+    <string name="telefono">Phone</string>
+    <string name="categoria">Category:</string>
+    <string name="atras">Previous</string>
+    <string name="cancelar">Cancel</string>
+    <string name="siguiente">Next</string>
+    <string name="direccion">Address</string>
+    <string name="calle">Street</string>
+    <string name="colonia">Suburb</string>
+    <string name="municipio">Municipality</string>
+    <string name="cp">Postal Code</string>
+    <string name="estado">State:</string>
+    <string name="pais">Country</string>
+    <string name="datos_del_pago">Details of Payment</string>
+    <string name="cantidad">Quantity:</string>
+    <string name="cantidad_a_donar">"Amount to Donate "</string>
+    <string name="banco">Bank:</string>
+    <string name="metodo_de_pago">Payment Method:</string>
+    <string name="numero_tarjeta">Card Number</string>
+    <string name="Vencimiento">Expiration MM/YY:</string>
+    <string name="plazos">" Do you want to make the donation in installments?"</string>
+    <string name="no">No</string>
+    <string name="si">Yes</string>
+    <string name="enviar">Send</string>
+    <string name="comprobante">Do you want to receive a tax receipt?</string>
+    <string name="terminos">I have read, understand and accept the <a href="https://www.geeksforgeeks.org/">Privacy Notice</a>, <a href="https://www.geeksforgeeks.org/">Terms</a> and <a href="https://www.geeksforgeeks.org/">Conditions</a></string>
+    <string name="cantidad_plazos">"     Number of Installments:"</string>
+    <string name="procesando_donativo">Processing Donation</string>
+    <string name="donativo_exitoso">Successful Donation</string>
+    <string name="donativo_error">Donation Processing Error</string>
+    <string name="menu_item_inicio">Home</string>
+    <string name="menu_item_donativos">Donations</string>
+    <string name="menu_item_usuarios">Users</string>
+    <string name="menu_item_configuracion">Settings</string>
+    <string name="menu_item_salir">Exit</string>
+    <string name="id_usuario">Id-user</string>
+    <string name="verificar_contraseña">Verify Password</string>
+    <string name="guardar">Save</string>
+    <string name="eliminar">Delete</string>
+    <string name="agregar">Add</string>
+    <string name="id_usuario2">Id-user:</string>
+    <string name="nombre2">Name:</string>
+    <string name="correo">Email:</string>
+    <string name="buscar_por">Search by:</string>
+    <string-array name="spiner_categoria">
+        <item>-- Select an option --</item>
+        <item>Student</item>
+        <item>Graduate</item>
+        <item>Teacher</item>
+    </string-array>
+    <string-array name="spiner_vacio">
+        <item>-- Select a Country --</item>
+    </string-array>
+    <string-array name="spiner_argentina">
+        <item>-- Select an option --</item>
+        <item>Buenos Aires</item>
+        <item>Catamarca</item>
+        <item>Córdoba</item>
+        <item>Corrientes</item>
+        <item>Entre Ríos</item>
+        <item>Formosa</item>
+        <item>Jujuy</item>
+        <item>La Pampa</item>
+        <item>Mendoza</item>
+        <item>Misiones</item>
+        <item>Neuquén</item>
+        <item>Río Negro</item>
+        <item>Salta</item>
+        <item>San Juan</item>
+        <item>San Luis</item>
+        <item>Santa Cruz</item>
+        <item>Santa Fe</item>
+        <item>Tierra del Fuego, Antártida e Islas del Atlántico Sur</item>
+        <item>Tucumán</item>
+    </string-array>
+    <string-array name="spiner_bolivia">
+        <item>-- Select an option --</item>
+        <item>Chuquisaca</item>
+        <item>Cochabamba</item>
+        <item>Beni</item>
+        <item>La Paz</item>
+        <item>Oruro</item>
+        <item>Pando</item>
+        <item>Potosí</item>
+        <item>Santa Cruz</item>
+        <item>Tarija</item>
+    </string-array>
+    <string-array name="spiner_colombia">
+        <item>-- Select an option --</item>
+        <item>Amazonas</item>
+        <item>Bolívar</item>
+        <item>Caldas</item>
+        <item>Casanare</item>
+        <item>Cauca</item>
+        <item>Cesar</item>
+        <item>Córdoba</item>
+        <item>Guainia</item>
+        <item>Huila</item>
+        <item>La Guajira</item>
+        <item>Magdalena</item>
+        <item>Meta</item>
+        <item>Putumayo</item>
+        <item>Quindio</item>
+        <item>Santander</item>
+        <item>Sucre</item>
+        <item>Tolima</item>
+        <item>Vaupes</item>
+        <item>Vichada</item>
+    </string-array>
+    <string-array name="spiner_ecuador">
+        <item>-- Select an option --</item>
+        <item>Azuay</item>
+        <item>Bolívar</item>
+        <item>Cañar</item>
+        <item>Carchi</item>
+        <item>Chimborazo</item>
+        <item>Cotopaxi</item>
+        <item>Esmeraldas</item>
+        <item>Galápagos</item>
+        <item>Guayas</item>
+        <item>Imbabura</item>
+        <item>Loja</item>
+        <item>Manabí</item>
+        <item>Napo</item>
+        <item>Orellana</item>
+        <item>Pastaza</item>
+        <item>Pichincha</item>
+        <item>Santa Elena</item>
+        <item>Sucumbíos</item>
+        <item>Tungurahua</item>
+    </string-array>
+    <string-array name="spiner_mexico">
+        <item>-- Select an option --</item>
+        <item>Aguascalientes</item>
+        <item>Baja California</item>
+        <item>Baja California Sur</item>
+        <item>Campeche</item>
+        <item>Chiapas</item>
+        <item>Chihuahua</item>
+        <item>Coahuila de Zaragoza</item>
+        <item>Colima</item>
+        <item>Distrito Federal</item>
+        <item>Durango</item>
+        <item>Guanajuato</item>
+        <item>Guerrero</item>
+        <item>Hidalgo</item>
+        <item>Jalisco</item>
+        <item>México</item>
+        <item>Michoacán de Ocampo</item>
+        <item>Morelos</item>
+        <item>Nayarit</item>
+        <item>Nuevo León</item>
+        <item>Oaxaca</item>
+        <item>Puebla</item>
+        <item>Querétaro de Arteaga</item>
+        <item>Quintana Roo</item>
+        <item>San Luis Potosí</item>
+        <item>Sinaloa</item>
+        <item>Sonora</item>
+        <item>Tabasco</item>
+        <item>Tamaulipas</item>
+        <item>Tlaxcala</item>
+        <item>Veracruz</item>
+        <item>Yucatán</item>
+        <item>Zacatecas</item>
+    </string-array>
+    <string-array name="spiner_venezuela">
+        <item>-- Select an option --</item>
+        <item>Amazonas</item>
+        <item>Anzoátegui</item>
+        <item>Apure</item>
+        <item>Aragua</item>
+        <item>Barinas</item>
+        <item>Bolívar</item>
+        <item>Carabobo</item>
+        <item>Cojedes</item>
+        <item>Delta Amacuro</item>
+        <item>Dependencias Federales</item>
+        <item>Distrito Federal</item>
+        <item>Falcón</item>
+        <item>Guárico</item>
+        <item>Lara</item>
+        <item>Mérida</item>
+        <item>Miranda</item>
+        <item>Monagas</item>
+        <item>Nueva Esparta</item>
+        <item>Portuguesa</item>
+        <item>Sucre</item>
+        <item>Táchira</item>
+        <item>Trujillo</item>
+        <item>Vargas</item>
+        <item>Yaracuy</item>
+        <item>Zulia</item>
+    </string-array>
+    <string-array name="spiner_pais">
+        <item>-- Select an option --</item>
+        <item>Argentina</item>
+        <item>Bolivia</item>
+        <item>Colombia</item>
+        <item>Ecuador</item>
+        <item>México</item>
+        <item>Venezuela</item>
+    </string-array>
+    <string-array name="spiner_cantidad">
+        <item>-- Select an option --</item>
+        <item>$ 100</item>
+        <item>$ 200</item>
+        <item>$ 500</item>
+        <item>$ 1000</item>
+        <item>$ 1500</item>
+        <item>$ 2000</item>
+        <item>$ 3000</item>
+        <item>$ 5000</item>
+        <item>Other Amount</item>
+    </string-array>
+    <string-array name="spiner_banco">
+        <item>-- Select an option --</item>
+        <item>American Express</item>
+        <item>Banamex</item>
+        <item>Banco Afirme</item>
+        <item>Banco Azteca</item>
+        <item>Banco Invex</item>
+        <item>Bancomext</item>
+        <item>BanCoppel</item>
+        <item>Banjercito</item>
+        <item>Bank of America</item>
+        <item>Banorte</item>
+        <item>Banregio</item>
+        <item>BBVA Bancomer</item>
+        <item>CIBanco</item>
+        <item>Del Bajio</item>
+        <item>HSBC</item>
+        <item>Inbursa</item>
+        <item>Nacional Financiera</item>
+        <item>Santander</item>
+        <item>Scotiabank</item>
+    </string-array>
+    <string-array name="spiner_metodo_pago">
+        <item>-- Select an option --</item>
+        <item>Tarjeta credito American Express</item>
+        <item>Tarjeta credito Visa</item>
+        <item>Tarjeta credito Mastercard</item>
+        <item>Tarjeta debito American Express</item>
+        <item>Tarjeta debito Visa</item>
+        <item>Tarjeta debito Mastercard</item>
+    </string-array>
+    <string-array name="spiner_mensualidades">
+        <item>-- Select an option --</item>
+        <item>3 monthly payment</item>
+        <item>6 monthly payment</item>
+        <item>9 monthly payment</item>
+        <item>12 monthly payment</item>
+    </string-array>
+    <string name="ingresa_contraseña">- Enter a password.</string>
+    <string name="ingresa_nombre_usuario">" - Enter a username."</string>
+    <string name="errores_detectados">Detected errors</string>
+    <string name="entendido">OK</string>
+    <string name="seleccione_fecha_graduacion">-- Select graduation date --</string>
+    <string name="ingresa_un_nombre">- Enter a name.</string>
+    <string name="nombre_solo_letras">- Name must only contain letters.</string>
+    <string name="ingresa_primer_apellido">- Enter a last name.</string>
+    <string name="primer_ap_solo_letras">- Last name must only contain letters.</string>
+    <string name="ingresa_segundo_ap">- Enter a maternal last name.</string>
+    <string name="segundo_ap_solo_letras">"- Maternal last name must only contain letters. "</string>
+    <string name="telefono_solo_numero">- Telephone requires only digits.</string>
+    <string name="ingresa_numero_telefono">" - Enter a phone number."</string>
+    <string name="telefono_10_digitos">- Telephone requires 10 digits.</string>
+    <string name="ingresa_email">- Enter a email.</string>
+    <string name="email_no_valido">- Invalid email.</string>
+    <string name="seleccione_categoria">- Select a category.</string>
+</resources>

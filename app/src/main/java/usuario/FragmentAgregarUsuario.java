@@ -51,8 +51,7 @@ public class FragmentAgregarUsuario extends BaseVolleyFragment {
         btnAgregar.setOnClickListener(view1 -> {
 
             if(validarCampos()) {
-                System.out.println("---    jkjdjsdkjsdk");
-                String url = "https://colectabeta.000webhostapp.com/api_altas_usuarios.php";
+                String url = "http://colectaubeta.atwebpages.com/api_altas_usuarios.php";
                 StringRequest recuest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -70,7 +69,6 @@ public class FragmentAgregarUsuario extends BaseVolleyFragment {
                     @Override
                     protected Map<String, String> getParams() {
                         Map<String, String> parametros = new HashMap<String, String>();
-                        parametros.put("id", "0");
                         parametros.put("username", cajaNombre.getText().toString());
                         parametros.put("passaword", cajaPassword1.getText().toString());
                         parametros.put("email", cajaCorreo.getText().toString());
@@ -81,11 +79,11 @@ public class FragmentAgregarUsuario extends BaseVolleyFragment {
                 addToQueue(recuest);
 
                 //Toast.makeText(getContext(), "Agregado", Toast.LENGTH_LONG).show();
-                Fragment nuevoFragmento = new FragmentUsuarios();
-                FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
-                transaction.replace(R.id.content_frame, nuevoFragmento);
-                transaction.commit();
-                Objects.requireNonNull(((AppCompatActivity) requireActivity()).getSupportActionBar()).setTitle("Usuarios");
+                //Fragment nuevoFragmento = new FragmentUsuarios();
+                //FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
+                //transaction.replace(R.id.content_frame, nuevoFragmento);
+                //transaction.commit();
+                //Objects.requireNonNull(((AppCompatActivity) requireActivity()).getSupportActionBar()).setTitle("Usuarios");
             }
         });
         btnCancelar.setOnClickListener(view1 -> new AlertDialog.Builder(requireContext())

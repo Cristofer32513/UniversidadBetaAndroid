@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">ColectaU-Beta</string>
-    <string name="logo">logo</string>
+    <string name="logo" translatable="false">logo</string>
     <string name="colecta">Colecta</string>
     <string name="universidad_beta">Universidad BETA</string>
     <string name="desea_realizar_donacion">Desea realizar una donacion?</string>
@@ -12,9 +12,9 @@
     <string name="iniciar_sesion">Iniciar Sesion</string>
     <string name="olvidaste_contraseña"><a href="https://www.geeksforgeeks.org/">Olvidaste tu contraseña?</a></string>
     <string name="o_inicia_con">O inicia sesion con</string>
-    <string name="btn_twiiter">boton red twiiter</string>
-    <string name="btn_facebook">boton red facebook</string>
-    <string name="btn_google">boton red google</string>
+    <string name="btn_twiiter" translatable="false">boton red twiiter</string>
+    <string name="btn_facebook" translatable="false">boton red facebook</string>
+    <string name="btn_google" translatable="false">boton red google</string>
 
     <string-array name="spiner_categoria">
         <item>-- Selecciona una opcion --</item>
@@ -29,9 +29,9 @@
     <string name="primer_ap">Primer Apellido</string>
     <string name="segundo_ap">Segundo Apellido</string>
     <string name="telefono">Telefono</string>
-    <string name="email">Email</string>
+    <string name="email" translatable="false">Email</string>
     <string name="categoria">Categoria:</string>
-    <string name="selector_fecha">Selecto fecha</string>
+    <string name="selector_fecha" translatable="false">Selecto fecha</string>
     <string name="atras">Atras</string>
     <string name="cancelar">Cancelar</string>
     <string name="siguiente">Siguiente</string>
@@ -43,7 +43,7 @@
     <string name="municipio">Municipio</string>
     <string name="cp">Codigo Postal</string>
     <string name="estado">Estado:</string>
-    <string name="spinner_estado">Spinner para estado:</string>
+    <string name="spinner_estado" translatable="false">Spinner para estado:</string>
 
     <string-array name="spiner_vacio">
         <item>-- Selecciona un Estado --</item>
@@ -292,8 +292,8 @@
     <string name="menu_item_usuarios">Usuarios</string>
     <string name="menu_item_configuracion">Configuracion</string>
     <string name="menu_item_salir">Salir</string>
-    <string name="boton_de_busqueda">Boton de busqueda</string>
-    <string name="boton_de_agregar">boton de agregar</string>
+    <string name="boton_de_busqueda" translatable="false">Boton de busqueda</string>
+    <string name="boton_de_agregar" translatable="false">boton de agregar</string>
     <string name="id_usuario">Id-usuario</string>
     <string name="verificar_contraseña">Verificar Contraseña</string>
     <string name="guardar">Guardar</string>
@@ -302,11 +302,11 @@
     <string name="id_usuario2">id-usuario:</string>
     <string name="nombre2">Nombre:</string>
     <string name="correo">Correo:</string>
-    <string name="cristofer_casas_murillo">Cristofer Casas Murillo</string>
-    <string name="cristofer32513_gmail_com">cristofer32513@gmail.com</string>
-    <string name="regex_solo_letras">^[a-zA-ZäÄëËïÏöÖüÜáéíóúáéíóúÁÉÍÓÚÂÊÎÔÛâêîôûàèìòùÀÈÌÒÙ.]+(\\ [a-zA-ZäÄëËïÏöÖüÜáéíóúáéíóúÁÉÍÓÚÂÊÎÔÛâêîôûàèìòùÀÈÌÒÙ]+)*$</string>
+    <string name="cristofer_casas_murillo" translatable="false">Cristofer Casas Murillo</string>
+    <string name="cristofer32513_gmail_com" translatable="false">cristofer32513@gmail.com</string>
+    <string name="regex_solo_letras" translatable="false">^[a-zA-ZäÄëËïÏöÖüÜáéíóúáéíóúÁÉÍÓÚÂÊÎÔÛâêîôûàèìòùÀÈÌÒÙ.]+(\\ [a-zA-ZäÄëËïÏöÖüÜáéíóúáéíóúÁÉÍÓÚÂÊÎÔÛâêîôûàèìòùÀÈÌÒÙ]+)*$</string>
     <string name="buscar_por">Buscar por:</string>
-    <string name="spinner_busqueda_donativo">spinner busqueda donativo</string>
+    <string name="spinner_busqueda_donativo" translatable="false">spinner busqueda donativo</string>
 
     <string-array name="spiner_buscar_donativo">
         <item>-- Selecciona una opcion --</item>
@@ -316,4 +316,24 @@
         <item>Categoria</item>
         <item>Forma de pago</item>
     </string-array>
+
+    <!--retroalimentacion-->
+    <string name="ingresa_nombre_usuario">- Ingresa un nombre de usuario.</string>
+    <string name="ingresa_contraseña">- Ingresa una contraseña.</string>
+    <string name="errores_detectados">Errores detectados</string>
+    <string name="entendido">Entendido</string>
+    <string name="seleccione_fecha_graduacion">-- Seleccione fecha de graduacion --</string>
+    <string name="ingresa_un_nombre">- Ingresa un nombre.</string>
+    <string name="nombre_solo_letras">- Nombre solo debe contener letras.</string>
+    <string name="ingresa_primer_apellido">- Ingresa un primer apellido.</string>
+    <string name="primer_ap_solo_letras">- Primer apellido solo debe contener letras.</string>
+    <string name="ingresa_segundo_ap">- Ingresa un segundo apellido.</string>
+    <string name="segundo_ap_solo_letras">- Segundo apellido solo debe contener letras.</string>
+    <string name="ingresa_numero_telefono">- Ingresa un numero de telefono.</string>
+    <string name="telefono_solo_numero">- Telefono requiere solo digitos.</string>
+    <string name="telefono_10_digitos">- Telefono requiere 10 digitos.</string>
+    <string name="ingresa_email">- Ingresa un email.</string>
+    <string name="email_no_valido">- Email no valido.</string>
+    <string name="seleccione_categoria">- Seleccione una categoria.</string>
+
 </resources>

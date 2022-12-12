@@ -52,21 +52,21 @@ public class LoginActivity extends AppCompatActivity {
         StringBuilder cadenaRespuesta = new StringBuilder();
 
         if(cajaUsuario.getText().toString().trim().isEmpty()) {
-            cadenaRespuesta.append("- Ingresa un nombre de usuario. \n\n");
+            cadenaRespuesta.append(getString(R.string.ingresa_nombre_usuario)+"\n\n");
             cajaUsuario.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
             respuesta = false;
         }
         if(cajaPassword.getText().toString().trim().isEmpty()) {
-            cadenaRespuesta.append("- Ingresa una contraseña. \n\n");
+            cadenaRespuesta.append(getString(R.string.ingresa_contraseña)+"\n\n");
             cajaPassword.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
             respuesta = false;
         }
 
         if(!respuesta) {
             new AlertDialog.Builder(this)
-                .setIcon(android.R.drawable.ic_dialog_alert).setTitle("Errores detectados")
+                .setIcon(android.R.drawable.ic_dialog_alert).setTitle(getString(R.string.errores_detectados))
                 .setMessage(cadenaRespuesta)
-                .setPositiveButton("Entendido", (dialogInterface, i) -> dialogInterface.cancel()).show()
+                .setPositiveButton(getString(R.string.entendido), (dialogInterface, i) -> dialogInterface.cancel()).show()
             ;
         }
 

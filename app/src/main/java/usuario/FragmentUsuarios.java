@@ -78,7 +78,7 @@ public class FragmentUsuarios extends BaseVolleyFragment {
 
     private void LlenarLista() {
         listaUsuarios.clear();
-        String url = "https://colectabeta.000webhostapp.com/api_consultas_usuarios.php";
+        String url = "http://colectaubeta.atwebpages.com/api_consultas_usuarios.php";
         StringRequest recuest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
