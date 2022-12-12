@@ -19,6 +19,7 @@
         android:drawableStart="@drawable/ic_id"
         android:drawablePadding="20dp"
         android:ems="10"
+        android:enabled="false"
         android:hint="@string/id_usuario"
         android:inputType="textPersonName"
         android:paddingStart="20dp"
