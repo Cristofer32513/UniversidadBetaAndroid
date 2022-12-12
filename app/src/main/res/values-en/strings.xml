@@ -308,4 +308,6 @@
     <string name="tarjeta_16_digitos">- Card number requires 16 digits.</string>
     <string name="ingresa_vencimiento">- Enter the expiration date of the card.</string>
     <string name="vencimiento_invalido">- Invalid expiration date.</string>
+    <string name="seleccione_plazos">- Select a number of installments.</string>
+    <string name="acepte_terminos">- Accept the terms and conditions.</string>
 </resources>

@@ -85,23 +85,23 @@ public class Donativo4Activity extends AppCompatActivity {
 
         if(radioButtonSiPlazos.isChecked()) {
             if(spinnerPlazos.getSelectedItemPosition() == 0) {
-                cadenaRespuesta.append("- Seleccione una cantidad de plazos. \n\n");
+                cadenaRespuesta.append(getString(R.string.seleccione_plazos)).append("\n\n");
                 spinnerPlazos.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
                 respuesta = false;
             }
         }
 
         if(!checkBoxTerminos.isChecked()) {
-            cadenaRespuesta.append("- Acepte los terminos y condiciones. \n\n");
+            cadenaRespuesta.append(getString(R.string.acepte_terminos)).append("\n\n");
             checkBoxTerminos.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
             respuesta = false;
         }
 
         if(!respuesta) {
             new AlertDialog.Builder(this)
-                    .setIcon(android.R.drawable.ic_dialog_alert).setTitle("Errores detectados")
+                    .setIcon(android.R.drawable.ic_dialog_alert).setTitle(getString(R.string.errores_detectados))
                     .setMessage(cadenaRespuesta)
-                    .setPositiveButton("Entendido", (dialogInterface, i) -> dialogInterface.cancel())
+                    .setPositiveButton(getString(R.string.entendido), (dialogInterface, i) -> dialogInterface.cancel())
                     .show()
             ;
         }

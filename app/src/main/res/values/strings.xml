@@ -348,7 +348,6 @@
     <string name="cp_5_digitos">- Codigo Postal requiere 5 digitos.</string>
     <string name="seleccione_pais">- Seleccione un pais.</string>
     <string name="seleccione_estado">- Seleccione un estado.</string>
-
     <string name="seleccione_cantidad">- Seleccione una cantidad.</string>
     <string name="ingresa_cantidad">- Ingresa una cantidad.</string>
     <string name="cantidad_solo_digitos">- Cantidad requiere solo digitos.</string>
@@ -361,6 +360,8 @@
     <string name="tarjeta_16_digitos">- Numero de tarjeta requiere 16 digitos.</string>
     <string name="ingresa_vencimiento">- Ingresa la fecha de vencimiento de la tarjeta.</string>
     <string name="vencimiento_invalido">- Fecha de vencimiento invalida.</string>
+    <string name="seleccione_plazos">- Seleccione una cantidad de plazos.</string>
+    <string name="acepte_terminos">- Acepte los terminos y condiciones.</string>
 
 
 
