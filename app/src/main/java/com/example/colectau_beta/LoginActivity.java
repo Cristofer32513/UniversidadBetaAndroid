@@ -65,9 +65,9 @@ public class LoginActivity extends AppCompatActivity {
                     startActivity(intent);
                     finish();
                 } else {
-                    Toast.makeText(getApplicationContext(), "usuario mal", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), getString(R.string.error_usuario_contraseña), Toast.LENGTH_LONG).show();
                 }
-            }, error -> Toast.makeText(getApplicationContext(), "Error api", Toast.LENGTH_LONG).show()) {
+            }, error -> Toast.makeText(getApplicationContext(), getString(R.string.falla_api), Toast.LENGTH_LONG).show()) {
                 @Override
                 protected Map<String, String> getParams() {
                     Map<String, String> parametros = new HashMap<>();

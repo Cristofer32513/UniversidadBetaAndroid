@@ -310,4 +310,6 @@
     <string name="vencimiento_invalido">- Invalid expiration date.</string>
     <string name="seleccione_plazos">- Select a number of installments.</string>
     <string name="acepte_terminos">- Accept the terms and conditions.</string>
+    <string name="falla_api">API failure</string>
+    <string name="error_usuario_contraseña">Incorrect Username and/or Password</string>
 </resources>
