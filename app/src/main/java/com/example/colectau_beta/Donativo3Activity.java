@@ -230,8 +230,15 @@ public class Donativo3Activity extends AppCompatActivity {
 
     //Para el boton cancelar
     public void cancelar(View view) {
-        Intent intent = new Intent(Donativo3Activity.this, LoginActivity.class);
-        startActivity(intent);
-        finish();
+        new AlertDialog.Builder(getApplicationContext())
+                .setIcon(android.R.drawable.ic_dialog_alert).setTitle(getString(R.string.precaucion))
+                .setMessage(getString(R.string.confirmacion_cancelar_donativo))
+                .setPositiveButton(getString(R.string.si), (dialogInterface, i) -> {
+                    Intent intent = new Intent(Donativo3Activity.this, LoginActivity.class);
+                    startActivity(intent);
+                    finish();
+                })
+                .setNegativeButton(getString(R.string.no), (dialogInterface, i) -> dialogInterface.cancel())
+                .show();
     }
 }

@@ -13,8 +13,13 @@ import android.widget.Spinner;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import java.util.Calendar;
+import java.util.Objects;
+
+import usuario.FragmentUsuarios;
 
 public class DonativoActivity extends AppCompatActivity {
 
@@ -238,9 +243,16 @@ public class DonativoActivity extends AppCompatActivity {
 
     //Para el boton cancelar
     public void cancelar(View view) {
-        Intent intent = new Intent(DonativoActivity.this, LoginActivity.class);
-        startActivity(intent);
-        finish();
+        new AlertDialog.Builder(getApplicationContext())
+            .setIcon(android.R.drawable.ic_dialog_alert).setTitle(getString(R.string.precaucion))
+            .setMessage(getString(R.string.confirmacion_cancelar_donativo))
+            .setPositiveButton(getString(R.string.si), (dialogInterface, i) -> {
+                Intent intent = new Intent(DonativoActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finish();
+            })
+            .setNegativeButton(getString(R.string.no), (dialogInterface, i) -> dialogInterface.cancel())
+            .show();
     }
 
     //Para el boton siguiente
