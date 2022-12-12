@@ -305,6 +305,7 @@
     <string name="cristofer_casas_murillo" translatable="false">Cristofer Casas Murillo</string>
     <string name="cristofer32513_gmail_com" translatable="false">cristofer32513@gmail.com</string>
     <string name="regex_solo_letras" translatable="false">^[a-zA-ZäÄëËïÏöÖüÜáéíóúáéíóúÁÉÍÓÚÂÊÎÔÛâêîôûàèìòùÀÈÌÒÙ.]+(\\ [a-zA-ZäÄëËïÏöÖüÜáéíóúáéíóúÁÉÍÓÚÂÊÎÔÛâêîôûàèìòùÀÈÌÒÙ]+)*$</string>
+    <string name="regex_solo_numeros" translatable="false">^[0-9]+$</string>
     <string name="buscar_por">Buscar por:</string>
     <string name="spinner_busqueda_donativo" translatable="false">spinner busqueda donativo</string>
 
@@ -335,5 +336,18 @@
     <string name="ingresa_email">- Ingresa un email.</string>
     <string name="email_no_valido">- Email no valido.</string>
     <string name="seleccione_categoria">- Seleccione una categoria.</string>
+    <string name="ingresa_calle">- Ingresa una calle.</string>
+    <string name="calle_solo_letras">- Calle solo debe contener letras.</string>
+    <string name="ingresa_colonia">- Ingresa un colonia.</string>
+    <string name="colonia_solo_letras">- Colonia solo debe contener letras.</string>
+    <string name="ingresa_municipio">- Ingresa un municipio.</string>
+    <string name="municipio_solo_letras">- Municipio solo debe contener letras.</string>
+    <string name="ingresa_cp">- Ingresa un codigo postal.</string>
+    <string name="cp_solo_digitos">- Codigo Postal requiere solo digitos.</string>
+    <string name="cp_5_digitos">- Codigo Postal requiere 5 digitos.</string>
+    <string name="seleccione_pais">- Seleccione un pais.</string>
+    <string name="seleccione_estado">- Seleccione un estado.</string>
+
+    
 
 </resources>

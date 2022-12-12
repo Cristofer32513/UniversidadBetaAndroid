@@ -133,7 +133,6 @@ public class DonativoActivity extends AppCompatActivity {
         boolean respuesta = true;
         StringBuilder cadenaRespuesta = new StringBuilder();
 
-        String regexSoloNumeros = "^[0-9]+$";
         String regexCorreo = "^(([^<>()\\[\\]\\\\.,;:\\s@”]+(\\.[^<>()\\[\\]\\\\.,;:\\s@”]+)*)|(“.+”))@((\\[[0–9]{1,3}\\.[0–9]{1,3}\\.[0–9]{1,3}\\.[0–9]{1,3}])|(([a-zA-Z\\-0–9]+\\.)+[a-zA-Z]{2,}))$";
 
         if(cajaNombre.getText().toString().trim().isEmpty()) {
@@ -177,7 +176,7 @@ public class DonativoActivity extends AppCompatActivity {
             cajaTelefono.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
             respuesta = false;
         } else {
-            if(!cajaTelefono.getText().toString().trim().matches(regexSoloNumeros)) {
+            if(!cajaTelefono.getText().toString().trim().matches(getString(R.string.regex_solo_numeros))) {
                 cadenaRespuesta.append(getString(R.string.telefono_solo_numero)).append("\n\n");
                 cajaTelefono.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
                 respuesta = false;

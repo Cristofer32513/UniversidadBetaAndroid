@@ -285,4 +285,15 @@
     <string name="ingresa_email">- Enter a email.</string>
     <string name="email_no_valido">- Invalid email.</string>
     <string name="seleccione_categoria">- Select a category.</string>
+    <string name="ingresa_calle">- Enter street</string>
+    <string name="calle_solo_letras">" - Street must only contain letters."</string>
+    <string name="ingresa_colonia">" - Enter a colony."</string>
+    <string name="colonia_solo_letras">" - Cologne must only contain letters."</string>
+    <string name="ingresa_municipio">" - Enter a municipality."</string>
+    <string name="ingresa_cp">- Municipality must only contain letters.</string>
+    <string name="municipio_solo_letras">" - Municipality must only contain letters."</string>
+    <string name="cp_solo_digitos">- Enter a zip code.</string>
+    <string name="cp_5_digitos">- Zip Code requires 5 digits.</string>
+    <string name="seleccione_pais">" - Select a country."</string>
+    <string name="seleccione_estado">" - Select a state."</string>
 </resources>
