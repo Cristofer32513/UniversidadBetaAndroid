@@ -1,5 +1,6 @@
 package usuario;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,8 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.example.colectau_beta.LoginActivity;
+import com.example.colectau_beta.MenuActivity;
 import com.example.colectau_beta.R;
 
 import org.json.JSONArray;
@@ -55,10 +58,17 @@ public class FragmentAgregarUsuario extends BaseVolleyFragment {
                 StringRequest recuest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        System.out.println("---    "+response);
-                        Toast.makeText(getContext(), response,Toast.LENGTH_SHORT).show();
-
-
+                        System.out.println("---    -"+response);
+                        if(response.equals("{\"exito\":true,\"mensaje\":\"Insercion correcta\"}")) {
+                            Toast.makeText(getContext(), "usuario Agregado", Toast.LENGTH_LONG).show();
+                            Fragment nuevoFragmento = new FragmentUsuarios();
+                            FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
+                            transaction.replace(R.id.content_frame, nuevoFragmento);
+                            transaction.commit();
+                            Objects.requireNonNull(((AppCompatActivity) requireActivity()).getSupportActionBar()).setTitle("Usuarios");
+                        } else {
+                            Toast.makeText(getContext(), "error al agregar",Toast.LENGTH_SHORT).show();
+                        }
                     }
                 }, new Response.ErrorListener() {
                     @Override
@@ -77,13 +87,6 @@ public class FragmentAgregarUsuario extends BaseVolleyFragment {
                     }
                 };
                 addToQueue(recuest);
-
-                //Toast.makeText(getContext(), "Agregado", Toast.LENGTH_LONG).show();
-                //Fragment nuevoFragmento = new FragmentUsuarios();
-                //FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
-                //transaction.replace(R.id.content_frame, nuevoFragmento);
-                //transaction.commit();
-                //Objects.requireNonNull(((AppCompatActivity) requireActivity()).getSupportActionBar()).setTitle("Usuarios");
             }
         });
         btnCancelar.setOnClickListener(view1 -> new AlertDialog.Builder(requireContext())

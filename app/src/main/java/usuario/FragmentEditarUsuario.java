@@ -54,7 +54,7 @@ public class FragmentEditarUsuario extends BaseVolleyFragment {
         btnEliminar = view.findViewById(R.id.button_Eliminar_EditarUsuario);
         btnGuardar.setOnClickListener(view1 -> {
             if(validarCampos()) {
-                String url = "https://colectabeta.000webhostapp.com/api_cambios_usuarios.php";
+                String url = "http://colectaubeta.atwebpages.com/api_cambios_usuarios.php";
                 StringRequest recuest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
