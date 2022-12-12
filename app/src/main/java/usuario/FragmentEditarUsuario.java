@@ -23,6 +23,7 @@ public class FragmentEditarUsuario extends BaseVolleyFragment {
 
     EditText cajaId, cajaNombre, cajaCorreo, cajaPassword1, cajaPassword2;
     Button btnGuardar, btnCancelar, btnEliminar;
+    Bundle args;
 
     public FragmentEditarUsuario() {
     }
@@ -30,6 +31,10 @@ public class FragmentEditarUsuario extends BaseVolleyFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.section_fragment_editar_usuario, container, false);
+
+        args = new Bundle();
+        args.putString("nombre_usuario", getArguments().getString("correo_usuario"));
+        args.putString("correo_usuario", getArguments().getString("correo_usuario"));
 
         cajaId = view.findViewById(R.id.editText_Id_EditarUsuario);
         cajaNombre = view.findViewById(R.id.editText_Nombre_EditarUsuario);
@@ -55,6 +60,7 @@ public class FragmentEditarUsuario extends BaseVolleyFragment {
                     if(response.equals("{\"exito\":true,\"mensaje\":\"Modificacion correcta\"}")) {
                         Toast.makeText(getContext(), "Usuario Actualizado", Toast.LENGTH_LONG).show();
                         Fragment nuevoFragmento = new FragmentUsuarios();
+                        nuevoFragmento.setArguments(args);
                         FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
                         transaction.replace(R.id.content_frame, nuevoFragmento);
                         transaction.commit();

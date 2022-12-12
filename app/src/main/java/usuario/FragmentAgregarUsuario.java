@@ -1,5 +1,6 @@
 package usuario;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,10 @@ import androidx.fragment.app.FragmentTransaction;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.toolbox.StringRequest;
+import com.example.colectau_beta.Donativo4Activity;
+import com.example.colectau_beta.MenuActivity;
+import com.example.colectau_beta.ProcesandoActivity;
+import com.example.colectau_beta.ProcesandoDonativoActivity;
 import com.example.colectau_beta.R;
 import java.util.HashMap;
 import java.util.Map;
@@ -40,21 +45,28 @@ public class FragmentAgregarUsuario extends BaseVolleyFragment {
         btnAgregar = view.findViewById(R.id.button_Agregar_AgregarUsuario);
         btnCancelar = view.findViewById(R.id.button_Cancelar_AgregarUsuario);
         btnAgregar.setOnClickListener(view1 -> {
-
             if(validarCampos()) {
                 String url = "http://colectaubeta.atwebpages.com/api_altas_usuarios.php";
                 StringRequest recuest = new StringRequest(Request.Method.POST, url, response -> {
                     System.out.println("---    -"+response);
+                    Intent intent = new Intent(getContext(), ProcesandoActivity.class);
                     if(response.equals("{\"exito\":true,\"mensaje\":\"Insercion correcta\"}")) {
-                        Toast.makeText(getContext(), "Usuario Agregado", Toast.LENGTH_LONG).show();
-                        Fragment nuevoFragmento = new FragmentUsuarios();
-                        FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
-                        transaction.replace(R.id.content_frame, nuevoFragmento);
-                        transaction.commit();
-                        Objects.requireNonNull(((AppCompatActivity) requireActivity()).getSupportActionBar()).setTitle("Usuarios");
+                        //Toast.makeText(getContext(), "Usuario Agregado", Toast.LENGTH_LONG).show();
+                        intent.putExtra("ventana_resultado", 1);
+                        intent.putExtra("resultado", "Usuario Registrado Correctamente");
                     } else {
-                        mostrarError(getString(R.string.error_agregar_usuario));
+                        intent.putExtra("ventana_resultado", 0);
+                        intent.putExtra("resultado", "Error al Registrar Usuario");
+                        //mostrarError(getString(R.string.error_agregar_usuario));
                     }
+                    intent.putExtra("proceso", "Registrando Usuario");
+                    startActivity(intent);
+
+                    Fragment nuevoFragmento = new FragmentUsuarios();
+                    FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
+                    transaction.replace(R.id.content_frame, nuevoFragmento);
+                    transaction.commit();
+                    Objects.requireNonNull(((AppCompatActivity) requireActivity()).getSupportActionBar()).setTitle("Usuarios");
                 }, error -> mostrarError(getString(R.string.falla_api))) {
                     @Override
                     protected Map<String, String> getParams() {
