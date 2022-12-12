@@ -296,4 +296,16 @@
     <string name="cp_5_digitos">- Zip Code requires 5 digits.</string>
     <string name="seleccione_pais">"- Select a country."</string>
     <string name="seleccione_estado">"- Select a state."</string>
+    <string name="seleccione_cantidad">- Select an amount.</string>
+    <string name="ingresa_cantidad">- Enter an amount</string>
+    <string name="cantidad_solo_digitos">- Amount requires only digits.</string>
+    <string name="cantidad_minima">- Minimum quantity equal to 10.</string>
+    <string name="cantidad_maxima">- Maximum amount equal to 1000000.</string>
+    <string name="seleccione_banco">- Select a bank.</string>
+    <string name="seleccione_metodo_pago">- Select a payment method.</string>
+    <string name="ingrese_num_tarjeta">- Enter a card number.</string>
+    <string name="tarjeta_solo_digitos">- Card number requires only digits.</string>
+    <string name="tarjeta_16_digitos">- Card number requires 16 digits.</string>
+    <string name="ingresa_vencimiento">- Enter the expiration date of the card.</string>
+    <string name="vencimiento_invalido">- Invalid expiration date.</string>
 </resources>
