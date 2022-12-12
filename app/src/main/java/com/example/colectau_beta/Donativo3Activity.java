@@ -59,7 +59,8 @@ public class Donativo3Activity extends AppCompatActivity {
         spinnerCantidad.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                if (spinnerCantidad.getSelectedItem().toString().equals("Otra Cantidad")) cajaCantidad.setVisibility(View.VISIBLE);
+                if (spinnerCantidad.getSelectedItem().toString().equals("Otra Cantidad") ||
+                        spinnerCantidad.getSelectedItem().toString().equals("Other Amount")) cajaCantidad.setVisibility(View.VISIBLE);
                 else cajaCantidad.setVisibility(View.GONE);
             }
 
@@ -104,69 +105,65 @@ public class Donativo3Activity extends AppCompatActivity {
         boolean respuesta = true;
         StringBuilder cadenaRespuesta = new StringBuilder();
 
-        String regexSoloLetras = "^[a-zA-ZäÄëËïÏöÖüÜáéíóúáéíóúÁÉÍÓÚÂÊÎÔÛâêîôûàèìòùÀÈÌÒÙ.]+(\\ [a-zA-ZäÄëËïÏöÖüÜáéíóúáéíóúÁÉÍÓÚÂÊÎÔÛâêîôûàèìòùÀÈÌÒÙ]+)*$";
-        String regexSoloNumeros = "^[0-9]+$";
-        String regexFechaVencimiento = "\\d{2}\\/\\d{2}$";
-
         if(spinnerCantidad.getSelectedItemPosition() == 0) {
-            cadenaRespuesta.append("- Seleccione una cantidad. \n\n");
+            cadenaRespuesta.append(getString(R.string.seleccione_cantidad)).append("\n\n");
             spinnerCantidad.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
             respuesta = false;
         } else if(spinnerCantidad.getSelectedItemPosition() == 9) {
              if(cajaCantidad.getText().toString().trim().isEmpty()) {
-                cadenaRespuesta.append("- Ingresa una cantidad. \n\n");
+                cadenaRespuesta.append(getString(R.string.ingresa_cantidad)).append("\n\n");
                 cajaCantidad.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
                 respuesta = false;
-            } else if(!cajaCantidad.getText().toString().trim().matches(regexSoloNumeros)) {
-                 cadenaRespuesta.append("- Cantidad requiere solo digitos. \n\n");
+            } else if(!cajaCantidad.getText().toString().trim().matches(getString(R.string.regex_solo_numeros))) {
+                 cadenaRespuesta.append(getString(R.string.cantidad_solo_digitos)).append("\n\n");
                  cajaCantidad.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
                  respuesta = false;
              } else if(Integer.parseInt(cajaCantidad.getText().toString().trim()) < 10) {
-                cadenaRespuesta.append("- Cantidad minima igual a 10. \n\n");
+                cadenaRespuesta.append(getString(R.string.cantidad_minima)).append("\n\n");
                 cajaCantidad.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
                 respuesta = false;
             } else if(Integer.parseInt(cajaCantidad.getText().toString().trim()) > 1000000) {
-                cadenaRespuesta.append("- Cantidad maxima igual a 1000000. \n\n");
+                cadenaRespuesta.append(getString(R.string.cantidad_maxima)).append("\n\n");
                 cajaCantidad.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
                 respuesta = false;
             }
         }
 
         if(spinnerBanco.getSelectedItemPosition() == 0) {
-            cadenaRespuesta.append("- Seleccione un banco. \n\n");
+            cadenaRespuesta.append(getString(R.string.seleccione_banco)).append("\n\n");
             spinnerBanco.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
             respuesta = false;
         }
 
         if(spinnerMetodoPago.getSelectedItemPosition() == 0) {
-            cadenaRespuesta.append("- Seleccione un metodo de pago. \n\n");
+            cadenaRespuesta.append(getString(R.string.seleccione_metodo_pago)).append("\n\n");
             spinnerMetodoPago.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
             respuesta = false;
         }
 
         if(cajaNumeroTarjeta.getText().toString().trim().isEmpty()) {
-            cadenaRespuesta.append("- Ingresa un numero de tarjeta. \n\n");
+            cadenaRespuesta.append(getString(R.string.ingrese_num_tarjeta)).append("\n\n");
             cajaNumeroTarjeta.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
             respuesta = false;
         } else {
-            if(!cajaNumeroTarjeta.getText().toString().trim().matches(regexSoloNumeros)) {
-                cadenaRespuesta.append("- Numero de tarjeta requiere solo digitos. \n\n");
+            if(!cajaNumeroTarjeta.getText().toString().trim().matches(getString(R.string.regex_solo_numeros))) {
+                cadenaRespuesta.append(getString(R.string.tarjeta_solo_digitos)).append("\n\n");
                 cajaNumeroTarjeta.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
                 respuesta = false;
             } else if(cajaNumeroTarjeta.getText().toString().length() != 16) {
-                cadenaRespuesta.append("- Numero de tarjeta requiere 16 digitos. \n\n");
+                cadenaRespuesta.append(getString(R.string.tarjeta_16_digitos)).append("\n\n");
                 cajaNumeroTarjeta.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
                 respuesta = false;
             }
         }
 
         if(cajaVencimiento.getText().toString().trim().isEmpty()) {
-            cadenaRespuesta.append("- Ingresa la fecha de vencimiento de la tarjeta. \n\n");
+            cadenaRespuesta.append(getString(R.string.ingresa_vencimiento)).append("\n\n");
             cajaVencimiento.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
             respuesta = false;
         } else {
-            if(!cajaVencimiento.getText().toString().trim().matches(regexFechaVencimiento)) {
-                cadenaRespuesta.append("- Fecha de vencimiento invalida. \n\n");
+            if(!cajaVencimiento.getText().toString().trim().matches(getString(R.string.regex_vencimiento))) {
+                cadenaRespuesta.append(getString(R.string.vencimiento_invalido)).append("\n\n");
                 cajaVencimiento.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
                 respuesta = false;
             }
@@ -174,14 +171,9 @@ public class Donativo3Activity extends AppCompatActivity {
 
         if(!respuesta) {
             new AlertDialog.Builder(this)
-                    .setIcon(android.R.drawable.ic_dialog_alert).setTitle("Errores detectados")
+                    .setIcon(android.R.drawable.ic_dialog_alert).setTitle(getString(R.string.errores_detectados))
                     .setMessage(cadenaRespuesta)
-                    .setPositiveButton("Entendido", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            dialogInterface.cancel();
-                        }
-                    })
+                    .setPositiveButton(getString(R.string.entendido), (dialogInterface, i) -> dialogInterface.cancel())
                     .show()
             ;
         }
