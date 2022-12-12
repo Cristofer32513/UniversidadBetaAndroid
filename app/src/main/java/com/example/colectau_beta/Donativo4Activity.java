@@ -178,11 +178,11 @@ public class Donativo4Activity extends AppCompatActivity {
     //Para el boton cancelar
     public void enviar(View view) {
         if(validarCampos()) {
-            String url = "";
+            String url = "http://192.168.1.69/colectaubeta/api/api_registro.php";
             StringRequest recuest = new StringRequest(Request.Method.POST, url, response -> {
                 System.out.println("---    -"+response);
 
-                if(response.equals("{\"exito\":true,\"mensaje\":\"Registro eliminado\"}")) {
+                if(response.equals("{\"exito\":true,\"mensaje\":\"Insercion correcta\"}")) {
                     Toast.makeText(getApplicationContext(), "Donacion exitosa", Toast.LENGTH_LONG).show();
                     intent = new Intent(Donativo4Activity.this, ProcesandoDonativoActivity.class);
                     cargarDatosIntent(intent);
@@ -198,7 +198,33 @@ public class Donativo4Activity extends AppCompatActivity {
                 @Override
                 protected Map<String, String> getParams() {
                     Map<String, String> parametros = new HashMap<>();
-                    //parametros.put("iduser", cajaId.getText().toString());
+                    parametros.put("direction", extras.getString("calle"));
+                    parametros.put("col", extras.getString("colonia"));
+                    parametros.put("locali", extras.getString("municipio"));
+                    parametros.put("estate", extras.getString("nombre_estado"));
+                    parametros.put("pais", extras.getString("nombre_pais"));
+                    parametros.put("cp", extras.getString("cp"));
+                    parametros.put("nume", extras.getString("numero_tarjeta"));
+                    parametros.put("banco", extras.getString("nombre_banco"));
+                    parametros.put("vence", extras.getString("vencimiento"));
+                    parametros.put("name", extras.getString("nombre"));
+                    parametros.put("ap1", extras.getString("primer_ap"));
+                    parametros.put("ap2", extras.getString("segundo_ap"));
+                    parametros.put("phone", extras.getString("telefono"));
+                    parametros.put("email", extras.getString("email"));
+                    parametros.put("categ", extras.getString("nombre_categoria"));
+                    parametros.put("graduate", extras.getString("fecha_graduacion"));
+                    if(extras.getInt("pos_cantidad_spinner") == 9) {
+                        parametros.put("promet", extras.getString("cantidad"));
+                    } else {
+                        //Checar formato cadena
+                        parametros.put("promet", extras.getString("cantidad_spinner").substring(2, extras.getString("cantidad_spinner").length()));
+                    }
+                    parametros.put("abono", "10000");
+                    parametros.put("pago", extras.getString("nombre_metodo_pago"));
+                    parametros.put("plazos", plazos+"");
+
+                    System.out.println(parametros.toString());
 
                     return parametros;
                 }
