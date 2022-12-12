@@ -314,4 +314,10 @@
     <string name="error_usuario_contraseña">Incorrect Username and/or Password</string>
     <string name="bienvenido">"Welcome "</string>
     <string name="precaucion">Warning</string>
+    <string name="error_agregar_usuario">Error adding user</string>
+    <string name="error_actualizar_usuario">Failed to update user</string>
+    <string name="confirma_contraseña">- Confirm your password.</string>
+    <string name="error_confirmacion_contraseña">- Password confirmation error.</string>
+    <string name="confirmacion_cancelar">Are you sure to cancel the user registration?</string>
+    <string name="confirmacion_eliminar">Are you sure to delete the user?</string>
 </resources>
