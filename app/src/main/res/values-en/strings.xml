@@ -312,4 +312,5 @@
     <string name="acepte_terminos">- Accept the terms and conditions.</string>
     <string name="falla_api">API failure</string>
     <string name="error_usuario_contraseña">Incorrect Username and/or Password</string>
+    <string name="bienvenido">"Welcome "</string>
 </resources>

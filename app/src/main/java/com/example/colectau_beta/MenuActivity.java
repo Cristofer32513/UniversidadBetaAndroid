@@ -6,18 +6,15 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import com.google.android.material.navigation.NavigationView;
-
 import java.util.Random;
-
 import de.hdodenhof.circleimageview.CircleImageView;
 import donacion.FragmentDonaciones;
 import usuario.FragmentUsuarios;
@@ -36,21 +33,21 @@ public class MenuActivity  extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
 
         setToolBar();
-        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        drawerLayout = findViewById(R.id.drawer_layout);
+        NavigationView navigationView = findViewById(R.id.nav_view);
         if (navigationView != null) setupDrawerContent(navigationView);
         if (savedInstanceState == null) {
             // Enviar título como arguemento del fragmento
             Fragment fragment = new PlaceholderFragmentHome();
-            selectItem("Colecta Universidad Beta", fragment);
+            selectItem(getString(R.string.colecta) + getString(R.string.universidad_beta), fragment);
         }
         assert navigationView != null;
         View headerLayout = navigationView.getHeaderView(0);
         TextView mensajeBienvenida = headerLayout.findViewById(R.id.msj_bienvenida);
         TextView mensajeCorreo = headerLayout.findViewById(R.id.msj_email);
         imagen = headerLayout.findViewById(R.id.imagen_circular);
-        mensajeBienvenida.setText("Bienvenido " + extras.getString("nombre_usuario"));
-        mensajeCorreo.setText("un_correo_recibido@gmail.com");
+        mensajeBienvenida.setText(getString(R.string.bienvenido) + extras.getString("nombre_usuario"));
+        mensajeCorreo.setText(extras.getString("correo_usuario"));
         seleccionarImagenAleatoria();
     }
 
@@ -75,11 +72,10 @@ public class MenuActivity  extends AppCompatActivity {
     }
 
     private void setToolBar() {
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         final ActionBar ab = getSupportActionBar();
         if (ab != null) {
-            // Poner ícono del drawer toggle
             ab.setHomeAsUpIndicator(R.drawable.ic_home);
             ab.setDisplayHomeAsUpEnabled(true);
         }
@@ -91,13 +87,12 @@ public class MenuActivity  extends AppCompatActivity {
         navigationView.setNavigationItemSelectedListener(menuItem -> {
             menuItem.setChecked(true);
             String title = menuItem.getTitle().toString();
-            // Enviar título como arguemento del fragmento
             Fragment fragment;
 
             switch (menuItem.getItemId()) {
                 case R.id.nav_home:
                     fragment = new PlaceholderFragmentHome();
-                    selectItem("Colecta Universidad Beta", fragment);
+                    selectItem(getString(R.string.colecta) + getString(R.string.universidad_beta), fragment);
                     return true;
                 case R.id.nav_donativos:
                     fragment = new FragmentDonaciones();
@@ -126,8 +121,8 @@ public class MenuActivity  extends AppCompatActivity {
                 .replace(R.id.content_frame, fragment)
                 .commit();
 
-        drawerLayout.closeDrawers(); // Cerrar drawer
-        setTitle(title); // Setear título actual
+        drawerLayout.closeDrawers();
+        setTitle(title);
     }
 
     @Override
