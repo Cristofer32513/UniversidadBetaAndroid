@@ -11,8 +11,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import java.util.HashMap;
 import java.util.Map;
@@ -64,10 +62,8 @@ public class LoginActivity extends AppCompatActivity {
                     intent.putExtra("correo_usuario", "falta hacer esto!!");
                     startActivity(intent);
                     finish();
-                } else {
-                    Toast.makeText(getApplicationContext(), getString(R.string.error_usuario_contraseña), Toast.LENGTH_LONG).show();
-                }
-            }, error -> Toast.makeText(getApplicationContext(), getString(R.string.falla_api), Toast.LENGTH_LONG).show()) {
+                } else { mostrarError(getString(R.string.error_usuario_contraseña));}
+            }, error -> mostrarError(getString(R.string.falla_api))) {
                 @Override
                 protected Map<String, String> getParams() {
                     Map<String, String> parametros = new HashMap<>();
@@ -115,5 +111,13 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         return respuesta;
+    }
+
+    public void mostrarError(String error) {
+        new AlertDialog.Builder(this)
+                .setIcon(android.R.drawable.ic_dialog_alert).setTitle(getString(R.string.precaucion))
+                .setMessage(error)
+                .setPositiveButton(getString(R.string.entendido), (dialogInterface, i) -> dialogInterface.cancel()).show()
+        ;
     }
 }

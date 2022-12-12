@@ -365,5 +365,6 @@
     <string name="error_usuario_contraseña">Usuario y/o Contraseña Incorrectos</string>
     <string name="falla_api">Falla en el API</string>
     <string name="bienvenido">"Bienvenido "</string>
+    <string name="precaucion">Precaucion</string>
 
 </resources>
