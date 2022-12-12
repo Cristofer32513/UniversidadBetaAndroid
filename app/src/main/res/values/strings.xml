@@ -366,5 +366,6 @@
     <string name="falla_api">Falla en el API</string>
     <string name="bienvenido">"Bienvenido "</string>
     <string name="precaucion">Precaucion</string>
+    <string name="error_agregar_usuario">Error al agregar el usuario</string>
 
 </resources>

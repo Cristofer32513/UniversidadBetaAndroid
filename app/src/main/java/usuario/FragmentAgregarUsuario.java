@@ -60,20 +60,20 @@ public class FragmentAgregarUsuario extends BaseVolleyFragment {
                     public void onResponse(String response) {
                         System.out.println("---    -"+response);
                         if(response.equals("{\"exito\":true,\"mensaje\":\"Insercion correcta\"}")) {
-                            Toast.makeText(getContext(), "usuario Agregado", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getContext(), "Usuario Agregado", Toast.LENGTH_LONG).show();
                             Fragment nuevoFragmento = new FragmentUsuarios();
                             FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
                             transaction.replace(R.id.content_frame, nuevoFragmento);
                             transaction.commit();
                             Objects.requireNonNull(((AppCompatActivity) requireActivity()).getSupportActionBar()).setTitle("Usuarios");
                         } else {
-                            Toast.makeText(getContext(), "error al agregar",Toast.LENGTH_SHORT).show();
+                            mostrarError(getString(R.string.error_agregar_usuario));
                         }
                     }
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(getContext(), "Error Api",Toast.LENGTH_SHORT).show();
+                        mostrarError(getString(R.string.falla_api));
                     }
                 }) {
                     @Override
@@ -103,6 +103,14 @@ public class FragmentAgregarUsuario extends BaseVolleyFragment {
                 .show());
 
         return view;
+    }
+
+    public void mostrarError(String error) {
+        new AlertDialog.Builder(getContext())
+                .setIcon(android.R.drawable.ic_dialog_alert).setTitle(getString(R.string.precaucion))
+                .setMessage(error)
+                .setPositiveButton(getString(R.string.entendido), (dialogInterface, i) -> dialogInterface.cancel()).show()
+        ;
     }
 
     private boolean validarCampos() {

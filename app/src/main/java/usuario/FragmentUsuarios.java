@@ -54,6 +54,7 @@ public class FragmentUsuarios extends BaseVolleyFragment {
         btnBuscar = view.findViewById(R.id.btn_buscar_usuario);
         btnBuscar.setOnClickListener(view1 -> {
             if(validarCampos()) {
+                //PONER API BUSQUEDA POR USERNAME
                 Toast.makeText(getContext(), "Buscando...", Toast.LENGTH_LONG).show();
             }
         });
@@ -95,22 +96,16 @@ public class FragmentUsuarios extends BaseVolleyFragment {
                                 seleccionarImagenAleatoria(), username, email, password);
 
                         agregar(user);
-
                     }
                     mostrar();
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
             }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getContext(), "Error Api",Toast.LENGTH_SHORT).show();
-            }
-        }) {
+        }, error -> mostrarError(getString(R.string.falla_api))) {
             @Override
             protected Map<String, String> getParams() {
-                Map<String, String> parametros = new HashMap<String, String>();
+                Map<String, String> parametros = new HashMap<>();
                 parametros.put("id", "0");
 
                 return parametros;
@@ -128,6 +123,14 @@ public class FragmentUsuarios extends BaseVolleyFragment {
         listaUsuarios.add(new Usuario(5, seleccionarImagenAleatoria(),"user5", "correo5", "contraseña5"));
         listaUsuarios.add(new Usuario(6, seleccionarImagenAleatoria(),"user6", "correo6", "contraseña6"));
          */
+    }
+
+    public void mostrarError(String error) {
+        new AlertDialog.Builder(getContext())
+                .setIcon(android.R.drawable.ic_dialog_alert).setTitle(getString(R.string.precaucion))
+                .setMessage(error)
+                .setPositiveButton(getString(R.string.entendido), (dialogInterface, i) -> dialogInterface.cancel()).show()
+        ;
     }
 
     private void agregar(Usuario user) {
@@ -168,21 +171,16 @@ public class FragmentUsuarios extends BaseVolleyFragment {
     private boolean validarCampos() {
         cajaBuscar.setBackgroundResource(R.drawable.borde_cajas_login);
         boolean respuesta = true;
-        StringBuilder cadenaRespuesta = new StringBuilder();
+        String cadenaRespuesta = "";
 
         if(cajaBuscar.getText().toString().trim().isEmpty()) {
-            cadenaRespuesta.append("- Ingresa un nombre de usuario. \n\n");
+            cadenaRespuesta = (getString(R.string.ingresa_nombre_usuario)) + "\n\n";
             cajaBuscar.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
             respuesta = false;
         }
 
         if(!respuesta) {
-            new AlertDialog.Builder(requireContext())
-                    .setIcon(android.R.drawable.ic_dialog_alert).setTitle("Errores detectados")
-                    .setMessage(cadenaRespuesta)
-                    .setPositiveButton("Entendido", (dialogInterface, i) -> dialogInterface.cancel())
-                    .show()
-            ;
+            mostrarError(cadenaRespuesta);
         }
 
         return respuesta;
