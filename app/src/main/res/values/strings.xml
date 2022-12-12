@@ -46,7 +46,7 @@
     <string name="spinner_estado" translatable="false">Spinner para estado:</string>
 
     <string-array name="spiner_vacio">
-        <item>-- Selecciona un Estado --</item>
+        <item>-- Selecciona un Pais --</item>
     </string-array>
 
     <string-array name="spiner_argentina">

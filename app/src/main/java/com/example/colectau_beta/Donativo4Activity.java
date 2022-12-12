@@ -9,8 +9,24 @@ import android.widget.CheckBox;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.StringRequest;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
+
+import controlador.VolleySingleton;
+import usuario.FragmentUsuarios;
 
 @SuppressWarnings("unused")
 public class Donativo4Activity extends AppCompatActivity {
@@ -21,6 +37,9 @@ public class Donativo4Activity extends AppCompatActivity {
     private CheckBox checkBoxTerminos;
     private Bundle extras;
     private Intent intent;
+    private VolleySingleton volley;
+    private RequestQueue fRequestQueue;
+    private int plazos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +51,10 @@ public class Donativo4Activity extends AppCompatActivity {
         }
 
         extras = getIntent().getExtras();
+        plazos = 1;
+
+        volley = VolleySingleton.getInstance(getApplicationContext());
+        fRequestQueue = volley.getRequestQueue();
 
         RadioButton radioButtonNoPlazos = findViewById(R.id.radioButton_NoPlazos);
         radioButtonSiPlazos = findViewById(R.id.radioButton_SiPlazos);
@@ -76,7 +99,6 @@ public class Donativo4Activity extends AppCompatActivity {
         }
     }
 
-
     private boolean validarCampos() {
         spinnerPlazos.setBackgroundResource(R.drawable.borde_cajas_login);
         checkBoxTerminos.setBackgroundResource(R.drawable.sin_borde);
@@ -88,7 +110,10 @@ public class Donativo4Activity extends AppCompatActivity {
                 cadenaRespuesta.append(getString(R.string.seleccione_plazos)).append("\n\n");
                 spinnerPlazos.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
                 respuesta = false;
-            }
+            } else if(spinnerPlazos.getSelectedItemPosition() == 1) plazos = 3;
+            else if(spinnerPlazos.getSelectedItemPosition() == 2) plazos = 6;
+            else if(spinnerPlazos.getSelectedItemPosition() == 3) plazos = 9;
+            else if(spinnerPlazos.getSelectedItemPosition() == 4) plazos = 12;
         }
 
         if(!checkBoxTerminos.isChecked()) {
@@ -108,10 +133,6 @@ public class Donativo4Activity extends AppCompatActivity {
 
         return respuesta;
     }
-
-
-
-
 
     private void cargarDatosIntent(Intent intent) {
         intent.putExtra("nombre", extras.getString("nombre"));
@@ -141,12 +162,15 @@ public class Donativo4Activity extends AppCompatActivity {
         intent.putExtra("nombre_metodo_pago", extras.getString("nombre_metodo_pago"));
         intent.putExtra("numero_tarjeta", extras.getString("numero_tarjeta"));
         intent.putExtra("vencimiento", extras.getString("vencimiento"));
+
+        intent.putExtra("plazos", plazos);
     }
 
     //Para el boton cancelar
     public void atras(View view) {
         intent = new Intent(Donativo4Activity.this, Donativo3Activity.class);
         cargarDatosIntent(intent);
+        System.out.println(intent.getExtras().toString());
         startActivity(intent);
         finish();
     }
@@ -154,12 +178,46 @@ public class Donativo4Activity extends AppCompatActivity {
     //Para el boton cancelar
     public void enviar(View view) {
         if(validarCampos()) {
-            intent = new Intent(Donativo4Activity.this, ProcesandoDonativoActivity.class);
-            cargarDatosIntent(intent);
-            intent.putExtra("ventana_resultado", 1);
-            startActivity(intent);
-            finish();
+            String url = "";
+            StringRequest recuest = new StringRequest(Request.Method.POST, url, response -> {
+                System.out.println("---    -"+response);
+
+                if(response.equals("{\"exito\":true,\"mensaje\":\"Registro eliminado\"}")) {
+                    Toast.makeText(getApplicationContext(), "Donacion exitosa", Toast.LENGTH_LONG).show();
+                    intent = new Intent(Donativo4Activity.this, ProcesandoDonativoActivity.class);
+                    cargarDatosIntent(intent);
+                    intent.putExtra("ventana_resultado", 1);
+                } else {
+                    intent = new Intent(Donativo4Activity.this, ProcesandoDonativoActivity.class);
+                    cargarDatosIntent(intent);
+                    intent.putExtra("ventana_resultado", 0);
+                }
+                startActivity(intent);
+                finish();
+            }, error -> mostrarError(getString(R.string.falla_api))) {
+                @Override
+                protected Map<String, String> getParams() {
+                    Map<String, String> parametros = new HashMap<>();
+                    //parametros.put("iduser", cajaId.getText().toString());
+
+                    return parametros;
+                }
+            };
+            recuest.setTag(this);
+            if (fRequestQueue == null)
+                fRequestQueue = volley.getRequestQueue();
+            recuest.setRetryPolicy(new DefaultRetryPolicy(
+                    60000, 3, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+            fRequestQueue.add(recuest);
         }
+    }
+
+    public void mostrarError(String error) {
+        new AlertDialog.Builder(this)
+                .setIcon(android.R.drawable.ic_dialog_alert).setTitle(getString(R.string.precaucion))
+                .setMessage(error)
+                .setPositiveButton(getString(R.string.entendido), (dialogInterface, i) -> dialogInterface.cancel()).show()
+        ;
     }
 
     //Para el boton cancelar
