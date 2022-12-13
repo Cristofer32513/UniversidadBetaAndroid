@@ -374,5 +374,14 @@
     <string name="confirmacion_eliminar">¿Esta seguro de eliminar el usuario?</string>
     <string name="confirmacion_cancelar_donativo">¿Esta seguro de cancelar el donativo?</string>
     <string name="error_eliminar_usuario">Error al eliminar el Usuario</string>
+    <string name="id_donacion">id-donacion</string>
+    <string name="primer_apellido">Primer apellido:</string>
+    <string name="segundo_apellido">Segundo apellido</string>
+    <string name="monto_prometido">Monto prometido:</string>
+    <string name="monto_abonado">Monto abonado:</string>
+    <string name="fecha_abono">Fecha abono:</string>
+    <string name="fecha_limite">Fecha limite</string>
+    <string name="plazos2">Plazos:</string>
+    <string name="plazos_abonados">Plazos abonados:</string>
 
 </resources>

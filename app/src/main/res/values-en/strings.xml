@@ -322,4 +322,13 @@
     <string name="confirmacion_eliminar">Are you sure to delete the user?</string>
     <string name="confirmacion_cancelar_donativo">Are you sure to cancel the donation?</string>
     <string name="error_eliminar_usuario">Error deleting user</string>
+    <string name="id_donacion">id-donation</string>
+    <string name="primer_apellido">Last name:</string>
+    <string name="segundo_apellido">Mother\'s last name:</string>
+    <string name="monto_prometido">Promised amount:</string>
+    <string name="monto_abonado">Amount paid:</string>
+    <string name="fecha_abono">Subscription date:</string>
+    <string name="fecha_limite">Deadline:</string>
+    <string name="plazos2">Deadlines:</string>
+    <string name="plazos_abonados">Installments paid:</string>
 </resources>

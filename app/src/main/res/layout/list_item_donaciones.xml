@@ -3,14 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <LinearLayout
         android:id="@+id/linear_layout_usuarios"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:ignore="UselessParent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -23,7 +23,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:text="id-donacion"
+                android:text="@string/id_donacion"
                 android:textColor="@color/campos_recycler"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -75,7 +75,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:text="Primer apellido:"
+                android:text="@string/primer_apellido"
                 android:textColor="@color/campos_recycler"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -101,7 +101,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:text="Segundo apellido"
+                android:text="@string/segundo_apellido"
                 android:textColor="@color/campos_recycler"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -127,7 +127,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:text="Categoria:"
+                android:text="@string/categoria"
                 android:textColor="@color/campos_recycler"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -153,7 +153,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:text="Monto prometido:"
+                android:text="@string/monto_prometido"
                 android:textColor="@color/campos_recycler"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -179,7 +179,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:text="Monto abonado:"
+                android:text="@string/monto_abonado"
                 android:textColor="@color/campos_recycler"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -205,7 +205,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:text="Fecha abono:"
+                android:text="@string/fecha_abono"
                 android:textColor="@color/campos_recycler"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -231,7 +231,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:text="Fecha limite"
+                android:text="@string/fecha_limite"
                 android:textColor="@color/campos_recycler"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -257,7 +257,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:text="Forma de pago"
+                android:text="@string/metodo_de_pago"
                 android:textColor="@color/campos_recycler"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -283,7 +283,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:text="Plazos:"
+                android:text="@string/plazos2"
                 android:textColor="@color/campos_recycler"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -309,7 +309,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:text="Plazos abonados:"
+                android:text="@string/plazos_abonados"
                 android:textColor="@color/campos_recycler"
                 android:textSize="20sp"
                 android:textStyle="bold" />
