@@ -82,7 +82,7 @@ public class FragmentAgregarUsuario extends BaseVolleyFragment {
                     FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
                     transaction.replace(R.id.content_frame, nuevoFragmento);
                     transaction.commit();
-                    Objects.requireNonNull(((AppCompatActivity) requireActivity()).getSupportActionBar()).setTitle("Usuarios");
+                    Objects.requireNonNull(((AppCompatActivity) requireActivity()).getSupportActionBar()).setTitle(getString(R.string.usuarios));
                 })
                 .setNegativeButton(getString(R.string.no), (dialogInterface, i) -> dialogInterface.cancel())
                 .show());

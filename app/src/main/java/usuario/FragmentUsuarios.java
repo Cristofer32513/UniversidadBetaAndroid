@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -25,7 +26,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Random;
-
 import controlador.BaseVolleyFragment;
 import modelos.Usuario;
 
@@ -50,7 +50,36 @@ public class FragmentUsuarios extends BaseVolleyFragment {
         btnBuscar.setOnClickListener(view1 -> {
             if(validarCampos()) {
                 //PONER API BUSQUEDA POR USERNAME
-                Toast.makeText(getContext(), "Buscando...", Toast.LENGTH_LONG).show();
+                listaUsuarios.clear();
+                String url = "http://colectaubeta.atwebpages.com/api_consultas_usuarios_username.php";
+                StringRequest recuest = new StringRequest(Request.Method.POST, url, response -> {
+                    try {
+                        JSONArray json = new JSONArray(response);
+                        Toast.makeText(getContext(), json.length() + getString(R.string.coincidencias_encontradas), Toast.LENGTH_LONG).show();
+                        for (int i=0; i<json.length();i++) {
+                            JSONObject jsonData = json.getJSONObject(i);
+                            String iduser = jsonData.getString("iduser");
+                            String username = jsonData.getString("username");
+                            String password = jsonData.getString("passaword");
+                            String email = jsonData.getString("email");
+
+                            Usuario user = new Usuario(Integer.parseInt(iduser),
+                                    seleccionarImagenAleatoria(), username, email, password);
+
+                            agregar(user);
+                        }
+                        mostrar();
+                    } catch (JSONException e) {e.printStackTrace();}
+                }, error -> mostrarError(getString(R.string.falla_api))) {
+                    @Override
+                    protected Map<String, String> getParams() {
+                        Map<String, String> parametros = new HashMap<>();
+                        parametros.put("username", cajaBuscar.getText().toString());
+
+                        return parametros;
+                    }
+                };
+                addToQueue(recuest);
             }
         });
 
@@ -62,7 +91,7 @@ public class FragmentUsuarios extends BaseVolleyFragment {
             FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
             transaction.replace(R.id.content_frame, nuevoFragmento);
             transaction.commit();
-            Objects.requireNonNull(((AppCompatActivity) requireActivity()).getSupportActionBar()).setTitle("Agregar Usuario");
+            Objects.requireNonNull(((AppCompatActivity) requireActivity()).getSupportActionBar()).setTitle(getString(R.string.agregar_usuario));
         });
 
         return view;
@@ -71,9 +100,10 @@ public class FragmentUsuarios extends BaseVolleyFragment {
     private void LlenarLista() {
         listaUsuarios.clear();
         String url = "http://colectaubeta.atwebpages.com/api_consultas_usuarios.php";
-        StringRequest recuest = new StringRequest(Request.Method.POST, url, response -> {
+        StringRequest recuest = new StringRequest(Request.Method.GET, url, response -> {
             try {
                 JSONArray json = new JSONArray(response);
+                Toast.makeText(getContext(), json.length() + getString(R.string.usuarios_encontrados), Toast.LENGTH_LONG).show();
                 for (int i=0; i<json.length();i++) {
                     JSONObject jsonData = json.getJSONObject(i);
                     String iduser = jsonData.getString("iduser");
@@ -88,24 +118,15 @@ public class FragmentUsuarios extends BaseVolleyFragment {
                 }
                 mostrar();
             } catch (JSONException e) {e.printStackTrace();}
-        }, error -> mostrarError(getString(R.string.falla_api))) {
-            @Override
-            protected Map<String, String> getParams() {
-                Map<String, String> parametros = new HashMap<>();
-                parametros.put("id", "0");
-
-                return parametros;
-            }
-        };
+        }, error -> mostrarError(getString(R.string.falla_api)));
         addToQueue(recuest);
 
-        /*listaUsuarios.add(new Usuario(1, seleccionarImagenAleatoria(),"user1", "correo1", "contraseña1"));
-        listaUsuarios.add(new Usuario(2, seleccionarImagenAleatoria(),"user2", "correo2", "contraseña2"));
-        listaUsuarios.add(new Usuario(3, seleccionarImagenAleatoria(),"user3", "correo3", "contraseña1"));
-        listaUsuarios.add(new Usuario(4, seleccionarImagenAleatoria(),"user4", "correo4", "contraseña4"));
-        listaUsuarios.add(new Usuario(5, seleccionarImagenAleatoria(),"user5", "correo5", "contraseña5"));
-        listaUsuarios.add(new Usuario(6, seleccionarImagenAleatoria(),"user6", "correo6", "contraseña6"));
-         */
+        // listaUsuarios.add(new Usuario(1, seleccionarImagenAleatoria(),"user1", "correo1", "contraseña1"));
+        // listaUsuarios.add(new Usuario(2, seleccionarImagenAleatoria(),"user2", "correo2", "contraseña2"));
+        // listaUsuarios.add(new Usuario(3, seleccionarImagenAleatoria(),"user3", "correo3", "contraseña1"));
+        // listaUsuarios.add(new Usuario(4, seleccionarImagenAleatoria(),"user4", "correo4", "contraseña4"));
+        // listaUsuarios.add(new Usuario(5, seleccionarImagenAleatoria(),"user5", "correo5", "contraseña5"));
+        // listaUsuarios.add(new Usuario(6, seleccionarImagenAleatoria(),"user6", "correo6", "contraseña6"));
     }
 
     public void mostrarError(String error) {
@@ -136,7 +157,7 @@ public class FragmentUsuarios extends BaseVolleyFragment {
             FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
             transaction.replace(R.id.content_frame, nuevoFragmento);
             transaction.commit();
-            Objects.requireNonNull(((AppCompatActivity) requireActivity()).getSupportActionBar()).setTitle("Editar Usuario");
+            Objects.requireNonNull(((AppCompatActivity) requireActivity()).getSupportActionBar()).setTitle(R.string.editar_usuario);
         });
         recyclerViewUsuarios.setAdapter(adapter);
     }

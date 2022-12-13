@@ -97,7 +97,7 @@ public class FragmentEditarUsuario extends BaseVolleyFragment {
                     FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
                     transaction.replace(R.id.content_frame, nuevoFragmento);
                     transaction.commit();
-                    Objects.requireNonNull(((AppCompatActivity) requireActivity()).getSupportActionBar()).setTitle("Usuarios");
+                    Objects.requireNonNull(((AppCompatActivity) requireActivity()).getSupportActionBar()).setTitle(getString(R.string.usuarios));
                 })
                 .setNegativeButton(getString(R.string.no), (dialogInterface, i) -> dialogInterface.cancel())
                 .show());
@@ -119,7 +119,7 @@ public class FragmentEditarUsuario extends BaseVolleyFragment {
                                 intent.putExtra("resultado", getString(R.string.error_eliminar));
                                 //mostrarError(getString(R.string.error_eliminar_usuario));
                             }
-                            intent.putExtra("proceso", "Eliminando Usuario");
+                            intent.putExtra("proceso", getString(R.string.eliminando_usuario));
                             startActivity(intent);
 
                             Fragment nuevoFragmento = new FragmentUsuarios();

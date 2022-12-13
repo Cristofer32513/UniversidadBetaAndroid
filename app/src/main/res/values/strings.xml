@@ -392,5 +392,10 @@
     <string name="actualizar_usuario">Actualizando Usuario</string>
     <string name="usuario_eliminado">Usuario Eliminado Correctamente</string>
     <string name="error_eliminar">Error al Eliminar Usuario</string>
+    <string name="coincidencias_encontradas"> coincidencia(s) encontrada(s)</string>
+    <string name="agregar_usuario">Agregar Usuario</string>
+    <string name="usuarios_encontrados">" usuario(s) encontrado(s)"</string>
+    <string name="editar_usuario">Editar Usuario</string>
+    <string name="eliminando_usuario">Eliminando Usuario</string>
 
 </resources>
