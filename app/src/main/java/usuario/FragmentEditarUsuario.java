@@ -158,40 +158,56 @@ public class FragmentEditarUsuario extends BaseVolleyFragment {
         cajaCorreo.setBackgroundResource(R.drawable.borde_cajas_login);
         cajaPassword1.setBackgroundResource(R.drawable.borde_cajas_login);
         cajaPassword2.setBackgroundResource(R.drawable.borde_cajas_login);
+
+        cajaNombre.setText(cajaNombre.getText().toString().trim());
+        cajaNombre.setSelection(cajaNombre.getText().toString().length());
+        cajaCorreo.setText(cajaCorreo.getText().toString().trim());
+        cajaCorreo.setSelection(cajaCorreo.getText().toString().length());
+        cajaPassword1.setText(cajaPassword1.getText().toString().trim());
+        cajaPassword1.setSelection(cajaPassword1.getText().toString().length());
+        cajaPassword2.setText(cajaPassword2.getText().toString().trim());
+        cajaPassword2.setSelection(cajaPassword2.getText().toString().length());
+
         boolean respuesta = true;
         StringBuilder cadenaRespuesta = new StringBuilder();
         String regexCorreo = "^(([^<>()\\[\\]\\\\.,;:\\s@”]+(\\.[^<>()\\[\\]\\\\.,;:\\s@”]+)*)|(“.+”))@((\\[[0–9]{1,3}\\.[0–9]{1,3}\\.[0–9]{1,3}\\.[0–9]{1,3}])|(([a-zA-Z\\-0–9]+\\.)+[a-zA-Z]{2,}))$";
 
-        if(cajaNombre.getText().toString().trim().isEmpty()) {
+        if(cajaNombre.getText().toString().isEmpty()) {
             cadenaRespuesta.append(getString(R.string.ingresa_nombre_usuario)).append("\n\n");
             cajaNombre.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
             respuesta = false;
         }
 
-        if(cajaCorreo.getText().toString().trim().isEmpty()) {
+        if(cajaCorreo.getText().toString().isEmpty()) {
             cadenaRespuesta.append(getString(R.string.ingresa_email)).append("\n\n");
             cajaCorreo.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
             respuesta = false;
         } else {
-            if(!cajaCorreo.getText().toString().trim().matches(regexCorreo)) {
+            if(!cajaCorreo.getText().toString().matches(regexCorreo)) {
                 cadenaRespuesta.append(getString(R.string.email_no_valido)).append("\n\n");
                 cajaCorreo.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
                 respuesta = false;
             }
         }
 
-        if(cajaPassword1.getText().toString().trim().isEmpty()) {
+        if(cajaPassword1.getText().toString().isEmpty()) {
             cadenaRespuesta.append(getString(R.string.ingresa_contraseña)).append("\n\n");
             cajaPassword1.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
             respuesta = false;
+        } else if(cajaPassword1.getText().toString().contains(" ") ||
+                cajaPassword2.getText().toString().contains(" ")) {
+            cadenaRespuesta.append(getString(R.string.no_espacios)).append("\n\n");
+            cajaPassword1.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
+            cajaPassword2.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
+            respuesta = false;
         }
 
-        if(cajaPassword2.getText().toString().trim().isEmpty()) {
+        if(cajaPassword2.getText().toString().isEmpty()) {
             cadenaRespuesta.append(getString(R.string.confirma_contraseña)).append("\n\n");
             cajaPassword2.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
             respuesta = false;
         } else {
-            if(!cajaPassword2.getText().toString().trim().equals(cajaPassword1.getText().toString().trim())) {
+            if(!cajaPassword2.getText().toString().equals(cajaPassword1.getText().toString().trim())) {
                 cadenaRespuesta.append(getString(R.string.error_confirmacion_contraseña)).append("\n\n");
                 cajaPassword1.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
                 cajaPassword2.setBackgroundResource(R.drawable.borde_cajas_donativo_error);

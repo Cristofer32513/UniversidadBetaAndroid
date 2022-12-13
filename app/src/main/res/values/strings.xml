@@ -397,5 +397,6 @@
     <string name="usuarios_encontrados">" usuario(s) encontrado(s)"</string>
     <string name="editar_usuario">Editar Usuario</string>
     <string name="eliminando_usuario">Eliminando Usuario</string>
+    <string name="no_espacios">La contraseña no debe contener espacios</string>
 
 </resources>

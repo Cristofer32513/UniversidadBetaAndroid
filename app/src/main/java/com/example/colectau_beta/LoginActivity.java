@@ -94,7 +94,9 @@ public class LoginActivity extends AppCompatActivity {
         cajaUsuario.setBackgroundResource(R.drawable.borde_cajas_login);
         cajaPassword.setBackgroundResource(R.drawable.borde_cajas_login);
         cajaUsuario.setText(cajaUsuario.getText().toString().trim());
+        cajaUsuario.setSelection(cajaUsuario.getText().toString().length());
         cajaPassword.setText(cajaPassword.getText().toString().trim());
+        cajaPassword.setSelection(cajaPassword.getText().toString().length());
 
         boolean respuesta = true;
         StringBuilder cadenaRespuesta = new StringBuilder();
