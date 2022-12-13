@@ -12,9 +12,15 @@ import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.HashMap;
 import java.util.Map;
 import controlador.VolleySingleton;
+import modelos.Usuario;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -56,14 +62,26 @@ public class LoginActivity extends AppCompatActivity {
             String url = "http://colectaubeta.atwebpages.com/api_validar_user.php";
             StringRequest recuest = new StringRequest(Request.Method.POST, url, response -> {
                 System.out.println("---    -"+response);
-                //if(response.equals("{\"exito\":true,\"mensaje\":\"Entrale alv\"}")) {
-                if(true) {
-                    Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
-                    intent.putExtra("nombre_usuario", cajaUsuario.getText().toString());
-                    intent.putExtra("correo_usuario", "falta hacer esto!!");
-                    startActivity(intent);
-                    finish();
-                } else { mostrarError(getString(R.string.error_usuario_contraseña));}
+
+                if(response.isEmpty()) {
+                    mostrarError(getString(R.string.error_usuario_contraseña));
+                } else {
+                    try {
+                        JSONArray json = new JSONArray("["+response+"]");
+                        for (int i=0; i<json.length();i++) {
+                            JSONObject jsonData = json.getJSONObject(i);
+                            String username = jsonData.getString("username");
+                            String email = jsonData.getString("email");
+                            Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
+                            intent.putExtra("nombre_usuario", username);
+                            intent.putExtra("correo_usuario", email);
+                            startActivity(intent);
+                            finish();
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
             }, error -> mostrarError(getString(R.string.falla_api))) {
                 @Override
                 protected Map<String, String> getParams() {
