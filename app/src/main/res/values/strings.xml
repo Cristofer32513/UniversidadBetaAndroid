@@ -315,9 +315,9 @@
         <item>-- Selecciona una opcion --</item>
         <item>Nombre</item>
         <item>Primer apellido</item>
-        <item>Segundo spellido</item>
+        <item>Segundo apellido</item>
         <item>Categoria</item>
-        <item>Forma de pago</item>
+        <item>Metodo de pago</item>
     </string-array>
 
     <!--retroalimentacion-->
@@ -399,5 +399,9 @@
     <string name="editar_usuario">Editar Usuario</string>
     <string name="eliminando_usuario">Eliminando Usuario</string>
     <string name="no_espacios">La contraseña no debe contener espacios</string>
+    <string name="selecciona_filtro">- Selecciona un parametro de filtrado.</string>
+    <string name="selecciona_filtro2">- Seleciona filtro.</string>
+    <string name="ingresa_metodo_pago">- Ingresa un metodo de pago.</string>
+    <string name="ingresa_categoria">- Ingresa una categoria.</string>
 
 </resources>

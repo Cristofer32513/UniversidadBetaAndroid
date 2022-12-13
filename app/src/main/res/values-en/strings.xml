@@ -346,4 +346,17 @@
     <string name="editar_usuario">Edit User</string>
     <string name="eliminando_usuario">Deleting User</string>
     <string name="no_espacios">Password must not contain spaces</string>
+    <string name="selecciona_filtro">- Select a filter parameter.</string>
+    <string name="selecciona_filtro2">- Select filter.</string>
+    <string name="ingresa_metodo_pago">- Enter a payment method.</string>
+    <string name="ingresa_categoria">- Enter a category.</string>
+
+    <string-array name="spiner_buscar_donativo">
+        <item>-- Select an option --</item>
+        <item>Name</item>
+        <item>Last name</item>
+        <item>Mother\'s Last Name</item>
+        <item>Category</item>
+        <item>Payment method</item>
+    </string-array>
 </resources>
