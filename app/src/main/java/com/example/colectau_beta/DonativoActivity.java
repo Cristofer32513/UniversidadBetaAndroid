@@ -13,13 +13,8 @@ import android.widget.Spinner;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 
 import java.util.Calendar;
-import java.util.Objects;
-
-import usuario.FragmentUsuarios;
 
 public class DonativoActivity extends AppCompatActivity {
 
@@ -135,69 +130,82 @@ public class DonativoActivity extends AppCompatActivity {
         cajaCorreo.setBackgroundResource(R.drawable.borde_cajas_login);
         spinnerCategoria.setBackgroundResource(R.drawable.borde_cajas_login);
         btnFecha.setBackgroundResource(R.drawable.borde_cajas_login);
+
+        cajaNombre.setText(cajaNombre.getText().toString().trim());
+        cajaNombre.setSelection(cajaNombre.getText().toString().length());
+        cajaPrimerAp.setText(cajaPrimerAp.getText().toString().trim());
+        cajaPrimerAp.setSelection(cajaPrimerAp.getText().toString().length());
+        cajaSegundoAp.setText(cajaSegundoAp.getText().toString().trim());
+        cajaSegundoAp.setSelection(cajaSegundoAp.getText().toString().length());
+        cajaTelefono.setText(cajaTelefono.getText().toString().trim());
+        cajaTelefono.setSelection(cajaTelefono.getText().toString().length());
+        cajaCorreo.setText(cajaCorreo.getText().toString().trim());
+        cajaCorreo.setSelection(cajaCorreo.getText().toString().length());
+
+
         boolean respuesta = true;
         StringBuilder cadenaRespuesta = new StringBuilder();
 
         String regexCorreo = "^(([^<>()\\[\\]\\\\.,;:\\s@”]+(\\.[^<>()\\[\\]\\\\.,;:\\s@”]+)*)|(“.+”))@((\\[[0–9]{1,3}\\.[0–9]{1,3}\\.[0–9]{1,3}\\.[0–9]{1,3}])|(([a-zA-Z\\-0–9]+\\.)+[a-zA-Z]{2,}))$";
 
-        if(cajaNombre.getText().toString().trim().isEmpty()) {
+        if(cajaNombre.getText().toString().isEmpty()) {
             cadenaRespuesta.append(getString(R.string.ingresa_un_nombre)).append("\n\n");
             cajaNombre.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
             respuesta = false;
         } else {
-            if(!cajaNombre.getText().toString().trim().matches(getString(R.string.regex_solo_letras))) {
+            if(!cajaNombre.getText().toString().matches(getString(R.string.regex_solo_letras))) {
                 cadenaRespuesta.append(getString(R.string.nombre_solo_letras)).append("\n\n");
                 cajaNombre.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
                 respuesta = false;
             }
         }
 
-        if(cajaPrimerAp.getText().toString().trim().isEmpty()) {
+        if(cajaPrimerAp.getText().toString().isEmpty()) {
             cadenaRespuesta.append(getString(R.string.ingresa_primer_apellido)).append("\n\n");
             cajaPrimerAp.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
             respuesta = false;
         } else {
-            if(!cajaPrimerAp.getText().toString().trim().matches(getString(R.string.regex_solo_letras))) {
+            if(!cajaPrimerAp.getText().toString().matches(getString(R.string.regex_solo_letras))) {
                 cadenaRespuesta.append(getString(R.string.primer_ap_solo_letras)).append("\n\n");
                 cajaPrimerAp.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
                 respuesta = false;
             }
         }
 
-        if(cajaSegundoAp.getText().toString().trim().isEmpty()) {
+        if(cajaSegundoAp.getText().toString().isEmpty()) {
             cadenaRespuesta.append(getString(R.string.ingresa_segundo_ap)).append("\n\n");
             cajaSegundoAp.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
             respuesta = false;
         } else {
-            if(!cajaSegundoAp.getText().toString().trim().matches(getString(R.string.regex_solo_letras))) {
+            if(!cajaSegundoAp.getText().toString().matches(getString(R.string.regex_solo_letras))) {
                 cadenaRespuesta.append(getString(R.string.segundo_ap_solo_letras)).append("\n\n");
                 cajaSegundoAp.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
                 respuesta = false;
             }
         }
 
-        if(cajaTelefono.getText().toString().trim().isEmpty()) {
+        if(cajaTelefono.getText().toString().isEmpty()) {
             cadenaRespuesta.append(getString(R.string.ingresa_numero_telefono)).append("\n\n");
             cajaTelefono.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
             respuesta = false;
         } else {
-            if(!cajaTelefono.getText().toString().trim().matches(getString(R.string.regex_solo_numeros))) {
+            if(!cajaTelefono.getText().toString().matches(getString(R.string.regex_solo_numeros))) {
                 cadenaRespuesta.append(getString(R.string.telefono_solo_numero)).append("\n\n");
                 cajaTelefono.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
                 respuesta = false;
-            } else if(cajaTelefono.getText().toString().trim().length() != 10) {
+            } else if(cajaTelefono.getText().toString().length() != 10) {
                 cadenaRespuesta.append(getString(R.string.telefono_10_digitos)).append("\n\n");
                 cajaTelefono.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
                 respuesta = false;
             }
         }
 
-        if(cajaCorreo.getText().toString().trim().isEmpty()) {
+        if(cajaCorreo.getText().toString().isEmpty()) {
             cadenaRespuesta.append(getString(R.string.ingresa_email)).append("\n\n");
             cajaCorreo.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
             respuesta = false;
         } else {
-            if(!cajaCorreo.getText().toString().trim().matches(regexCorreo)) {
+            if(!cajaCorreo.getText().toString().matches(regexCorreo)) {
                 cadenaRespuesta.append(getString(R.string.email_no_valido)).append("\n\n");
                 cajaCorreo.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
                 respuesta = false;

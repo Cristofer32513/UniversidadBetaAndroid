@@ -181,55 +181,68 @@ public class Donativo2Activity extends AppCompatActivity {
         spinnerEstadoEcuador.setBackgroundResource(R.drawable.borde_cajas_login);
         spinnerEstadoMexico.setBackgroundResource(R.drawable.borde_cajas_login);
         spinnerEstadoVenezuela.setBackgroundResource(R.drawable.borde_cajas_login);
+
+
+
+        cajaCalle.setText(cajaCalle.getText().toString().trim());
+        cajaCalle.setSelection(cajaCalle.getText().toString().length());
+        cajaColonia.setText(cajaColonia.getText().toString().trim());
+        cajaColonia.setSelection(cajaColonia.getText().toString().length());
+        cajaMunicipio.setText(cajaMunicipio.getText().toString().trim());
+        cajaMunicipio.setSelection(cajaMunicipio.getText().toString().length());
+        cajaCP.setText(cajaCP.getText().toString().trim());
+        cajaCP.setSelection(cajaCP.getText().toString().length());
+
+
         boolean respuesta = true;
         StringBuilder cadenaRespuesta = new StringBuilder();
 
-        if(cajaCalle.getText().toString().trim().isEmpty()) {
+        if(cajaCalle.getText().toString().isEmpty()) {
             cadenaRespuesta.append(getString(R.string.ingresa_calle)).append("\n\n");
             cajaCalle.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
             respuesta = false;
         } else {
-            if(!cajaCalle.getText().toString().trim().matches(getString(R.string.regex_solo_letras))) {
+            if(!cajaCalle.getText().toString().matches(getString(R.string.regex_solo_letras_con_numeros))) {
                 cadenaRespuesta.append(getString(R.string.calle_solo_letras)).append("\n\n");
                 cajaCalle.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
                 respuesta = false;
             }
         }
 
-        if(cajaColonia.getText().toString().trim().isEmpty()) {
+        if(cajaColonia.getText().toString().isEmpty()) {
             cadenaRespuesta.append(getString(R.string.ingresa_colonia)).append("\n\n");
             cajaColonia.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
             respuesta = false;
         } else {
-            if(!cajaColonia.getText().toString().trim().matches(getString(R.string.regex_solo_letras))) {
+            if(!cajaColonia.getText().toString().matches(getString(R.string.regex_solo_letras))) {
                 cadenaRespuesta.append(getString(R.string.colonia_solo_letras)).append("\n\n");
                 cajaColonia.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
                 respuesta = false;
             }
         }
 
-        if(cajaMunicipio.getText().toString().trim().isEmpty()) {
+        if(cajaMunicipio.getText().toString().isEmpty()) {
             cadenaRespuesta.append(getString(R.string.ingresa_municipio)).append("\n\n");
             cajaMunicipio.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
             respuesta = false;
         } else {
-            if(!cajaMunicipio.getText().toString().trim().matches(getString(R.string.regex_solo_letras))) {
+            if(!cajaMunicipio.getText().toString().matches(getString(R.string.regex_solo_letras))) {
                 cadenaRespuesta.append(getString(R.string.municipio_solo_letras)).append("\n\n");
                 cajaMunicipio.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
                 respuesta = false;
             }
         }
 
-        if(cajaCP.getText().toString().trim().isEmpty()) {
+        if(cajaCP.getText().toString().isEmpty()) {
             cadenaRespuesta.append(getString(R.string.ingresa_cp)).append("\n\n");
             cajaCP.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
             respuesta = false;
         } else {
-            if(!cajaCP.getText().toString().trim().matches(getString(R.string.regex_solo_numeros))) {
+            if(!cajaCP.getText().toString().matches(getString(R.string.regex_solo_numeros))) {
                 cadenaRespuesta.append(getString(R.string.cp_solo_digitos)).append("\n\n");
                 cajaCP.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
                 respuesta = false;
-            } else if(cajaCP.getText().toString().trim().length() != 5) {
+            } else if(cajaCP.getText().toString().length() != 5) {
                 cadenaRespuesta.append(getString(R.string.cp_5_digitos)).append("\n\n");
                 cajaCP.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
                 respuesta = false;

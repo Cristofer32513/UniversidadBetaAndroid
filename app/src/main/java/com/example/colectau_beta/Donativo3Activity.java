@@ -1,18 +1,16 @@
 package com.example.colectau_beta;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.DialogInterface;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class Donativo3Activity extends AppCompatActivity {
 
@@ -21,6 +19,7 @@ public class Donativo3Activity extends AppCompatActivity {
     private Bundle extras;
     private Intent intent;
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,20 +37,17 @@ public class Donativo3Activity extends AppCompatActivity {
         spinnerMetodoPago = findViewById(R.id.spinner_MetodoDePago);
         cajaNumeroTarjeta = findViewById(R.id.editText_NumeroTarjeta);
         cajaVencimiento = findViewById(R.id.editText_Vencimiento);
-        cajaVencimiento.setOnKeyListener(new View.OnKeyListener() {
-            @Override
-            public boolean onKey(View view, int i, KeyEvent keyEvent) {
-                int longitud = cajaVencimiento.getText().toString().trim().length();
-                String text = cajaVencimiento.getText().toString().trim();
-                if(i != 67) {
-                    if(longitud == 2) {
-                        cajaVencimiento.setText( text + "/");
-                        cajaVencimiento.setSelection(cajaVencimiento.getText().toString().trim().length());
-                    }
+        cajaVencimiento.setOnKeyListener((view, i, keyEvent) -> {
+            int longitud = cajaVencimiento.getText().toString().trim().length();
+            String text = cajaVencimiento.getText().toString().trim();
+            if(i != 67) {
+                if(longitud == 2) {
+                    cajaVencimiento.setText( text + "/");
+                    cajaVencimiento.setSelection(cajaVencimiento.getText().toString().trim().length());
                 }
-
-                return false;
             }
+
+            return false;
         });
 
         ArrayAdapter<CharSequence> adapterCantidad = ArrayAdapter.createFromResource(this, R.array.spiner_cantidad, R.layout.spinner_items_style);
@@ -102,6 +98,14 @@ public class Donativo3Activity extends AppCompatActivity {
         spinnerMetodoPago.setBackgroundResource(R.drawable.borde_cajas_login);
         cajaNumeroTarjeta.setBackgroundResource(R.drawable.borde_cajas_login);
         cajaVencimiento.setBackgroundResource(R.drawable.borde_cajas_login);
+
+        cajaCantidad.setText(cajaCantidad.getText().toString().trim());
+        cajaCantidad.setSelection(cajaCantidad.getText().toString().length());
+        cajaNumeroTarjeta.setText(cajaNumeroTarjeta.getText().toString().trim());
+        cajaNumeroTarjeta.setSelection(cajaNumeroTarjeta.getText().toString().length());
+        cajaVencimiento.setText(cajaVencimiento.getText().toString().trim());
+        cajaVencimiento.setSelection(cajaVencimiento.getText().toString().length());
+
         boolean respuesta = true;
         StringBuilder cadenaRespuesta = new StringBuilder();
 
@@ -110,19 +114,19 @@ public class Donativo3Activity extends AppCompatActivity {
             spinnerCantidad.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
             respuesta = false;
         } else if(spinnerCantidad.getSelectedItemPosition() == 9) {
-             if(cajaCantidad.getText().toString().trim().isEmpty()) {
+             if(cajaCantidad.getText().toString().isEmpty()) {
                 cadenaRespuesta.append(getString(R.string.ingresa_cantidad)).append("\n\n");
                 cajaCantidad.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
                 respuesta = false;
-            } else if(!cajaCantidad.getText().toString().trim().matches(getString(R.string.regex_solo_numeros))) {
+            } else if(!cajaCantidad.getText().toString().matches(getString(R.string.regex_solo_numeros))) {
                  cadenaRespuesta.append(getString(R.string.cantidad_solo_digitos)).append("\n\n");
                  cajaCantidad.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
                  respuesta = false;
-             } else if(Integer.parseInt(cajaCantidad.getText().toString().trim()) < 10) {
+             } else if(Integer.parseInt(cajaCantidad.getText().toString()) < 10) {
                 cadenaRespuesta.append(getString(R.string.cantidad_minima)).append("\n\n");
                 cajaCantidad.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
                 respuesta = false;
-            } else if(Integer.parseInt(cajaCantidad.getText().toString().trim()) > 1000000) {
+            } else if(Integer.parseInt(cajaCantidad.getText().toString()) > 1000000) {
                 cadenaRespuesta.append(getString(R.string.cantidad_maxima)).append("\n\n");
                 cajaCantidad.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
                 respuesta = false;
@@ -141,12 +145,12 @@ public class Donativo3Activity extends AppCompatActivity {
             respuesta = false;
         }
 
-        if(cajaNumeroTarjeta.getText().toString().trim().isEmpty()) {
+        if(cajaNumeroTarjeta.getText().toString().isEmpty()) {
             cadenaRespuesta.append(getString(R.string.ingrese_num_tarjeta)).append("\n\n");
             cajaNumeroTarjeta.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
             respuesta = false;
         } else {
-            if(!cajaNumeroTarjeta.getText().toString().trim().matches(getString(R.string.regex_solo_numeros))) {
+            if(!cajaNumeroTarjeta.getText().toString().matches(getString(R.string.regex_solo_numeros))) {
                 cadenaRespuesta.append(getString(R.string.tarjeta_solo_digitos)).append("\n\n");
                 cajaNumeroTarjeta.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
                 respuesta = false;
@@ -157,12 +161,13 @@ public class Donativo3Activity extends AppCompatActivity {
             }
         }
 
-        if(cajaVencimiento.getText().toString().trim().isEmpty()) {
+        if(cajaVencimiento.getText().toString().isEmpty()) {
             cadenaRespuesta.append(getString(R.string.ingresa_vencimiento)).append("\n\n");
             cajaVencimiento.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
             respuesta = false;
         } else {
-            if(!cajaVencimiento.getText().toString().trim().matches(getString(R.string.regex_vencimiento))) {
+            if(!cajaVencimiento.getText().toString().matches(getString(R.string.regex_vencimiento)) ||
+                    Integer.parseInt(cajaVencimiento.getText().toString().substring(0, 2)) > 12) {
                 cadenaRespuesta.append(getString(R.string.vencimiento_invalido)).append("\n\n");
                 cajaVencimiento.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
                 respuesta = false;

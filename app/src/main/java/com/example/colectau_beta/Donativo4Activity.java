@@ -13,8 +13,6 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -23,10 +21,8 @@ import com.android.volley.toolbox.StringRequest;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 import controlador.VolleySingleton;
-import usuario.FragmentUsuarios;
 
 @SuppressWarnings("unused")
 public class Donativo4Activity extends AppCompatActivity {
@@ -218,22 +214,21 @@ public class Donativo4Activity extends AppCompatActivity {
                         parametros.put("promet", extras.getString("cantidad"));
                     } else {
                         //Checar formato cadena
-                        parametros.put("promet", extras.getString("cantidad_spinner").substring(2, extras.getString("cantidad_spinner").length()));
+                        parametros.put("promet", extras.getString("cantidad_spinner").substring(2));
                     }
                     parametros.put("abono", "10000");
                     parametros.put("pago", extras.getString("nombre_metodo_pago"));
                     parametros.put("plazos", plazos+"");
 
-                    System.out.println(parametros.toString());
+                    System.out.println(parametros);
 
                     return parametros;
                 }
             };
             recuest.setTag(this);
-            if (fRequestQueue == null)
-                fRequestQueue = volley.getRequestQueue();
-            recuest.setRetryPolicy(new DefaultRetryPolicy(
-                    60000, 3, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+            if (fRequestQueue == null) fRequestQueue = volley.getRequestQueue();
+            recuest.setRetryPolicy(new DefaultRetryPolicy(60000, 3,
+                    DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
             fRequestQueue.add(recuest);
         }
     }
