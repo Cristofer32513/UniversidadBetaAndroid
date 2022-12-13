@@ -1,5 +1,8 @@
 package modelos;
 
+import androidx.annotation.NonNull;
+
+@SuppressWarnings("unused")
 public class Donacion {
     private int idDonacion;
     private String nombreDonador;
@@ -141,6 +144,7 @@ public class Donacion {
         this.plazosAbonados = plazosAbonados;
     }
 
+    @NonNull
     @Override
     public String toString() {
         return "Donacion [" + "idDonacion=" + idDonacion + ", nombreDonador='" + nombreDonador +

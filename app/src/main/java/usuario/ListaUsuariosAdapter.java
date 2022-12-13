@@ -19,9 +19,7 @@ public class ListaUsuariosAdapter extends RecyclerView.Adapter<ListaUsuariosAdap
     ArrayList<Usuario> listaUsuarios;
     private View.OnClickListener listener;
 
-    public ListaUsuariosAdapter(ArrayList<Usuario> listaUsuarios) {
-        this.listaUsuarios = listaUsuarios;
-    }
+    public ListaUsuariosAdapter(ArrayList<Usuario> listaUsuarios) {this.listaUsuarios = listaUsuarios;}
 
     @NonNull
     @Override
@@ -58,10 +56,10 @@ public class ListaUsuariosAdapter extends RecyclerView.Adapter<ListaUsuariosAdap
 
         public UsuariosViewHolder(View itemView) {
             super(itemView);
-            idUsuario = (TextView) itemView.findViewById(R.id.rec_id_usuario);
-            image = (CircleImageView) itemView.findViewById(R.id.rec_imagen_usuario);
-            nombreUsuario = (TextView) itemView.findViewById(R.id.rec_nombre_usuario);
-            correo = (TextView) itemView.findViewById(R.id.rec_correo);
+            idUsuario = itemView.findViewById(R.id.rec_id_usuario);
+            image = itemView.findViewById(R.id.rec_imagen_usuario);
+            nombreUsuario = itemView.findViewById(R.id.rec_nombre_usuario);
+            correo = itemView.findViewById(R.id.rec_correo);
         }
     }
 }

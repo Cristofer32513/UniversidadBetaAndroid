@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -27,30 +26,27 @@ public class FragmentEditarUsuario extends BaseVolleyFragment {
     Button btnGuardar, btnCancelar, btnEliminar;
     Bundle args;
 
-    public FragmentEditarUsuario() {
-    }
+    public FragmentEditarUsuario() {}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.section_fragment_editar_usuario, container, false);
 
         args = new Bundle();
+        assert getArguments() != null;
         args.putString("nombre_usuario", getArguments().getString("correo_usuario"));
         args.putString("correo_usuario", getArguments().getString("correo_usuario"));
-
         cajaId = view.findViewById(R.id.editText_Id_EditarUsuario);
         cajaNombre = view.findViewById(R.id.editText_Nombre_EditarUsuario);
         cajaCorreo = view.findViewById(R.id.editText_Correo_EditarUsuario);
         cajaPassword1 = view.findViewById(R.id.editText_Contraseña1_EditarUsuario);
         cajaPassword2 = view.findViewById(R.id.editText_Contraseña2_EditarUsuario);
-
         assert getArguments() != null;
         cajaId.setText(getArguments().getString("id", "NA"));
         cajaNombre.setText(getArguments().getString("nombre", "NA"));
         cajaCorreo.setText(getArguments().getString("correo", "NA"));
         cajaPassword1.setText(getArguments().getString("contraseña", "NA"));
         cajaPassword2.setText(getArguments().getString("contraseña", "NA"));
-
         btnGuardar = view.findViewById(R.id.button_Guardar_EditarUsuario);
         btnCancelar = view.findViewById(R.id.button_Cancelar_EditarUsuario);
         btnEliminar = view.findViewById(R.id.button_Eliminar_EditarUsuario);
@@ -63,13 +59,13 @@ public class FragmentEditarUsuario extends BaseVolleyFragment {
                     if(response.equals("{\"exito\":true,\"mensaje\":\"Modificacion correcta\"}")) {
                         //Toast.makeText(getContext(), "Usuario Actualizado", Toast.LENGTH_LONG).show();
                         intent.putExtra("ventana_resultado", 1);
-                        intent.putExtra("resultado", "Usuario Actualizado Correctamente");
+                        intent.putExtra("resultado", getString(R.string.usuario_actualizado));
                     } else {
                         intent.putExtra("ventana_resultado", 0);
-                        intent.putExtra("resultado", "Error al Actualizar Usuario");
+                        intent.putExtra("resultado", getString(R.string.error_actualizar));
                         //mostrarError(getString(R.string.error_actualizar_usuario));
                     }
-                    intent.putExtra("proceso", "Actualizando Usuario");
+                    intent.putExtra("proceso", getString(R.string.actualizar_usuario));
                     startActivity(intent);
 
                     Fragment nuevoFragmento = new FragmentUsuarios();
@@ -77,7 +73,7 @@ public class FragmentEditarUsuario extends BaseVolleyFragment {
                     FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
                     transaction.replace(R.id.content_frame, nuevoFragmento);
                     transaction.commit();
-                    Objects.requireNonNull(((AppCompatActivity) requireActivity()).getSupportActionBar()).setTitle("Usuarios");
+                    Objects.requireNonNull(((AppCompatActivity) requireActivity()).getSupportActionBar()).setTitle(getString(R.string.usuarios));
                 }, error -> mostrarError(getString(R.string.falla_api))) {
                     @Override
                     protected Map<String, String> getParams() {
@@ -117,10 +113,10 @@ public class FragmentEditarUsuario extends BaseVolleyFragment {
                             if(response.equals("{\"exito\":true,\"mensaje\":\"Registro eliminado\"}")) {
                                 //Toast.makeText(getContext(), "Usuario Eliminado", Toast.LENGTH_LONG).show();
                                 intent.putExtra("ventana_resultado", 1);
-                                intent.putExtra("resultado", "Usuario Eliminado Correctamente");
+                                intent.putExtra("resultado", getString(R.string.usuario_eliminado));
                             } else {
                                 intent.putExtra("ventana_resultado", 0);
-                                intent.putExtra("resultado", "Error al Eliminar Usuario");
+                                intent.putExtra("resultado", getString(R.string.error_eliminar));
                                 //mostrarError(getString(R.string.error_eliminar_usuario));
                             }
                             intent.putExtra("proceso", "Eliminando Usuario");
@@ -130,7 +126,7 @@ public class FragmentEditarUsuario extends BaseVolleyFragment {
                             FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
                             transaction.replace(R.id.content_frame, nuevoFragmento);
                             transaction.commit();
-                            Objects.requireNonNull(((AppCompatActivity) requireActivity()).getSupportActionBar()).setTitle("Usuarios");
+                            Objects.requireNonNull(((AppCompatActivity) requireActivity()).getSupportActionBar()).setTitle(getString(R.string.usuarios));
                         }, error -> mostrarError(getString(R.string.falla_api))) {
                             @Override
                             protected Map<String, String> getParams() {
@@ -164,7 +160,6 @@ public class FragmentEditarUsuario extends BaseVolleyFragment {
         cajaPassword2.setBackgroundResource(R.drawable.borde_cajas_login);
         boolean respuesta = true;
         StringBuilder cadenaRespuesta = new StringBuilder();
-
         String regexCorreo = "^(([^<>()\\[\\]\\\\.,;:\\s@”]+(\\.[^<>()\\[\\]\\\\.,;:\\s@”]+)*)|(“.+”))@((\\[[0–9]{1,3}\\.[0–9]{1,3}\\.[0–9]{1,3}\\.[0–9]{1,3}])|(([a-zA-Z\\-0–9]+\\.)+[a-zA-Z]{2,}))$";
 
         if(cajaNombre.getText().toString().trim().isEmpty()) {

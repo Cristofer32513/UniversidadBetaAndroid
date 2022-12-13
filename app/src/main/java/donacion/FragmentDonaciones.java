@@ -25,8 +25,7 @@ public class FragmentDonaciones extends BaseVolleyFragment {
     ArrayList<Donacion> listaDonaciones;
     RecyclerView recyclerViewDonaciones;
 
-    public FragmentDonaciones() {
-    }
+    public FragmentDonaciones() {}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -45,12 +44,9 @@ public class FragmentDonaciones extends BaseVolleyFragment {
         });
 
         listaDonaciones = new ArrayList<>();
-
-        recyclerViewDonaciones = (RecyclerView) view.findViewById(R.id.recyclerview_donativos);
+        recyclerViewDonaciones = view.findViewById(R.id.recyclerview_donativos);
         recyclerViewDonaciones.setLayoutManager(new LinearLayoutManager(getContext()));
-
         LlenarLista();
-
         ListaDonacionesAdapter adapter=new ListaDonacionesAdapter(listaDonaciones);
         recyclerViewDonaciones.setAdapter(adapter);
 
@@ -86,5 +82,4 @@ public class FragmentDonaciones extends BaseVolleyFragment {
 
         return respuesta;
     }
-
 }

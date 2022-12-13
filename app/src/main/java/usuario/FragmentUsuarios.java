@@ -7,32 +7,25 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
-
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.colectau_beta.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Random;
+
 import controlador.BaseVolleyFragment;
 import modelos.Usuario;
 
@@ -50,6 +43,8 @@ public class FragmentUsuarios extends BaseVolleyFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.section_fragment_usuarios, container, false);
 
+        listaUsuarios = new ArrayList<>();
+        recyclerViewUsuarios = view.findViewById(R.id.recyclerview_usuarios);
         cajaBuscar = view.findViewById(R.id.caja_busqueda_usuario);
         btnBuscar = view.findViewById(R.id.btn_buscar_usuario);
         btnBuscar.setOnClickListener(view1 -> {
@@ -58,10 +53,6 @@ public class FragmentUsuarios extends BaseVolleyFragment {
                 Toast.makeText(getContext(), "Buscando...", Toast.LENGTH_LONG).show();
             }
         });
-
-        listaUsuarios = new ArrayList<>();
-
-        recyclerViewUsuarios = (RecyclerView) view.findViewById(R.id.recyclerview_usuarios);
 
         LlenarLista();
 
@@ -80,28 +71,23 @@ public class FragmentUsuarios extends BaseVolleyFragment {
     private void LlenarLista() {
         listaUsuarios.clear();
         String url = "http://colectaubeta.atwebpages.com/api_consultas_usuarios.php";
-        StringRequest recuest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                try {
-                    JSONArray json = new JSONArray(response);
-                    for (int i=0; i<json.length();i++) {
-                        JSONObject jsonData = json.getJSONObject(i);
-                        String iduser = jsonData.getString("iduser");
-                        String username = jsonData.getString("username");
-                        String password = jsonData.getString("passaword");
-                        String email = jsonData.getString("email");
+        StringRequest recuest = new StringRequest(Request.Method.POST, url, response -> {
+            try {
+                JSONArray json = new JSONArray(response);
+                for (int i=0; i<json.length();i++) {
+                    JSONObject jsonData = json.getJSONObject(i);
+                    String iduser = jsonData.getString("iduser");
+                    String username = jsonData.getString("username");
+                    String password = jsonData.getString("passaword");
+                    String email = jsonData.getString("email");
 
-                        Usuario user = new Usuario(Integer.parseInt(iduser),
-                                seleccionarImagenAleatoria(), username, email, password);
+                    Usuario user = new Usuario(Integer.parseInt(iduser),
+                            seleccionarImagenAleatoria(), username, email, password);
 
-                        agregar(user);
-                    }
-                    mostrar();
-                } catch (JSONException e) {
-                    e.printStackTrace();
+                    agregar(user);
                 }
-            }
+                mostrar();
+            } catch (JSONException e) {e.printStackTrace();}
         }, error -> mostrarError(getString(R.string.falla_api))) {
             @Override
             protected Map<String, String> getParams() {
@@ -113,9 +99,6 @@ public class FragmentUsuarios extends BaseVolleyFragment {
         };
         addToQueue(recuest);
 
-
-
-
         /*listaUsuarios.add(new Usuario(1, seleccionarImagenAleatoria(),"user1", "correo1", "contraseña1"));
         listaUsuarios.add(new Usuario(2, seleccionarImagenAleatoria(),"user2", "correo2", "contraseña2"));
         listaUsuarios.add(new Usuario(3, seleccionarImagenAleatoria(),"user3", "correo3", "contraseña1"));
@@ -126,7 +109,7 @@ public class FragmentUsuarios extends BaseVolleyFragment {
     }
 
     public void mostrarError(String error) {
-        new AlertDialog.Builder(getContext())
+        new AlertDialog.Builder(requireContext())
                 .setIcon(android.R.drawable.ic_dialog_alert).setTitle(getString(R.string.precaucion))
                 .setMessage(error)
                 .setPositiveButton(getString(R.string.entendido), (dialogInterface, i) -> dialogInterface.cancel()).show()
@@ -185,5 +168,4 @@ public class FragmentUsuarios extends BaseVolleyFragment {
 
         return respuesta;
     }
-
 }

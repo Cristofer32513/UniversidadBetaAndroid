@@ -5,18 +5,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.colectau_beta.R;
-
 import java.util.ArrayList;
-
-import de.hdodenhof.circleimageview.CircleImageView;
 import modelos.Donacion;
-import modelos.Usuario;
 
+@SuppressWarnings("unused")
 public class ListaDonacionesAdapter extends RecyclerView.Adapter<ListaDonacionesAdapter.DonacionesViewHolder> implements View.OnClickListener {
 
     ArrayList<Donacion> listaDonaciones;
@@ -68,18 +63,18 @@ public class ListaDonacionesAdapter extends RecyclerView.Adapter<ListaDonaciones
 
         public DonacionesViewHolder(View itemView) {
             super(itemView);
-            idDonacion = (TextView) itemView.findViewById(R.id.rec_id_donacion);
-            nombre = (TextView) itemView.findViewById(R.id.rec_nombre_donacion);
-            primerAp = (TextView) itemView.findViewById(R.id.rec_primerAp_donacion);
-            segundoAp = (TextView) itemView.findViewById(R.id.rec_segundoAp_donacion);
-            categoria = (TextView) itemView.findViewById(R.id.rec_categoria_donacion);
-            prometido = (TextView) itemView.findViewById(R.id.rec_prometido_donacion);
-            abonado = (TextView) itemView.findViewById(R.id.rec_abonado_donacion);
-            fechaAbono = (TextView) itemView.findViewById(R.id.rec_fechaAbono_donacion);
-            fechaLimite = (TextView) itemView.findViewById(R.id.rec_fechaLimite_donacion);
-            formaPago = (TextView) itemView.findViewById(R.id.rec_formaDePago_donacion);
-            plazos = (TextView) itemView.findViewById(R.id.rec_plazos_donacion);
-            plazosAbonados = (TextView) itemView.findViewById(R.id.rec_plazosAbonados_donacion);
+            idDonacion = itemView.findViewById(R.id.rec_id_donacion);
+            nombre = itemView.findViewById(R.id.rec_nombre_donacion);
+            primerAp = itemView.findViewById(R.id.rec_primerAp_donacion);
+            segundoAp = itemView.findViewById(R.id.rec_segundoAp_donacion);
+            categoria = itemView.findViewById(R.id.rec_categoria_donacion);
+            prometido = itemView.findViewById(R.id.rec_prometido_donacion);
+            abonado = itemView.findViewById(R.id.rec_abonado_donacion);
+            fechaAbono = itemView.findViewById(R.id.rec_fechaAbono_donacion);
+            fechaLimite = itemView.findViewById(R.id.rec_fechaLimite_donacion);
+            formaPago = itemView.findViewById(R.id.rec_formaDePago_donacion);
+            plazos = itemView.findViewById(R.id.rec_plazos_donacion);
+            plazosAbonados = itemView.findViewById(R.id.rec_plazosAbonados_donacion);
         }
     }
 }

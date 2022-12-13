@@ -1,5 +1,8 @@
 package modelos;
 
+import androidx.annotation.NonNull;
+
+@SuppressWarnings("unused")
 public class Usuario {
     private int idUsuario;
     private int idImage;
@@ -65,6 +68,7 @@ public class Usuario {
         this.password = password;
     }
 
+    @NonNull
     @Override
     public String toString() {
         return "Usuario [idUsuario=" + idUsuario +  ", idImage=" + idImage + ", nombreUsuario=" + nombreUsuario +

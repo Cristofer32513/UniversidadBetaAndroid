@@ -1,6 +1,5 @@
 package com.example.colectau_beta;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.animation.Animation;
@@ -17,12 +16,9 @@ public class ProcesoExitosoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_proceso_exitoso);
 
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().hide();
-        }
+        if (getSupportActionBar() != null) getSupportActionBar().hide();
 
         Bundle extras = getIntent().getExtras();
-
         //Conexion de variables con la interfaz
         TextView textViewprocesoExitoso= findViewById(R.id.textView_mjs_correcto);
         ImageView imageViewExitoso = findViewById(R.id.imageView_proceso_correcto);
@@ -34,10 +30,6 @@ public class ProcesoExitosoActivity extends AppCompatActivity {
         textViewprocesoExitoso.setAnimation(animacionTexto);
         imageViewExitoso.setAnimation(animacionImagen);
 
-        new Handler().postDelayed(() -> {
-            //Intent intent = new Intent(ProcesoExitosoActivity.this, LoginActivity.class);
-            //startActivity(intent);
-            onBackPressed();
-        }, 3000);
+        new Handler().postDelayed(this::onBackPressed, 3000);
     }
 }

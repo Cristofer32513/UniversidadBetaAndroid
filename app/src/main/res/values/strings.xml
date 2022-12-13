@@ -383,5 +383,14 @@
     <string name="fecha_limite">Fecha limite</string>
     <string name="plazos2">Plazos:</string>
     <string name="plazos_abonados">Plazos abonados:</string>
+    <string name="confirmacion_usuario_registrado">Usuario Registrado Correctamente</string>
+    <string name="error_registro_user">Error al Registrar Usuario</string>
+    <string name="registrando_usuario">Registrando Usuario</string>
+    <string name="usuarios">Usuarios</string>
+    <string name="usuario_actualizado">Usuario Actualizado Correctamente</string>
+    <string name="error_actualizar">Error al Actualizar Usuario</string>
+    <string name="actualizar_usuario">Actualizando Usuario</string>
+    <string name="usuario_eliminado">Usuario Eliminado Correctamente</string>
+    <string name="error_eliminar">Error al Eliminar Usuario</string>
 
 </resources>

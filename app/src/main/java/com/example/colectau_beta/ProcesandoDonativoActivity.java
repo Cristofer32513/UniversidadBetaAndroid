@@ -19,12 +19,9 @@ public class ProcesandoDonativoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_procesando_donativo);
 
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().hide();
-        }
+        if (getSupportActionBar() != null) getSupportActionBar().hide();
 
         extras = getIntent().getExtras();
-
         //Conexion de variables con la interfaz
         ProgressBar barraProgreso = findViewById(R.id.progressBar_ProcesandoDonativo);
         TextView textViewProcesandoDonativo = findViewById(R.id.textView_ProcesandoDonativo);

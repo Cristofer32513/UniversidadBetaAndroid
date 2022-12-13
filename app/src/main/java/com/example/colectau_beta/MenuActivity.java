@@ -31,13 +31,11 @@ public class MenuActivity  extends AppCompatActivity {
         setContentView(R.layout.activity_menu);
 
         Bundle extras = getIntent().getExtras();
-
         setToolBar();
         drawerLayout = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         if (navigationView != null) setupDrawerContent(navigationView);
         if (savedInstanceState == null) {
-            // Enviar título como arguemento del fragmento
             Fragment fragment = new PlaceholderFragmentHome();
             selectItem(getString(R.string.colecta) + getString(R.string.universidad_beta), fragment);
         }

@@ -7,18 +7,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import com.android.volley.Request;
-import com.android.volley.Response;
 import com.android.volley.toolbox.StringRequest;
-import com.example.colectau_beta.Donativo4Activity;
-import com.example.colectau_beta.MenuActivity;
 import com.example.colectau_beta.ProcesandoActivity;
-import com.example.colectau_beta.ProcesandoDonativoActivity;
 import com.example.colectau_beta.R;
 import java.util.HashMap;
 import java.util.Map;
@@ -30,8 +25,7 @@ public class FragmentAgregarUsuario extends BaseVolleyFragment {
     EditText cajaNombre, cajaCorreo, cajaPassword1, cajaPassword2;
     Button btnAgregar, btnCancelar;
 
-    public FragmentAgregarUsuario() {
-    }
+    public FragmentAgregarUsuario() {}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -41,7 +35,6 @@ public class FragmentAgregarUsuario extends BaseVolleyFragment {
         cajaCorreo = view.findViewById(R.id.editText_Correo_AgregarUsuario);
         cajaPassword1 = view.findViewById(R.id.editText_Contraseña1_AgregarUsuario);
         cajaPassword2 = view.findViewById(R.id.editText_Contraseña2_AgregarUsuario);
-
         btnAgregar = view.findViewById(R.id.button_Agregar_AgregarUsuario);
         btnCancelar = view.findViewById(R.id.button_Cancelar_AgregarUsuario);
         btnAgregar.setOnClickListener(view1 -> {
@@ -53,20 +46,20 @@ public class FragmentAgregarUsuario extends BaseVolleyFragment {
                     if(response.equals("{\"exito\":true,\"mensaje\":\"Insercion correcta\"}")) {
                         //Toast.makeText(getContext(), "Usuario Agregado", Toast.LENGTH_LONG).show();
                         intent.putExtra("ventana_resultado", 1);
-                        intent.putExtra("resultado", "Usuario Registrado Correctamente");
+                        intent.putExtra("resultado", getString(R.string.confirmacion_usuario_registrado));
                     } else {
                         intent.putExtra("ventana_resultado", 0);
-                        intent.putExtra("resultado", "Error al Registrar Usuario");
+                        intent.putExtra("resultado", getString(R.string.error_registro_user));
                         //mostrarError(getString(R.string.error_agregar_usuario));
                     }
-                    intent.putExtra("proceso", "Registrando Usuario");
+                    intent.putExtra("proceso", getString(R.string.registrando_usuario));
                     startActivity(intent);
 
                     Fragment nuevoFragmento = new FragmentUsuarios();
                     FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
                     transaction.replace(R.id.content_frame, nuevoFragmento);
                     transaction.commit();
-                    Objects.requireNonNull(((AppCompatActivity) requireActivity()).getSupportActionBar()).setTitle("Usuarios");
+                    Objects.requireNonNull(((AppCompatActivity) requireActivity()).getSupportActionBar()).setTitle(getString(R.string.usuarios));
                 }, error -> mostrarError(getString(R.string.falla_api))) {
                     @Override
                     protected Map<String, String> getParams() {
@@ -112,7 +105,6 @@ public class FragmentAgregarUsuario extends BaseVolleyFragment {
         cajaPassword2.setBackgroundResource(R.drawable.borde_cajas_login);
         boolean respuesta = true;
         StringBuilder cadenaRespuesta = new StringBuilder();
-
         String regexCorreo = "^(([^<>()\\[\\]\\\\.,;:\\s@”]+(\\.[^<>()\\[\\]\\\\.,;:\\s@”]+)*)|(“.+”))@((\\[[0–9]{1,3}\\.[0–9]{1,3}\\.[0–9]{1,3}\\.[0–9]{1,3}])|(([a-zA-Z\\-0–9]+\\.)+[a-zA-Z]{2,}))$";
 
         if(cajaNombre.getText().toString().trim().isEmpty()) {

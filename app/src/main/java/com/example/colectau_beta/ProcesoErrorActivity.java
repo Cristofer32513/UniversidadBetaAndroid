@@ -1,6 +1,5 @@
 package com.example.colectau_beta;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.animation.Animation;
@@ -17,12 +16,9 @@ public class ProcesoErrorActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_proceso_error);
 
+        if (getSupportActionBar() != null) getSupportActionBar().hide();
+
         Bundle extras = getIntent().getExtras();
-
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().hide();
-        }
-
         //Conexion de variables con la interfaz
         TextView textViewMsjError= findViewById(R.id.textView_msj_error);
         ImageView imageViewError = findViewById(R.id.imageView_proceso_error);
@@ -34,10 +30,6 @@ public class ProcesoErrorActivity extends AppCompatActivity {
         textViewMsjError.setAnimation(animacionTexto);
         imageViewError.setAnimation(animacionImagen);
 
-        new Handler().postDelayed(() -> {
-            //Intent intent = new Intent(ProcesoErrorActivity.this, LoginActivity.class);
-            //startActivity(intent);
-            onBackPressed();
-        }, 3000);
+        new Handler().postDelayed(this::onBackPressed, 3000);
     }
 }

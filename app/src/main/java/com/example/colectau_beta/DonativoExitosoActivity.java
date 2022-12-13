@@ -17,9 +17,7 @@ public class DonativoExitosoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_donativo_exitoso);
 
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().hide();
-        }
+        if (getSupportActionBar() != null) getSupportActionBar().hide();
 
         //Conexion de variables con la interfaz
         TextView textViewDonativoExitoso= findViewById(R.id.textView_DonativoError);

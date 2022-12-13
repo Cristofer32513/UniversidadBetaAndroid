@@ -17,9 +17,7 @@ public class DonativoErrorActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_donativo_error);
 
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().hide();
-        }
+        if (getSupportActionBar() != null) getSupportActionBar().hide();
 
         //Conexion de variables con la interfaz
         TextView textViewDonativoError= findViewById(R.id.textView_DonativoError);

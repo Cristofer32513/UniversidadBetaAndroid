@@ -331,4 +331,13 @@
     <string name="fecha_limite">Deadline:</string>
     <string name="plazos2">Deadlines:</string>
     <string name="plazos_abonados">Installments paid:</string>
+    <string name="confirmacion_usuario_registrado">User Registered Correctly</string>
+    <string name="error_registro_user">Failed to Register User</string>
+    <string name="registrando_usuario">registering user</string>
+    <string name="usuarios">users</string>
+    <string name="usuario_actualizado">User Updated Successfully</string>
+    <string name="error_actualizar">Failed to Update User</string>
+    <string name="actualizar_usuario">Updating User</string>
+    <string name="usuario_eliminado">User Deleted Successfully</string>
+    <string name="error_eliminar">Failed to Delete User</string>
 </resources>

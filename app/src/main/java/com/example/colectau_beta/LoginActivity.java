@@ -4,23 +4,19 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
-
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.HashMap;
 import java.util.Map;
+
 import controlador.VolleySingleton;
-import modelos.Usuario;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -33,13 +29,10 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().hide();
-        }
+        if (getSupportActionBar() != null) getSupportActionBar().hide();
 
         cajaUsuario = findViewById(R.id.editText_NombreUsuario);
         cajaPassword = findViewById(R.id.editText_Contraseña);
-
         volley = VolleySingleton.getInstance(getApplicationContext());
         fRequestQueue = volley.getRequestQueue();
     }
@@ -63,9 +56,8 @@ public class LoginActivity extends AppCompatActivity {
             StringRequest recuest = new StringRequest(Request.Method.POST, url, response -> {
                 System.out.println("---    -"+response);
 
-                if(response.isEmpty()) {
-                    mostrarError(getString(R.string.error_usuario_contraseña));
-                } else {
+                if(response.isEmpty()) mostrarError(getString(R.string.error_usuario_contraseña));
+                else {
                     try {
                         JSONArray json = new JSONArray("["+response+"]");
                         for (int i=0; i<json.length();i++) {
@@ -78,9 +70,7 @@ public class LoginActivity extends AppCompatActivity {
                             startActivity(intent);
                             finish();
                         }
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
+                    } catch (JSONException e) {e.printStackTrace();}
                 }
             }, error -> mostrarError(getString(R.string.falla_api))) {
                 @Override
@@ -93,10 +83,9 @@ public class LoginActivity extends AppCompatActivity {
                 }
             };
             recuest.setTag(this);
-            if (fRequestQueue == null)
-                fRequestQueue = volley.getRequestQueue();
-            recuest.setRetryPolicy(new DefaultRetryPolicy(
-                    60000, 3, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+            if (fRequestQueue == null) fRequestQueue = volley.getRequestQueue();
+            recuest.setRetryPolicy(new DefaultRetryPolicy(60000, 3,
+                    DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
             fRequestQueue.add(recuest);
         }
     }
