@@ -351,7 +351,7 @@ public class Donativo2Activity extends AppCompatActivity {
 
     //Para el boton cancelar
     public void cancelar(View view) {
-        new AlertDialog.Builder(getApplicationContext())
+        new AlertDialog.Builder(Donativo2Activity.this)
                 .setIcon(android.R.drawable.ic_dialog_alert).setTitle(getString(R.string.precaucion))
                 .setMessage(getString(R.string.confirmacion_cancelar_donativo))
                 .setPositiveButton(getString(R.string.si), (dialogInterface, i) -> {
