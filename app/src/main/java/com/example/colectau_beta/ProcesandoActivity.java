@@ -32,7 +32,7 @@ public class ProcesandoActivity extends AppCompatActivity {
 
         //Agregar animaciones
         Animation animacionTexto = AnimationUtils.loadAnimation(this, R.anim.desplazamiento_textos_launch);
-        ObjectAnimator.ofInt(barraProgreso, "progress", 100).setDuration(4000).start();
+        ObjectAnimator.ofInt(barraProgreso, "progress", 100).setDuration(2500).start();
         textViewProcesando.setAnimation(animacionTexto);
 
         new Handler().postDelayed(() -> {
@@ -42,6 +42,6 @@ public class ProcesandoActivity extends AppCompatActivity {
             intent.putExtra("msj", extras.getString("resultado"));
             startActivity(intent);
             finish();
-        }, 4000);
+        }, 2500);
     }
 }

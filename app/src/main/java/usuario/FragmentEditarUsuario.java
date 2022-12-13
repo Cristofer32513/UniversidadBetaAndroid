@@ -1,5 +1,6 @@
 package usuario;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import com.android.volley.Request;
 import com.android.volley.toolbox.StringRequest;
+import com.example.colectau_beta.ProcesandoActivity;
 import com.example.colectau_beta.R;
 import java.util.HashMap;
 import java.util.Map;
@@ -57,17 +59,25 @@ public class FragmentEditarUsuario extends BaseVolleyFragment {
                 String url = "http://colectaubeta.atwebpages.com/api_cambios_usuarios.php";
                 StringRequest recuest = new StringRequest(Request.Method.POST, url, response -> {
                     System.out.println("---    -"+response);
+                    Intent intent = new Intent(getContext(), ProcesandoActivity.class);
                     if(response.equals("{\"exito\":true,\"mensaje\":\"Modificacion correcta\"}")) {
-                        Toast.makeText(getContext(), "Usuario Actualizado", Toast.LENGTH_LONG).show();
-                        Fragment nuevoFragmento = new FragmentUsuarios();
-                        nuevoFragmento.setArguments(args);
-                        FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
-                        transaction.replace(R.id.content_frame, nuevoFragmento);
-                        transaction.commit();
-                        Objects.requireNonNull(((AppCompatActivity) requireActivity()).getSupportActionBar()).setTitle("Usuarios");
+                        //Toast.makeText(getContext(), "Usuario Actualizado", Toast.LENGTH_LONG).show();
+                        intent.putExtra("ventana_resultado", 1);
+                        intent.putExtra("resultado", "Usuario Actualizado Correctamente");
                     } else {
-                        mostrarError(getString(R.string.error_actualizar_usuario));
+                        intent.putExtra("ventana_resultado", 0);
+                        intent.putExtra("resultado", "Error al Actualizar Usuario");
+                        //mostrarError(getString(R.string.error_actualizar_usuario));
                     }
+                    intent.putExtra("proceso", "Actualizando Usuario");
+                    startActivity(intent);
+
+                    Fragment nuevoFragmento = new FragmentUsuarios();
+                    nuevoFragmento.setArguments(args);
+                    FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
+                    transaction.replace(R.id.content_frame, nuevoFragmento);
+                    transaction.commit();
+                    Objects.requireNonNull(((AppCompatActivity) requireActivity()).getSupportActionBar()).setTitle("Usuarios");
                 }, error -> mostrarError(getString(R.string.falla_api))) {
                     @Override
                     protected Map<String, String> getParams() {
@@ -103,16 +113,24 @@ public class FragmentEditarUsuario extends BaseVolleyFragment {
                         String url = "http://colectaubeta.atwebpages.com/api_bajas_usuarios.php";
                         StringRequest recuest = new StringRequest(Request.Method.POST, url, response -> {
                             System.out.println("---    -"+response);
+                            Intent intent = new Intent(getContext(), ProcesandoActivity.class);
                             if(response.equals("{\"exito\":true,\"mensaje\":\"Registro eliminado\"}")) {
-                                Toast.makeText(getContext(), "Usuario Eliminado", Toast.LENGTH_LONG).show();
-                                Fragment nuevoFragmento = new FragmentUsuarios();
-                                FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
-                                transaction.replace(R.id.content_frame, nuevoFragmento);
-                                transaction.commit();
-                                Objects.requireNonNull(((AppCompatActivity) requireActivity()).getSupportActionBar()).setTitle("Usuarios");
+                                //Toast.makeText(getContext(), "Usuario Eliminado", Toast.LENGTH_LONG).show();
+                                intent.putExtra("ventana_resultado", 1);
+                                intent.putExtra("resultado", "Usuario Eliminado Correctamente");
                             } else {
-                                mostrarError(getString(R.string.error_eliminar_usuario));
+                                intent.putExtra("ventana_resultado", 0);
+                                intent.putExtra("resultado", "Error al Eliminar Usuario");
+                                //mostrarError(getString(R.string.error_eliminar_usuario));
                             }
+                            intent.putExtra("proceso", "Eliminando Usuario");
+                            startActivity(intent);
+
+                            Fragment nuevoFragmento = new FragmentUsuarios();
+                            FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
+                            transaction.replace(R.id.content_frame, nuevoFragmento);
+                            transaction.commit();
+                            Objects.requireNonNull(((AppCompatActivity) requireActivity()).getSupportActionBar()).setTitle("Usuarios");
                         }, error -> mostrarError(getString(R.string.falla_api))) {
                             @Override
                             protected Map<String, String> getParams() {

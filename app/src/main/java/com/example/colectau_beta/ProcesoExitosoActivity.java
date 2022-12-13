@@ -38,6 +38,6 @@ public class ProcesoExitosoActivity extends AppCompatActivity {
             //Intent intent = new Intent(ProcesoExitosoActivity.this, LoginActivity.class);
             //startActivity(intent);
             onBackPressed();
-        }, 5000);
+        }, 3000);
     }
 }

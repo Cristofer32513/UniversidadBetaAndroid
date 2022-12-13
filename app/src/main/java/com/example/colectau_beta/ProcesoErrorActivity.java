@@ -38,6 +38,6 @@ public class ProcesoErrorActivity extends AppCompatActivity {
             //Intent intent = new Intent(ProcesoErrorActivity.this, LoginActivity.class);
             //startActivity(intent);
             onBackPressed();
-        }, 5000);
+        }, 3000);
     }
 }
