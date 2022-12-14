@@ -10,7 +10,7 @@ public class Donacion {
     private String segundoApDonador;
     private String categoria;
     private int prometido;
-    private int abonado;
+    private float abonado;
     private String fechaAbono;
     private String fechaLimite;
     private String formaPago;
@@ -33,7 +33,7 @@ public class Donacion {
         this.plazosAbonados = 0;
     }
 
-    public Donacion(int idDonacion, String nombreDonador, String primerApDonador, String segundoApDonador, String categoria, int prometido, int abonado, String fechaAbono, String fechaLimite, String formaPago, int plazos, int plazosAbonados) {
+    public Donacion(int idDonacion, String nombreDonador, String primerApDonador, String segundoApDonador, String categoria, int prometido, float abonado, String fechaAbono, String fechaLimite, String formaPago, int plazos, int plazosAbonados) {
         this.idDonacion = idDonacion;
         this.nombreDonador = nombreDonador;
         this.primerApDonador = primerApDonador;
@@ -96,7 +96,7 @@ public class Donacion {
         this.prometido = prometido;
     }
 
-    public int getAbonado() {
+    public float getAbonado() {
         return abonado;
     }
 

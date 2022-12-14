@@ -131,7 +131,7 @@ public class FragmentDonaciones extends BaseVolleyFragment {
                     String plazos_abonados = jsonData.getString("plazos_abonados");
 
                     Donacion donacion = new Donacion(Integer.parseInt(iddonaciones), nombre, ap1, ap2,
-                            categ, Integer.parseInt(prometido), Integer.parseInt(abonado), fechabono,
+                            categ, Integer.parseInt(prometido), Float.parseFloat(abonado), fechabono,
                             fechalimite, formapago, Integer.parseInt(plazos), Integer.parseInt(plazos_abonados));
 
                     agregar(donacion);
