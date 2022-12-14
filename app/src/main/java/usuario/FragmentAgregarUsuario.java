@@ -39,7 +39,7 @@ public class FragmentAgregarUsuario extends BaseVolleyFragment {
         btnCancelar = view.findViewById(R.id.button_Cancelar_AgregarUsuario);
         btnAgregar.setOnClickListener(view1 -> {
             if(validarCampos()) {
-                String url = "http://colectaubeta.atwebpages.com/api_altas_usuarios.php";
+                String url = "http://colectaubeta.atwebpages.com/API/api_altas_usuarios.php";
                 StringRequest recuest = new StringRequest(Request.Method.POST, url, response -> {
                     System.out.println("---    -"+response);
                     Intent intent = new Intent(getContext(), ProcesandoActivity.class);

@@ -52,7 +52,7 @@ public class LoginActivity extends AppCompatActivity {
 
     public void iniciarSesion(View view) {
         if(validarCampos()) {
-            String url = "http://colectaubeta.atwebpages.com/api_validar_user.php";
+            String url = "http://colectaubeta.atwebpages.com/API/api_validar_user.php";
             StringRequest recuest = new StringRequest(Request.Method.POST, url, response -> {
                 System.out.println("---    -"+response);
 

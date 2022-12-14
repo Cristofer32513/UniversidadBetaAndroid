@@ -52,7 +52,7 @@ public class FragmentEditarUsuario extends BaseVolleyFragment {
         btnEliminar = view.findViewById(R.id.button_Eliminar_EditarUsuario);
         btnGuardar.setOnClickListener(view1 -> {
             if(validarCampos()) {
-                String url = "http://colectaubeta.atwebpages.com/api_cambios_usuarios.php";
+                String url = "http://colectaubeta.atwebpages.com/API/api_cambios_usuarios.php";
                 StringRequest recuest = new StringRequest(Request.Method.POST, url, response -> {
                     System.out.println("---    -"+response);
                     Intent intent = new Intent(getContext(), ProcesandoActivity.class);
@@ -106,7 +106,7 @@ public class FragmentEditarUsuario extends BaseVolleyFragment {
                 .setMessage(R.string.confirmacion_eliminar)
                 .setPositiveButton(getString(R.string.si), (dialogInterface, i) -> {
                     if(validarCampos()) {
-                        String url = "http://colectaubeta.atwebpages.com/api_bajas_usuarios.php";
+                        String url = "http://colectaubeta.atwebpages.com/API/api_bajas_usuarios.php";
                         StringRequest recuest = new StringRequest(Request.Method.POST, url, response -> {
                             System.out.println("---    -"+response);
                             Intent intent = new Intent(getContext(), ProcesandoActivity.class);

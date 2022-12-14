@@ -51,7 +51,7 @@ public class FragmentUsuarios extends BaseVolleyFragment {
             if(validarCampos()) {
                 //PONER API BUSQUEDA POR USERNAME
                 listaUsuarios.clear();
-                String url = "http://colectaubeta.atwebpages.com/api_consultas_usuarios_username.php";
+                String url = "http://colectaubeta.atwebpages.com/API/api_consultas_usuarios_username.php";
                 StringRequest recuest = new StringRequest(Request.Method.POST, url, response -> {
                     try {
                         JSONArray json = new JSONArray(response);
@@ -99,7 +99,7 @@ public class FragmentUsuarios extends BaseVolleyFragment {
 
     private void LlenarLista() {
         listaUsuarios.clear();
-        String url = "http://colectaubeta.atwebpages.com/api_consultas_usuarios.php";
+        String url = "http://colectaubeta.atwebpages.com/API/api_consultas_usuarios.php";
         StringRequest recuest = new StringRequest(Request.Method.GET, url, response -> {
             try {
                 JSONArray json = new JSONArray(response);
