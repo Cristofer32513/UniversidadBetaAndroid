@@ -7,7 +7,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
-
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -26,13 +25,10 @@ public class Donativo2Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_donativo2);
 
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().hide();
-        }
+        if (getSupportActionBar() != null) getSupportActionBar().hide();
 
         extras = getIntent().getExtras();
         posicionEstado = extras.getInt("estado");
-
         cajaCalle = findViewById(R.id.editText_Calle);
         cajaColonia = findViewById(R.id.editText_Colonia);
         cajaMunicipio = findViewById(R.id.editText_Municipio);
@@ -182,8 +178,6 @@ public class Donativo2Activity extends AppCompatActivity {
         spinnerEstadoMexico.setBackgroundResource(R.drawable.borde_cajas_login);
         spinnerEstadoVenezuela.setBackgroundResource(R.drawable.borde_cajas_login);
 
-
-
         cajaCalle.setText(cajaCalle.getText().toString().trim());
         cajaCalle.setSelection(cajaCalle.getText().toString().length());
         cajaColonia.setText(cajaColonia.getText().toString().trim());
@@ -192,7 +186,6 @@ public class Donativo2Activity extends AppCompatActivity {
         cajaMunicipio.setSelection(cajaMunicipio.getText().toString().length());
         cajaCP.setText(cajaCP.getText().toString().trim());
         cajaCP.setSelection(cajaCP.getText().toString().length());
-
 
         boolean respuesta = true;
         StringBuilder cadenaRespuesta = new StringBuilder();
@@ -352,14 +345,14 @@ public class Donativo2Activity extends AppCompatActivity {
     //Para el boton cancelar
     public void cancelar(View view) {
         new AlertDialog.Builder(Donativo2Activity.this)
-                .setIcon(android.R.drawable.ic_dialog_alert).setTitle(getString(R.string.precaucion))
-                .setMessage(getString(R.string.confirmacion_cancelar_donativo))
-                .setPositiveButton(getString(R.string.si), (dialogInterface, i) -> {
-                    Intent intent = new Intent(Donativo2Activity.this, LoginActivity.class);
-                    startActivity(intent);
-                    finish();
-                })
-                .setNegativeButton(getString(R.string.no), (dialogInterface, i) -> dialogInterface.cancel())
-                .show();
+            .setIcon(android.R.drawable.ic_dialog_alert).setTitle(getString(R.string.precaucion))
+            .setMessage(getString(R.string.confirmacion_cancelar_donativo))
+            .setPositiveButton(getString(R.string.si), (dialogInterface, i) -> {
+                Intent intent = new Intent(Donativo2Activity.this, LoginActivity.class);
+                startActivity(intent);
+                finish();
+            })
+            .setNegativeButton(getString(R.string.no), (dialogInterface, i) -> dialogInterface.cancel())
+            .show();
     }
 }

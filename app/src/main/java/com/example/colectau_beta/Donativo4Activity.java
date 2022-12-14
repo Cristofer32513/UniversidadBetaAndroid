@@ -10,15 +10,12 @@ import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -42,16 +39,12 @@ public class Donativo4Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_donativo4);
 
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().hide();
-        }
+        if (getSupportActionBar() != null) getSupportActionBar().hide();
 
         extras = getIntent().getExtras();
         plazos = 1;
-
         volley = VolleySingleton.getInstance(getApplicationContext());
         fRequestQueue = volley.getRequestQueue();
-
         RadioButton radioButtonNoPlazos = findViewById(R.id.radioButton_NoPlazos);
         radioButtonSiPlazos = findViewById(R.id.radioButton_SiPlazos);
         RadioButton radioButtonNoComprobante = findViewById(R.id.radioButton_NoComprobante);
@@ -83,14 +76,6 @@ public class Donativo4Activity extends AppCompatActivity {
                     textViewCantidadPlazos.setVisibility(View.VISIBLE);
                     spinnerPlazos.setVisibility(View.VISIBLE);
                 }
-                break;
-            case R.id.radioButton_NoComprobante:
-                if (checked)
-                    // Ninjas rule
-                break;
-            case R.id.radioButton_SiComprobante:
-                if (checked)
-                    // Ninjas rule
                 break;
         }
     }
@@ -210,12 +195,8 @@ public class Donativo4Activity extends AppCompatActivity {
                     parametros.put("email", extras.getString("email"));
                     parametros.put("categ", extras.getString("nombre_categoria"));
                     parametros.put("graduate", extras.getString("fecha_graduacion"));
-                    if(extras.getInt("pos_cantidad_spinner") == 9) {
-                        parametros.put("promet", extras.getString("cantidad"));
-                    } else {
-                        //Checar formato cadena
-                        parametros.put("promet", extras.getString("cantidad_spinner").substring(2));
-                    }
+                    if(extras.getInt("pos_cantidad_spinner") == 9) parametros.put("promet", extras.getString("cantidad"));
+                    else parametros.put("promet", extras.getString("cantidad_spinner").substring(2));
                     parametros.put("pago", extras.getString("nombre_metodo_pago"));
                     parametros.put("plazos", plazos+"");
 
@@ -234,23 +215,23 @@ public class Donativo4Activity extends AppCompatActivity {
 
     public void mostrarError(String error) {
         new AlertDialog.Builder(this)
-                .setIcon(android.R.drawable.ic_dialog_alert).setTitle(getString(R.string.precaucion))
-                .setMessage(error)
-                .setPositiveButton(getString(R.string.entendido), (dialogInterface, i) -> dialogInterface.cancel()).show()
+            .setIcon(android.R.drawable.ic_dialog_alert).setTitle(getString(R.string.precaucion))
+            .setMessage(error)
+            .setPositiveButton(getString(R.string.entendido), (dialogInterface, i) -> dialogInterface.cancel()).show()
         ;
     }
 
     //Para el boton cancelar
     public void cancelar(View view) {
         new AlertDialog.Builder(Donativo4Activity.this)
-                .setIcon(android.R.drawable.ic_dialog_alert).setTitle(getString(R.string.precaucion))
-                .setMessage(getString(R.string.confirmacion_cancelar_donativo))
-                .setPositiveButton(getString(R.string.si), (dialogInterface, i) -> {
-                    Intent intent = new Intent(Donativo4Activity.this, LoginActivity.class);
-                    startActivity(intent);
-                    finish();
-                })
-                .setNegativeButton(getString(R.string.no), (dialogInterface, i) -> dialogInterface.cancel())
-                .show();
+            .setIcon(android.R.drawable.ic_dialog_alert).setTitle(getString(R.string.precaucion))
+            .setMessage(getString(R.string.confirmacion_cancelar_donativo))
+            .setPositiveButton(getString(R.string.si), (dialogInterface, i) -> {
+                Intent intent = new Intent(Donativo4Activity.this, LoginActivity.class);
+                startActivity(intent);
+                finish();
+            })
+            .setNegativeButton(getString(R.string.no), (dialogInterface, i) -> dialogInterface.cancel())
+            .show();
     }
 }

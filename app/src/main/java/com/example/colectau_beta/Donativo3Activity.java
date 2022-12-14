@@ -8,7 +8,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
-
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -25,12 +24,9 @@ public class Donativo3Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_donativo3);
 
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().hide();
-        }
+        if (getSupportActionBar() != null) getSupportActionBar().hide();
 
         extras = getIntent().getExtras();
-
         spinnerCantidad = findViewById(R.id.spinner_Cantidad);
         cajaCantidad = findViewById(R.id.editText_Cantidad);
         spinnerBanco = findViewById(R.id.spinner_Banco);
@@ -236,14 +232,14 @@ public class Donativo3Activity extends AppCompatActivity {
     //Para el boton cancelar
     public void cancelar(View view) {
         new AlertDialog.Builder(Donativo3Activity.this)
-                .setIcon(android.R.drawable.ic_dialog_alert).setTitle(getString(R.string.precaucion))
-                .setMessage(getString(R.string.confirmacion_cancelar_donativo))
-                .setPositiveButton(getString(R.string.si), (dialogInterface, i) -> {
-                    Intent intent = new Intent(Donativo3Activity.this, LoginActivity.class);
-                    startActivity(intent);
-                    finish();
-                })
-                .setNegativeButton(getString(R.string.no), (dialogInterface, i) -> dialogInterface.cancel())
-                .show();
+            .setIcon(android.R.drawable.ic_dialog_alert).setTitle(getString(R.string.precaucion))
+            .setMessage(getString(R.string.confirmacion_cancelar_donativo))
+            .setPositiveButton(getString(R.string.si), (dialogInterface, i) -> {
+                Intent intent = new Intent(Donativo3Activity.this, LoginActivity.class);
+                startActivity(intent);
+                finish();
+            })
+            .setNegativeButton(getString(R.string.no), (dialogInterface, i) -> dialogInterface.cancel())
+            .show();
     }
 }

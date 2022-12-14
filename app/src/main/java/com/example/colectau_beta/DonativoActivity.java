@@ -10,10 +10,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-
 import java.util.Calendar;
 
 public class DonativoActivity extends AppCompatActivity {
@@ -30,12 +28,9 @@ public class DonativoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_donativo);
 
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().hide();
-        }
+        if (getSupportActionBar() != null) getSupportActionBar().hide();
 
         extras = getIntent().getExtras();
-
         cajaNombre = findViewById(R.id.editText_Nombre);
         cajaPrimerAp = findViewById(R.id.editText_PrimerAp);
         cajaSegundoAp = findViewById(R.id.editText_SegundoAp);

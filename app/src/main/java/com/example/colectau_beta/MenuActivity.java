@@ -115,9 +115,9 @@ public class MenuActivity  extends AppCompatActivity {
     private void selectItem(String title, Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager
-                .beginTransaction()
-                .replace(R.id.content_frame, fragment)
-                .commit();
+            .beginTransaction()
+            .replace(R.id.content_frame, fragment)
+            .commit();
 
         drawerLayout.closeDrawers();
         setTitle(title);

@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -131,9 +130,9 @@ public class FragmentUsuarios extends BaseVolleyFragment {
 
     public void mostrarError(String error) {
         new AlertDialog.Builder(requireContext())
-                .setIcon(android.R.drawable.ic_dialog_alert).setTitle(getString(R.string.precaucion))
-                .setMessage(error)
-                .setPositiveButton(getString(R.string.entendido), (dialogInterface, i) -> dialogInterface.cancel()).show()
+            .setIcon(android.R.drawable.ic_dialog_alert).setTitle(getString(R.string.precaucion))
+            .setMessage(error)
+            .setPositiveButton(getString(R.string.entendido), (dialogInterface, i) -> dialogInterface.cancel()).show()
         ;
     }
 
@@ -183,9 +182,7 @@ public class FragmentUsuarios extends BaseVolleyFragment {
             respuesta = false;
         }
 
-        if(!respuesta) {
-            mostrarError(cadenaRespuesta);
-        }
+        if(!respuesta) mostrarError(cadenaRespuesta);
 
         return respuesta;
     }

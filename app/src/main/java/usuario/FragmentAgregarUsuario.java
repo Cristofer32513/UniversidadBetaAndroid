@@ -92,9 +92,9 @@ public class FragmentAgregarUsuario extends BaseVolleyFragment {
 
     public void mostrarError(String error) {
         new AlertDialog.Builder(requireContext())
-                .setIcon(android.R.drawable.ic_dialog_alert).setTitle(getString(R.string.precaucion))
-                .setMessage(error)
-                .setPositiveButton(getString(R.string.entendido), (dialogInterface, i) -> dialogInterface.cancel()).show()
+            .setIcon(android.R.drawable.ic_dialog_alert).setTitle(getString(R.string.precaucion))
+            .setMessage(error)
+            .setPositiveButton(getString(R.string.entendido), (dialogInterface, i) -> dialogInterface.cancel()).show()
         ;
     }
 
@@ -162,10 +162,10 @@ public class FragmentAgregarUsuario extends BaseVolleyFragment {
 
         if(!respuesta) {
             new AlertDialog.Builder(requireContext())
-                    .setIcon(android.R.drawable.ic_dialog_alert).setTitle(getString(R.string.errores_detectados))
-                    .setMessage(cadenaRespuesta)
-                    .setPositiveButton(getString(R.string.entendido), (dialogInterface, i) -> dialogInterface.cancel())
-                    .show()
+                .setIcon(android.R.drawable.ic_dialog_alert).setTitle(getString(R.string.errores_detectados))
+                .setMessage(cadenaRespuesta)
+                .setPositiveButton(getString(R.string.entendido), (dialogInterface, i) -> dialogInterface.cancel())
+                .show()
             ;
         }
 
