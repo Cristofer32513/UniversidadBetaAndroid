@@ -174,7 +174,7 @@ public class Donativo4Activity extends AppCompatActivity {
     //Para el boton cancelar
     public void enviar(View view) {
         if(validarCampos()) {
-            String url = "http://192.168.1.69/colectaubeta/api/api_registro.php";
+            String url = "http://colectaubeta.atwebpages.com/API/api_registro.php";
             StringRequest recuest = new StringRequest(Request.Method.POST, url, response -> {
                 System.out.println("---    -"+response);
 
