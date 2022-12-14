@@ -216,7 +216,6 @@ public class Donativo4Activity extends AppCompatActivity {
                         //Checar formato cadena
                         parametros.put("promet", extras.getString("cantidad_spinner").substring(2));
                     }
-                    parametros.put("abono", "10000");
                     parametros.put("pago", extras.getString("nombre_metodo_pago"));
                     parametros.put("plazos", plazos+"");
 
