@@ -99,7 +99,7 @@ public class DonativoActivity extends AppCompatActivity {
     }
     //Para la seleccion de la fecha
     private String convertirCadenaADate(int dia, int mes, int year) {
-        return  dia + "/" + obtenerFormatoMes(mes) + "/" + year;
+        return  year + "-" + obtenerFormatoMes(mes) + "-" + dia;
     }
     //Para la seleccion de la fecha
     private String obtenerFormatoMes(int mes) {
