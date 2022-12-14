@@ -64,10 +64,8 @@ public class FragmentDonaciones extends BaseVolleyFragment {
             public void onNothingSelected(AdapterView<?> adapterView) {}
         });
 
-
         btnBuscar.setOnClickListener(view1 -> {
             if(validarCampos()) {
-                Toast.makeText(getContext(), "Buscando...", Toast.LENGTH_LONG).show();
                 if(spinnerBuscar.getSelectedItemPosition() == 1) LlenarListaNombre();
                 else if(spinnerBuscar.getSelectedItemPosition() == 2) LlenarListaPrimerAp();
                 else if(spinnerBuscar.getSelectedItemPosition() == 3) LlenarListaSegundoAp();
@@ -112,11 +110,11 @@ public class FragmentDonaciones extends BaseVolleyFragment {
 
     private void LlenarLista() {
         listaDonaciones.clear();
-        String url = "https://192.168.1.69/colectaubeta/api/api_consultas_donaciones.php";
+        String url = "http://colectaubeta.atwebpages.com/API/api_consultas_donaciones.php";
         StringRequest recuest = new StringRequest(Request.Method.GET, url, response -> {
             try {
                 JSONArray json = new JSONArray(response);
-                Toast.makeText(getContext(), json.length() + getString(R.string.usuarios_encontrados), Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), json.length() + getString(R.string.donaciones_encontradas), Toast.LENGTH_LONG).show();
                 for (int i=0; i<json.length();i++) {
                     JSONObject jsonData = json.getJSONObject(i);
                     String iddonaciones = jsonData.getString("iddonaciones");
@@ -153,11 +151,11 @@ public class FragmentDonaciones extends BaseVolleyFragment {
 
     private void LlenarListaNombre() {
         listaDonaciones.clear();
-        String url = "https://192.168.1.69/colectaubeta/api/api_consultas_donaciones_nombre.php";
-        StringRequest recuest = new StringRequest(Request.Method.GET, url, response -> {
+        String url = "http://colectaubeta.atwebpages.com/API/api_consultas_donaciones_nombre.php";
+        StringRequest recuest = new StringRequest(Request.Method.POST, url, response -> {
             try {
                 JSONArray json = new JSONArray(response);
-                Toast.makeText(getContext(), json.length() + getString(R.string.usuarios_encontrados), Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), json.length() + getString(R.string.coincidencias_encontradas), Toast.LENGTH_LONG).show();
                 for (int i=0; i<json.length();i++) {
                     JSONObject jsonData = json.getJSONObject(i);
                     String iddonaciones = jsonData.getString("iddonaciones");
@@ -195,11 +193,11 @@ public class FragmentDonaciones extends BaseVolleyFragment {
 
     private void LlenarListaPrimerAp() {
         listaDonaciones.clear();
-        String url = "https://192.168.1.69/colectaubeta/api/api_consultas_donaciones_ap1.php";
-        StringRequest recuest = new StringRequest(Request.Method.GET, url, response -> {
+        String url = "http://colectaubeta.atwebpages.com/API/api_consultas_donaciones_ap1.php";
+        StringRequest recuest = new StringRequest(Request.Method.POST, url, response -> {
             try {
                 JSONArray json = new JSONArray(response);
-                Toast.makeText(getContext(), json.length() + getString(R.string.usuarios_encontrados), Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), json.length() + getString(R.string.coincidencias_encontradas), Toast.LENGTH_LONG).show();
                 for (int i=0; i<json.length();i++) {
                     JSONObject jsonData = json.getJSONObject(i);
                     String iddonaciones = jsonData.getString("iddonaciones");
@@ -237,11 +235,11 @@ public class FragmentDonaciones extends BaseVolleyFragment {
 
     private void LlenarListaSegundoAp() {
         listaDonaciones.clear();
-        String url = "https://192.168.1.69/colectaubeta/api/api_consultas_donaciones_ap2.php";
-        StringRequest recuest = new StringRequest(Request.Method.GET, url, response -> {
+        String url = "http://colectaubeta.atwebpages.com/API/api_consultas_donaciones_ap2.php";
+        StringRequest recuest = new StringRequest(Request.Method.POST, url, response -> {
             try {
                 JSONArray json = new JSONArray(response);
-                Toast.makeText(getContext(), json.length() + getString(R.string.usuarios_encontrados), Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), json.length() + getString(R.string.coincidencias_encontradas), Toast.LENGTH_LONG).show();
                 for (int i=0; i<json.length();i++) {
                     JSONObject jsonData = json.getJSONObject(i);
                     String iddonaciones = jsonData.getString("iddonaciones");
@@ -279,11 +277,11 @@ public class FragmentDonaciones extends BaseVolleyFragment {
 
     private void LlenarListaCategoria() {
         listaDonaciones.clear();
-        String url = "https://192.168.1.69/colectaubeta/api/api_consultas_donaciones_categoria.php";
-        StringRequest recuest = new StringRequest(Request.Method.GET, url, response -> {
+        String url = "http://colectaubeta.atwebpages.com/API/api_consultas_donaciones_categoria.php";
+        StringRequest recuest = new StringRequest(Request.Method.POST, url, response -> {
             try {
                 JSONArray json = new JSONArray(response);
-                Toast.makeText(getContext(), json.length() + getString(R.string.usuarios_encontrados), Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), json.length() + getString(R.string.coincidencias_encontradas), Toast.LENGTH_LONG).show();
                 for (int i=0; i<json.length();i++) {
                     JSONObject jsonData = json.getJSONObject(i);
                     String iddonaciones = jsonData.getString("iddonaciones");
@@ -321,11 +319,11 @@ public class FragmentDonaciones extends BaseVolleyFragment {
 
     private void LlenarListaMetodoPago() {
         listaDonaciones.clear();
-        String url = "https://192.168.1.69/colectaubeta/api/api_consultas_donaciones_metodo_pago.php";
-        StringRequest recuest = new StringRequest(Request.Method.GET, url, response -> {
+        String url = "http://colectaubeta.atwebpages.com/API/api_consultas_donaciones_metodo_pago.php";
+        StringRequest recuest = new StringRequest(Request.Method.POST, url, response -> {
             try {
                 JSONArray json = new JSONArray(response);
-                Toast.makeText(getContext(), json.length() + getString(R.string.usuarios_encontrados), Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), json.length() + getString(R.string.coincidencias_encontradas), Toast.LENGTH_LONG).show();
                 for (int i=0; i<json.length();i++) {
                     JSONObject jsonData = json.getJSONObject(i);
                     String iddonaciones = jsonData.getString("iddonaciones");

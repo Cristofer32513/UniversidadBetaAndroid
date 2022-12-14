@@ -340,9 +340,9 @@
     <string name="actualizar_usuario">Updating User</string>
     <string name="usuario_eliminado">User Deleted Successfully</string>
     <string name="error_eliminar">Failed to Delete User</string>
-    <string name="coincidencias_encontradas">match(es) found</string>
+    <string name="coincidencias_encontradas">" match(es) found"</string>
     <string name="agregar_usuario">Add User</string>
-    <string name="usuarios_encontrados">user(s) found</string>
+    <string name="usuarios_encontrados">" user(s) found"</string>
     <string name="editar_usuario">Edit User</string>
     <string name="eliminando_usuario">Deleting User</string>
     <string name="no_espacios">Password must not contain spaces</string>
@@ -359,4 +359,5 @@
         <item>Category</item>
         <item>Payment method</item>
     </string-array>
+    <string name="donaciones_encontradas">" donation(s) found"</string>
 </resources>
