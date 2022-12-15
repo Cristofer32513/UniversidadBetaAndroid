@@ -12,19 +12,25 @@
         android:orientation="vertical"
         tools:ignore="UselessParent">
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/borde_imagen_separador" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="10dp"
-            android:orientation="horizontal"
-            android:gravity="center">
+            android:gravity="center"
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:text="@string/id_donacion"
-                android:textColor="@color/campos_recycler"
+                android:textColor="@color/campos_recycler_d"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -34,7 +40,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
-                android:textColor="@color/valores_recycler"
+                android:textColor="@color/valores_recycler_d"
                 android:textSize="18sp" />
 
         </LinearLayout>
@@ -42,15 +48,15 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:text="@string/nombre2"
-                android:textColor="@color/campos_recycler"
+                android:textColor="@color/campos_recycler_d"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -60,7 +66,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
-                android:textColor="@color/valores_recycler"
+                android:textColor="@color/valores_recycler_d"
                 android:textSize="18sp" />
 
         </LinearLayout>
@@ -68,15 +74,15 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:text="@string/primer_apellido"
-                android:textColor="@color/campos_recycler"
+                android:textColor="@color/campos_recycler_d"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -86,7 +92,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
-                android:textColor="@color/valores_recycler"
+                android:textColor="@color/valores_recycler_d"
                 android:textSize="18sp" />
 
         </LinearLayout>
@@ -94,15 +100,15 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:text="@string/segundo_apellido"
-                android:textColor="@color/campos_recycler"
+                android:textColor="@color/campos_recycler_d"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -112,7 +118,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
-                android:textColor="@color/valores_recycler"
+                android:textColor="@color/valores_recycler_d"
                 android:textSize="18sp" />
 
         </LinearLayout>
@@ -120,15 +126,15 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:text="@string/categoria"
-                android:textColor="@color/campos_recycler"
+                android:textColor="@color/campos_recycler_d"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -138,7 +144,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
-                android:textColor="@color/valores_recycler"
+                android:textColor="@color/valores_recycler_d"
                 android:textSize="18sp" />
 
         </LinearLayout>
@@ -146,15 +152,15 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:text="@string/monto_prometido"
-                android:textColor="@color/campos_recycler"
+                android:textColor="@color/campos_recycler_d"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -164,7 +170,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
-                android:textColor="@color/valores_recycler"
+                android:textColor="@color/valores_recycler_d"
                 android:textSize="18sp" />
 
         </LinearLayout>
@@ -172,15 +178,15 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:text="@string/monto_abonado"
-                android:textColor="@color/campos_recycler"
+                android:textColor="@color/campos_recycler_d"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -190,7 +196,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
-                android:textColor="@color/valores_recycler"
+                android:textColor="@color/valores_recycler_d"
                 android:textSize="18sp" />
 
         </LinearLayout>
@@ -198,15 +204,15 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:text="@string/fecha_abono"
-                android:textColor="@color/campos_recycler"
+                android:textColor="@color/campos_recycler_d"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -216,7 +222,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
-                android:textColor="@color/valores_recycler"
+                android:textColor="@color/valores_recycler_d"
                 android:textSize="18sp" />
 
         </LinearLayout>
@@ -224,15 +230,15 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:text="@string/fecha_limite"
-                android:textColor="@color/campos_recycler"
+                android:textColor="@color/campos_recycler_d"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -242,7 +248,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
-                android:textColor="@color/valores_recycler"
+                android:textColor="@color/valores_recycler_d"
                 android:textSize="18sp" />
 
         </LinearLayout>
@@ -250,15 +256,15 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:text="@string/metodo_de_pago"
-                android:textColor="@color/campos_recycler"
+                android:textColor="@color/campos_recycler_d"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -268,7 +274,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
-                android:textColor="@color/valores_recycler"
+                android:textColor="@color/valores_recycler_d"
                 android:textSize="18sp" />
 
         </LinearLayout>
@@ -276,15 +282,15 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:text="@string/plazos2"
-                android:textColor="@color/campos_recycler"
+                android:textColor="@color/campos_recycler_d"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -294,7 +300,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
-                android:textColor="@color/valores_recycler"
+                android:textColor="@color/valores_recycler_d"
                 android:textSize="18sp" />
 
         </LinearLayout>
@@ -302,15 +308,15 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:text="@string/plazos_abonados"
-                android:textColor="@color/campos_recycler"
+                android:textColor="@color/campos_recycler_d"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -320,16 +326,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
-                android:textColor="@color/valores_recycler"
+                android:textColor="@color/valores_recycler_d"
                 android:textSize="18sp" />
 
         </LinearLayout>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="10dp"
-            android:background="@color/borde_imagen_separador" />
 
     </LinearLayout>
 

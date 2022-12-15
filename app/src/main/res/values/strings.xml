@@ -404,5 +404,6 @@
     <string name="ingresa_metodo_pago">- Ingresa un metodo de pago.</string>
     <string name="ingresa_categoria">- Ingresa una categoria.</string>
     <string name="donaciones_encontradas">" donacion(es) encontrada(s)"</string>
+    <string name="tarjeta_vencida">- Tarjeta Vencida o a punto de vencer.</string>
 
 </resources>

@@ -14,4 +14,7 @@
     <color name="campos_recycler">#C515D8</color>
     <color name="valores_recycler">#00248F</color>
     <color name="borde_imagen_separador">#BDBDBD</color>
+
+    <color name="campos_recycler_d">#AA00FF</color>
+    <color name="valores_recycler_d">#0091EA</color>
 </resources>

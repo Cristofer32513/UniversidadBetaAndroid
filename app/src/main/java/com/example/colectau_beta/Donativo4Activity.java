@@ -164,7 +164,7 @@ public class Donativo4Activity extends AppCompatActivity {
                 System.out.println("---    -"+response);
 
                 if(response.equals("{\"exito\":true,\"mensaje\":\"Insercion correcta\"}")) {
-                    Toast.makeText(getApplicationContext(), "Donacion exitosa", Toast.LENGTH_LONG).show();
+                    //Toast.makeText(getApplicationContext(), "Donacion exitosa", Toast.LENGTH_LONG).show();
                     intent = new Intent(Donativo4Activity.this, ProcesandoDonativoActivity.class);
                     cargarDatosIntent(intent);
                     intent.putExtra("ventana_resultado", 1);

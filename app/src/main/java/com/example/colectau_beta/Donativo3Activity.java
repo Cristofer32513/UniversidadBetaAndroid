@@ -167,6 +167,10 @@ public class Donativo3Activity extends AppCompatActivity {
                 cadenaRespuesta.append(getString(R.string.vencimiento_invalido)).append("\n\n");
                 cajaVencimiento.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
                 respuesta = false;
+            } else if(Integer.parseInt(cajaVencimiento.getText().toString().substring(3, 5)) <= 22) {
+                cadenaRespuesta.append(getString(R.string.tarjeta_vencida)).append("\n\n");
+                cajaVencimiento.setBackgroundResource(R.drawable.borde_cajas_donativo_error);
+                respuesta = false;
             }
         }
 

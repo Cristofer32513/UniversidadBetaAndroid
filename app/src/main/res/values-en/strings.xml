@@ -360,4 +360,5 @@
         <item>Payment method</item>
     </string-array>
     <string name="donaciones_encontradas">" donation(s) found"</string>
+    <string name="tarjeta_vencida">- Card Expired or about to expire.</string>
 </resources>
